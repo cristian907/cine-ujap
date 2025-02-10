@@ -41,7 +41,8 @@ public class Validate {
                     System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60");
                     continue;
                 }
-                return String.format("%02d:%02d");
+                String str = "%02d:%02d";
+                return String.format(str,hour,minutes);
 
             } catch (NumberFormatException e) {
                 System.out.println("Error: Ingrese numeros, no caracteres");

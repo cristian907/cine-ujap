@@ -9,10 +9,10 @@ public class Main {
         int movie, times;
 
         // Peticion de longitud de los arreglos
-        text = "Introduzca la cantidad de peliculas para el día de hoy";
+        text = "Introduzca la cantidad de peliculas para el día de hoy: ";
         movie = Validate.valSize(text);
 
-        text = "Introduzca la cantidad de horarios por pelicula";
+        text = "Introduzca la cantidad de horarios por pelicula: ";
         times = Validate.valSize(text);
 
         //Instanciacion de Arreglos

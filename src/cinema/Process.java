@@ -34,16 +34,17 @@ public class Process {
     }
 
     public static void attachData(int[][][] matrix, String[][] showtime, String[] name) {
-//        String text = "";
+        String text = "";
 //        ***CAMBIAR ENTRADA DE DATOS A VALIDATE***
         try (Scanner enter = new Scanner(System.in)) {
             for (int i = 0; i < showtime.length; i++) {
-                System.out.println("Introduzca el nombre de la pelicula #"+(i+1)+": ");
+                text  = "Introduzca el nombre de la pelicula #"+(i+1)+": ";
+                System.out.println(text);
                 name[i] = enter.nextLine();
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
                 for (int j = 0; j < showtime[0].length; j++) {
                     System.out.println("Introduzca el horario #"+(j+1)+" de la pelicula "+name[i]+" (formato de 24 horas)");
-                    showtime[i][j] = enter.nextLine();
+                    showtime[i][j] = Validate.validHour(enter.next());
                 }
             }
         }
