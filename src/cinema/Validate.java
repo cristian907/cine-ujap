@@ -25,8 +25,30 @@ public class Validate {
         }
     }
 
-    public static boolean valiHour(String hour){
+    public static String validHour(String text){
+        while (true){
 
-    return false;}
+
+            if (!text.matches("\\d{1,2}:\\d{2}")){
+                System.out.println("Error: Formato incorrecto, es H:MM");
+                continue;
+            }
+            String[] parts = text.split(":");
+            try{
+                int hour = Integer.parseInt(parts[0]);
+                int minutes = Integer.parseInt(parts[1]);
+                if (hour < 0 || hour > 24 || minutes < 0 || minutes >=60){
+                    System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60");
+                    continue;
+                }
+                return String.format("%02d:%02d");
+
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese numeros, no caracteres");
+
+            }
+        }
+
+    }
 
 }
