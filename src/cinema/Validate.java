@@ -25,4 +25,8 @@ public class Validate {
         }
     }
 
+    public static boolean valiHour(String hour){
+
+    return false;}
+
 }
