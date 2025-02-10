@@ -3,7 +3,7 @@ package cinema;
 import java.util.Scanner;
 
 public class Process {
-    public static void iniInfo(int[][][] matrix){
+    public static void iniSeats(int[][][] matrix){
         if(matrix != null){
             for(int i = 0; i < matrix.length; i++){
                 for(int j = 0; j < matrix[i].length; j++){
