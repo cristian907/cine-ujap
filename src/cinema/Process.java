@@ -43,8 +43,9 @@ public class Process {
                 name[i] = enter.nextLine();
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
                 for (int j = 0; j < showtime[0].length; j++) {
-                    System.out.println("Introduzca el horario #"+(j+1)+" de la pelicula "+name[i]+" (formato de 24 horas)");
-                    showtime[i][j] = Validate.validHour(enter.next());
+                    text = "Introduzca el horario #"+(j+1)+" de la pelicula "+name[i]+" (formato de 24 horas)";
+                    System.out.println(text);
+                    showtime[i][j] = Validate.validHour(enter.next(),text);
                 }
             }
         }
