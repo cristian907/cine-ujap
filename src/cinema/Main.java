@@ -25,11 +25,10 @@ public class Main {
         Process.iniShowtime(showtimes);
         Process.iniMovie(movies);
 
-        //LLenado de datos de los arreglos
+        //LLenado inicial de datos de los arreglos
         Process.attachData(showtimes, movies);
-//        Process.showCase(movies, showtimes);
 
-
+        //Ejecucion del menu de opciones
         Process.showMenu(movies, showtimes, info);
 
         info = null;

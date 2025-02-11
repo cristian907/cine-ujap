@@ -13,7 +13,7 @@ public class Validate {
                 size = read.nextInt();
 
                 if (size < 1) {
-                    System.out.println("Error: no se admiten valores menores a 0");
+                    System.out.println("Error: no se admiten valores menores a 1");
                 } else {
                     return size;
                 }
@@ -25,14 +25,12 @@ public class Validate {
     }
 
     public static String validHour(String time, String text) {
-        // modificar a try-with-resources
         Scanner enter = new Scanner(System.in);
         while (true) {
 
-
             if (!time.matches("\\d{1,2}:\\d{2}")) {
                 System.out.println("Error: Formato incorrecto, es H:MM");
-                System.out.println(text);
+                System.out.print(text);
                 time = enter.nextLine();
                 continue;
             }
@@ -42,7 +40,7 @@ public class Validate {
                 int minutes = Integer.parseInt(parts[1]);
                 if (hour < 0 || hour > 24 || minutes < 0 || minutes >= 60) {
                     System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60");
-                    System.out.println(text);
+                    System.out.print(text);
                     time = enter.nextLine();
                     continue;
                 }
@@ -65,17 +63,17 @@ public class Validate {
                 System.out.print(text);
                 name = enter.nextLine();
             } else {
-                return name;
+                return name.trim();
             }
         }
     }
 
-    public static int valIdExist(String text, int enter, int num ){
+    public static int valIdExist(String text, int enter, int num) {
         Scanner read = new Scanner(System.in);
         {
-            while(enter < 1 || enter > num){
+            while (enter < 1 || enter > num) {
                 System.out.println("Error: el id no existe");
-                System.out.println(text);
+                System.out.print(text);
                 enter = read.nextInt();
             }
         }

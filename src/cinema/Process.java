@@ -8,8 +8,8 @@ public class Process {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     matrix[i][j][0] = 20;
-                    for (int k = 0; k < matrix[i][j].length-1; k++) {
-                        matrix[i][j][k+1] = 0;
+                    for (int k = 0; k < matrix[i][j].length - 1; k++) {
+                        matrix[i][j][k + 1] = 0;
                     }
                 }
             }
@@ -36,13 +36,11 @@ public class Process {
 
     public static void attachData(String[][] showtime, String[] name) {
         String text = "";
-//        ***CAMBIAR ENTRADA DE DATOS A VALIDATE***
         Scanner enter = new Scanner(System.in);
         for (int i = 0; i < showtime.length; i++) {
             text = "Introduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
             name[i] = Validate.validMovieName(enter.nextLine(), text);
-//                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
             for (int j = 0; j < showtime[0].length; j++) {
                 text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
                 System.out.print(text);
@@ -62,7 +60,7 @@ public class Process {
                     System.out.printf("%-6s  //   ", showtime[i][j]);
                 }
                 System.out.printf("%-6s", showtime[i][showtime[0].length - 1]);
-                System.out.println("\n");
+                System.out.println();
             }
 
         }
@@ -88,7 +86,7 @@ public class Process {
         System.out.print(text);
         timeID = enter.nextInt() - 1;
 
-        text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas dispoibles: "+info[movieID][timeID][0];
+        text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas dispoibles: " + info[movieID][timeID][0];
         System.out.println(text);
         seatQty = enter.nextInt();
 
@@ -109,9 +107,9 @@ public class Process {
     public static void showMenu(String[] name, String[][] times, int[][][] matrix) {
         Scanner enter = new Scanner(System.in);
         int option;
-        System.out.println("¡Bienvenido a CineUjap!");
+        System.out.println("\n\n¡Bienvenido a CineUjap!");
         do {
-            System.out.println("Menu de Opciones");
+            System.out.println("\nMenu de Opciones");
             System.out.println("1. Mostrar Cartelera");
             System.out.println("2. Comprar Entradas");
             System.out.println("\n¡ATENCION SOLO PERSONAL AUTORIZADO!");
@@ -141,7 +139,7 @@ public class Process {
                     System.out.println("Gracias por elegir CineUjap, vuelva pronto");
                     break;
                 default:
-                    System.out.println("Elija una opción valida");
+                    System.out.println("¡Error! Elija una opción valida");
             }
         } while (option != 5);
     }
