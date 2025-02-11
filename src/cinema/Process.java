@@ -37,17 +37,17 @@ public class Process {
         String text = "";
 //        ***CAMBIAR ENTRADA DE DATOS A VALIDATE***
         Scanner enter = new Scanner(System.in);
-            for (int i = 0; i < showtime.length; i++) {
-                text  = "Introduzca el nombre de la pelicula #"+(i+1)+": ";
-                System.out.print(text);
-                name[i] = Validate.validMovieName(enter.nextLine(), text);
+        for (int i = 0; i < showtime.length; i++) {
+            text = "Introduzca el nombre de la pelicula #" + (i + 1) + ": ";
+            System.out.print(text);
+            name[i] = Validate.validMovieName(enter.nextLine(), text);
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
-                for (int j = 0; j < showtime[0].length; j++) {
-                    text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
-                    System.out.print(text);
-                    showtime[i][j] = Validate.validHour(enter.nextLine(), text);
-                }
+            for (int j = 0; j < showtime[0].length; j++) {
+                text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
+                System.out.print(text);
+                showtime[i][j] = Validate.validHour(enter.nextLine(), text);
             }
+        }
 
 
     }
@@ -73,19 +73,19 @@ public class Process {
         String text;
         Scanner enter = new Scanner(System.in);
 
-            for (int i = 0; i < movies.length; i++) {
-                System.out.println((i + 1) + ". " + movies[i]);
-            }
-            text = "Introduzca el ID de la pelicula a comprar: ";
-            System.out.print(text);
-            movieID = enter.nextInt()-1;
+        for (int i = 0; i < movies.length; i++) {
+            System.out.println((i + 1) + ". " + movies[i]);
+        }
+        text = "Introduzca el ID de la pelicula a comprar: ";
+        System.out.print(text);
+        movieID = enter.nextInt() - 1;
 
-            for (int j = 0; j < showtimes[0].length; j++) {
-                System.out.println((j + 1) + ". " + showtimes[movieID][j]);
-            }
-            text = "Introduzca el ID del horario a comprar: ";
-            System.out.print(text);
-            timeID = enter.nextInt()-1;
+        for (int j = 0; j < showtimes[0].length; j++) {
+            System.out.println((j + 1) + ". " + showtimes[movieID][j]);
+        }
+        text = "Introduzca el ID del horario a comprar: ";
+        System.out.print(text);
+        timeID = enter.nextInt() - 1;
 
     }
 }
