@@ -68,7 +68,7 @@ public class Validate {
         }
     }
 
-    public static int valIdExist(String text, int enter, int num) {
+    public static int valIdExist(int enter, int num, String text) {
         Scanner read = new Scanner(System.in);
         {
             while (enter < 1 || enter > num) {
@@ -78,6 +78,27 @@ public class Validate {
             }
         }
         return enter;
+    }
+
+    public static int valInt(String text) {
+        Scanner read = new Scanner(System.in);
+        int option = 0;
+        while(true){
+            try{
+                System.out.print(text);
+                option = read.nextInt();
+                if (option < 1 || option > 5) {
+                    System.out.println("¡Error! Elija una opción valida");
+                    System.out.print("Seleccione nuevamente una opcion: ");
+                } else {
+                    return option;
+                }
+            } catch (Exception e) {
+                System.out.println("¡Error! Elija una opción valida");
+                System.out.print("Seleccione nuevamente una opcion: ");
+                read.nextLine();
+            }
+        }
     }
 }
 

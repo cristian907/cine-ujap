@@ -106,6 +106,7 @@ public class Process {
 
     public static void showMenu(String[] name, String[][] times, int[][][] matrix) {
         Scanner enter = new Scanner(System.in);
+        String text = "";
         int option;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
         do {
@@ -117,7 +118,7 @@ public class Process {
             System.out.println("4. Escribir reporte de ventas");
             System.out.println("5. Cerrar Programa");
             System.out.print("\nSeleccione una opción: ");
-            option = enter.nextInt();
+            option = Validate.valInt(text);
 
             switch (option) {
                 case 1:
