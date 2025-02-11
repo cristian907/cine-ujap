@@ -36,11 +36,12 @@ public class Process {
     public static void attachData(String[][] showtime, String[] name) {
         String text = "";
 //        ***CAMBIAR ENTRADA DE DATOS A VALIDATE***
-        try (Scanner enter = new Scanner(System.in)) {
+        Scanner enter = new Scanner(System.in);
             for (int i = 0; i < showtime.length; i++) {
                 text  = "Introduzca el nombre de la pelicula #"+(i+1)+": ";
                 System.out.println(text);
-                name[i] = enter.next();
+                name[i] = Validate.validMovieName(enter.next(), text);
+       //           name[i]=enter.next();
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
                 for (int j = 0; j < showtime[0].length; j++) {
                     text = "Introduzca el horario #"+(j+1)+" de la pelicula "+name[i]+" (formato de 24 horas)";
@@ -48,7 +49,7 @@ public class Process {
                     showtime[i][j] = Validate.validHour(enter.next(),text);
                 }
             }
-        }
+
 
     }
 
