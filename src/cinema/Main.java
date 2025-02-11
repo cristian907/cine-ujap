@@ -18,18 +18,19 @@ public class Main {
         //Instanciacion de Arreglos
         movies = new String[movie];
         showtimes = new String[movie][times];
-        info = new int[movie][times][4];
+        info = new int[movie][times][3];
 
         //Inicializacion de Arreglos
         Process.iniSeats(info);
         Process.iniShowtime(showtimes);
         Process.iniMovie(movies);
 
-        //LLenado de datos de los arreglos
+        //LLenado inicial de datos de los arreglos
         Process.attachData(showtimes, movies);
-        Process.showCase(movies, showtimes);
 
-        Process.buyTicket(movies, showtimes, info);
+        //Ejecucion del menu de opciones
+        Process.showMenu(movies, showtimes, info);
+
         info = null;
         showtimes = null;
         movies = null;
