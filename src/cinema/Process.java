@@ -33,7 +33,7 @@ public class Process {
         }
     }
 
-    public static void attachData(int[][][] matrix, String[][] showtime, String[] name) {
+    public static void attachData(String[][] showtime, String[] name) {
         String text = "";
 //        ***CAMBIAR ENTRADA DE DATOS A VALIDATE***
         try (Scanner enter = new Scanner(System.in)) {
@@ -53,15 +53,15 @@ public class Process {
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        System.out.printf("%-25s\t\t","PELICULAS");
-        System.out.printf("%-10s\n","HORARIOS");
+        System.out.println("\tCATALOGO\n");
         if(name != null && showtime != null){
             for(int i = 0; i < showtime.length; i++){
-                System.out.printf("%-25s\t\t", name[i]);
-                for(int j = 0; j < showtime[0].length; j++){
-                    System.out.printf("%-10s\t",showtime[i][j]);
+                System.out.printf("%-25s\n", name[i]);
+                for(int j = 0; j < showtime[0].length-1; j++){
+                    System.out.printf("%-6s  //   ",showtime[i][j]);
                 }
-                System.out.println();
+                System.out.printf("%-6s",showtime[i][showtime[0].length-1]);
+                System.out.println("\n");
             }
 
         }

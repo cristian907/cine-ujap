@@ -26,7 +26,7 @@ public class Main {
         Process.iniMovie(name);
 
         //LLenado de datos de los arreglos
-        Process.attachData(seats, showtimes, name);
+        Process.attachData(showtimes, name);
         Process.showCase(name, showtimes);
         seats = null;
         showtimes = null;
