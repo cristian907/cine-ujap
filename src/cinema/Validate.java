@@ -61,15 +61,13 @@ public class Validate {
         while(true){
             if (name.length()>30){
                 System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre");
-                System.out.println(text);
+                System.out.print(text);
                 name = enter.nextLine();
                 continue;
                 }
             else{
                 return name;
             }
-
-
             }
         }
     }
