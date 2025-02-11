@@ -40,13 +40,14 @@ public class Process {
             for (int i = 0; i < showtime.length; i++) {
                 text  = "Introduzca el nombre de la pelicula #"+(i+1)+": ";
                 System.out.println(text);
-                name[i] = Validate.validMovieName(enter.next(), text);
+                name[i] = Validate.validMovieName(enter.nextLine(), text);
+
        //           name[i]=enter.next();
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
                 for (int j = 0; j < showtime[0].length; j++) {
                     text = "Introduzca el horario #"+(j+1)+" de la pelicula "+name[i]+" (formato de 24 horas)";
                     System.out.println(text);
-                    showtime[i][j] = Validate.validHour(enter.next(),text);
+                    showtime[i][j] = Validate.validHour(enter.nextLine(),text);
                 }
             }
 
