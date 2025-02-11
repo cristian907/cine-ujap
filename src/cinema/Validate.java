@@ -69,6 +69,18 @@ public class Validate {
             }
         }
     }
+
+    public static int valIdExist(String text, int enter, int num ){
+        Scanner read = new Scanner(System.in);
+        {
+            while(enter < 1 || enter > num){
+                System.out.println("Error: el id no existe");
+                System.out.println(text);
+                enter = read.nextInt();
+            }
+        }
+        return enter;
+    }
 }
 
 
