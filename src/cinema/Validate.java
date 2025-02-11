@@ -56,5 +56,22 @@ public class Validate {
         }
 
     }
+    public static String validMovieName(String name, String text){
+        Scanner enter = new Scanner(System.in);
+        while(true){
+            if (name.length()>30){
+                System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre");
+                System.out.println(text);
+                name = enter.nextLine();
+                continue;
+                }
+            else{
+                return name;
+            }
 
-}
+
+            }
+        }
+    }
+
+

@@ -38,9 +38,10 @@ public class Process {
 //        ***CAMBIAR ENTRADA DE DATOS A VALIDATE***
         Scanner enter = new Scanner(System.in);
             for (int i = 0; i < showtime.length; i++) {
-                text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
-                System.out.print(text);
-                name[i] = enter.next();
+                text  = "Introduzca el nombre de la pelicula #"+(i+1)+": ";
+                System.out.println(text);
+                name[i] = Validate.validMovieName(enter.next(), text);
+       //           name[i]=enter.next();
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
                 for (int j = 0; j < showtime[0].length; j++) {
                     text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
