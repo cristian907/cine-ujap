@@ -27,7 +27,7 @@ public class Main {
 
         //LLenado de datos de los arreglos
         Process.attachData(seats, showtimes, name);
-
+        Process.showCase(name, showtimes);
         seats = null;
         showtimes = null;
         name = null;

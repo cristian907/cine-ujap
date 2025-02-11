@@ -40,7 +40,7 @@ public class Process {
             for (int i = 0; i < showtime.length; i++) {
                 text  = "Introduzca el nombre de la pelicula #"+(i+1)+": ";
                 System.out.println(text);
-                name[i] = enter.nextLine();
+                name[i] = enter.next();
 //                ***TEMPORAL - ENTRADA DE DATOS POR VALIDATE
                 for (int j = 0; j < showtime[0].length; j++) {
                     text = "Introduzca el horario #"+(j+1)+" de la pelicula "+name[i]+" (formato de 24 horas)";
@@ -48,6 +48,22 @@ public class Process {
                     showtime[i][j] = Validate.validHour(enter.next(),text);
                 }
             }
+        }
+
+    }
+
+    public static void showCase(String[] name, String[][] showtime) {
+        System.out.printf("%-25s\t\t","PELICULAS");
+        System.out.printf("%-10s\n","HORARIOS");
+        if(name != null && showtime != null){
+            for(int i = 0; i < showtime.length; i++){
+                System.out.printf("%-25s\t\t", name[i]);
+                for(int j = 0; j < showtime[0].length; j++){
+                    System.out.printf("%-10s\t",showtime[i][j]);
+                }
+                System.out.println();
+            }
+
         }
 
     }
