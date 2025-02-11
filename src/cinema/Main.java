@@ -3,9 +3,9 @@ package cinema;
 public class Main {
     public static void main(String[] args) {
         String text = "";
-        int[][][] seats;
+        int[][][] info;
         String[][] showtimes;
-        String[] name;
+        String[] movies;
         int movie, times;
 
         // Peticion de longitud de los arreglos
@@ -16,20 +16,22 @@ public class Main {
         times = Validate.valSize(text);
 
         //Instanciacion de Arreglos
-        name = new String[movie];
+        movies = new String[movie];
         showtimes = new String[movie][times];
-        seats = new int[movie][times][20];
+        info = new int[movie][times][4];
 
-       //Inicializacion de Arreglos
-        Process.iniSeats(seats);
+        //Inicializacion de Arreglos
+        Process.iniSeats(info);
         Process.iniShowtime(showtimes);
-        Process.iniMovie(name);
+        Process.iniMovie(movies);
 
         //LLenado de datos de los arreglos
-        Process.attachData(showtimes, name);
-        Process.showCase(name, showtimes);
-        seats = null;
+        Process.attachData(showtimes, movies);
+        Process.showCase(movies, showtimes);
+
+        Process.buyTicket(movies, showtimes, info);
+        info = null;
         showtimes = null;
-        name = null;
+        movies = null;
     }
 }
