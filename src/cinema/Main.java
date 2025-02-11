@@ -18,7 +18,7 @@ public class Main {
         //Instanciacion de Arreglos
         movies = new String[movie];
         showtimes = new String[movie][times];
-        info = new int[movie][times][4];
+        info = new int[movie][times][3];
 
         //Inicializacion de Arreglos
         Process.iniSeats(info);
@@ -27,9 +27,11 @@ public class Main {
 
         //LLenado de datos de los arreglos
         Process.attachData(showtimes, movies);
-        Process.showCase(movies, showtimes);
+//        Process.showCase(movies, showtimes);
 
-        Process.buyTicket(movies, showtimes, info);
+
+        Process.showMenu(movies, showtimes, info);
+
         info = null;
         showtimes = null;
         movies = null;

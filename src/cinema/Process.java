@@ -7,8 +7,9 @@ public class Process {
         if (matrix != null) {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
-                    for (int k = 0; k < matrix[i][j].length; k++) {
-                        matrix[i][j][k] = 0;
+                    matrix[i][j][0] = 20;
+                    for (int k = 0; k < matrix[i][j].length-1; k++) {
+                        matrix[i][j][k+1] = 0;
                     }
                 }
             }
@@ -69,7 +70,7 @@ public class Process {
     }
 
     public static void buyTicket(String[] movies, String[][] showtimes, int[][][] info) {
-        int movieID, timeID;
+        int movieID, timeID, ticketID, seatQty;
         String text;
         Scanner enter = new Scanner(System.in);
 
@@ -87,5 +88,61 @@ public class Process {
         System.out.print(text);
         timeID = enter.nextInt() - 1;
 
+        text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas dispoibles: "+info[movieID][timeID][0];
+        System.out.println(text);
+        seatQty = enter.nextInt();
+
+        info[movieID][timeID][0] -= seatQty;
+
+        text = "Seleccione tipo de entrada a comprar:\n1. Entrada simple\n2. Entrada con Snack";
+        System.out.println(text);
+        ticketID = enter.nextInt();
+
+        if (ticketID == 1) {
+            info[movieID][timeID][1] += seatQty;
+        } else {
+            info[movieID][timeID][2] += seatQty;
+        }
+
+    }
+
+    public static void showMenu(String[] name, String[][] times, int[][][] matrix) {
+        Scanner enter = new Scanner(System.in);
+        int option;
+        System.out.println("¡Bienvenido a CineUjap!");
+        do {
+            System.out.println("Menu de Opciones");
+            System.out.println("1. Mostrar Cartelera");
+            System.out.println("2. Comprar Entradas");
+            System.out.println("\n¡ATENCION SOLO PERSONAL AUTORIZADO!");
+            System.out.println("3. Cambiar Cartelera");
+            System.out.println("4. Escribir reporte de ventas");
+            System.out.println("5. Cerrar Programa");
+            System.out.print("\nSeleccione una opción: ");
+            option = enter.nextInt();
+
+            switch (option) {
+                case 1:
+                    showCase(name, times);
+                    break;
+                case 2:
+                    buyTicket(name, times, matrix);
+                    break;
+                case 3:
+                    iniMovie(name);
+                    iniShowtime(times);
+                    iniSeats(matrix);
+                    attachData(times, name);
+                    break;
+                case 4:
+                    System.out.println("falta reporte de ventas");
+                    break;
+                case 5:
+                    System.out.println("Gracias por elegir CineUjap, vuelva pronto");
+                    break;
+                default:
+                    System.out.println("Elija una opción valida");
+            }
+        } while (option != 5);
     }
 }
