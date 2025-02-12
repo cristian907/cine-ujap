@@ -1,5 +1,6 @@
 package cinema;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Process {
@@ -52,7 +53,7 @@ public class Process {
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        System.out.println("\tCATALOGO\n");
+        System.out.println("\n\tCATALOGO\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
@@ -92,7 +93,7 @@ public class Process {
 
         info[movieID][timeID][0] -= seatQty;
 
-        text = "Seleccione tipo de entrada a comprar:\n1. Entrada simple\n2. Entrada con Snack";
+        text = "Seleccione tipo de entrada a comprar:\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)";
         System.out.println(text);
         ticketID = enter.nextInt();
 
@@ -106,8 +107,8 @@ public class Process {
 
     public static void showReport(String[] movie, String[][] showTimes, String route, int info[][][]){
         String text = "";
-
-        Validate.valArchive("----------------Reporte de ventas----------------", route ,true );
+        int aux = 0, plus = 0;
+        Validate.valArchive("-----------------------Reporte de ventas-----------------------", route ,true );
         if(showTimes != null && movie != null ){
             for (int i = 0; i < showTimes.length; i++) {
                 text = "Opción "+ (i+1) +":";
@@ -117,9 +118,13 @@ public class Process {
                 text = String.format("%-7s",movie[i]);
                 Validate.valArchive(text, route, true);
                 for (int j = 0; j < showTimes[0].length; j++) {
-                    text = String.format("%-30s%4d$        \t%4d$       \t%4d$", showTimes[i][j], info[i][j][1], info[i][j][2], info[i][j][1] + info[i][j][2]);
+                    aux = (info[i][j][1])*3 + (info[i][j][2])*6;
+                    plus += aux;
+                    text = String.format("%-30s%4d$        \t%4d$       \t%4d$", showTimes[i][j], info[i][j][1]*3, info[i][j][2]*6, aux);
                     Validate.valArchive(text, route, true);
                 }
+                text = String.format("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%4d$", plus);
+                Validate.valArchive(text, route, true);
                 text = "";
                 Validate.valArchive(text, route, true);
             }
@@ -169,6 +174,8 @@ public class Process {
                     break;
                 default:
                     System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.println("Presione enter para continuar: ");
+                    enter.nextLine();
             }
         } while (option != 5);
     }
