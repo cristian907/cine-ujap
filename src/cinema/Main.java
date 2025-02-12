@@ -7,6 +7,7 @@ public class Main {
         String[][] showtimes;
         String[] movies;
         int movie, times;
+        String route = "src/cinema/Reporte.txt";
 
         // Peticion de longitud de los arreglos
         text = "Introduzca la cantidad de peliculas para el día de hoy: ";
@@ -29,7 +30,7 @@ public class Main {
         Process.attachData(showtimes, movies);
 
         //Ejecucion del menu de opciones
-        Process.showMenu(movies, showtimes, info);
+        Process.showMenu(movies, showtimes, info, route);
 
         info = null;
         showtimes = null;
