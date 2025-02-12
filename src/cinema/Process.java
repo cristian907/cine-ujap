@@ -16,7 +16,6 @@ public class Process {
             }
         }
     }
-
     public static void iniShowtime(String[][] showtime) {
         if (showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
@@ -26,7 +25,6 @@ public class Process {
             }
         }
     }
-
     public static void iniMovie(String[] name) {
         if (name != null) {
             for (int i = 0; i < name.length; i++) {
@@ -48,8 +46,6 @@ public class Process {
                 showtime[i][j] = Validate.validHour(enter.nextLine(), text);
             }
         }
-
-
     }
 
     public static void showCase(String[] name, String[][] showtime) {
@@ -67,7 +63,6 @@ public class Process {
             System.out.print("\nPresione ENTER para continuar: ");
             enter.nextLine();
         }
-
     }
 
     public static void buyTicket(String[] movies, String[][] showtimes, int[][][] info) {
