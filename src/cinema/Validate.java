@@ -85,13 +85,13 @@ public class Validate {
             try {
                 enter = read.nextInt() - 1;
                 while (enter < 0 || enter > num - 1) {
-                    System.out.println("Error: el ID no existe\n");
+                    System.out.println("¡ERROR! El ID no existe\n");
                     System.out.print(text);
                     enter = read.nextInt() - 1;
                 }
                 return enter;
             } catch (Exception e) {
-                System.out.println("Error: Ingrese numeros, no caracteres");
+                System.out.println("¡ERROR! Ingrese numeros, no caracteres\n");
                 System.out.print(text);
                 read.nextLine();
             }
@@ -105,15 +105,23 @@ public class Validate {
         while (true) {
             try {
                 enter = read.nextInt();
-                while (enter > num) {
-                    System.out.println("Solo quedan disponibles " + num + " Asientos\n");
+
+                if (enter < 1) {
+                    System.out.println("Introduzca un numero de entradas valido\n");
                     System.out.println(text);
                     enter = read.nextInt();
                 }
+
+                while (enter > num) {
+                    System.out.println("Hay " + num + " asientos disponibles\n");
+                    System.out.println(text);
+                    enter = read.nextInt();
+                }
+
                 return enter;
 
             } catch (Exception e) {
-                System.out.println("Error: Ingrese numeros, no caracteres");
+                System.out.println("¡ERROR! Ingrese numeros, no caracteres\n");
                 System.out.println(text);
                 read.nextLine();
             }
