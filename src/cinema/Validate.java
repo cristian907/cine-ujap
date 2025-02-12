@@ -62,6 +62,10 @@ public class Validate {
                 System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre");
                 System.out.print(text);
                 name = enter.nextLine();
+            } else if (name.isEmpty()) {
+                System.out.println("Error: Introduzca un nombre");
+                System.out.print(text);
+                name = enter.nextLine();
             } else {
                 return name.trim();
             }
@@ -88,15 +92,11 @@ public class Validate {
                 System.out.print(text);
                 option = read.nextInt();
                 if (option < 1 || option > 5) {
-                    System.out.println("¡Error! Elija una opción valida");
-                    System.out.print("Seleccione nuevamente una opcion: ");
-                } else {
-                    return option;
+                    option = 0;
                 }
+                return option;
             } catch (Exception e) {
-                System.out.println("¡Error! Elija una opción valida");
-                System.out.print("Seleccione nuevamente una opcion: ");
-                read.nextLine();
+                return option;
             }
         }
     }
