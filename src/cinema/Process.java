@@ -59,12 +59,12 @@ public class Process {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
                 for (int j = 0; j < showtime[0].length - 1; j++) {
-                    System.out.printf("\t%-6s  //   ", showtime[i][j]);
+                    System.out.printf("\t%-6s \t\t//\t", showtime[i][j]);
                 }
-                System.out.printf("%-6s", showtime[i][showtime[0].length - 1]);
+                System.out.printf("\t%-6s\n", showtime[i][showtime[0].length - 1]);
                 System.out.println();
             }
-            System.out.print("Presione ENTER para continuar: ");
+            System.out.print("\nPresione ENTER para continuar: ");
             enter.nextLine();
         }
 
@@ -74,44 +74,45 @@ public class Process {
         int movieID, timeID, ticketID, seatQty;
         String text;
         Scanner enter = new Scanner(System.in);
-
-        for (int i = 0; i < movies.length; i++) {
-            System.out.println((i + 1) + ". " + movies[i]);
-        }
-        text = "Introduzca el ID de la pelicula a comprar: ";
-        System.out.print(text);
-        movieID = Validate.valIdExist(movies.length, text);
-        while( Validate.isMovieSoldOut(info, movieID)){
-            System.out.println("Disculpe la película está agotada, seleccione otra pelicula ");
+        if (movies != null && showtimes != null && info != null) {
+            for (int i = 0; i < movies.length; i++) {
+                System.out.println((i + 1) + ". " + movies[i]);
+            }
+            text = "Introduzca el ID de la pelicula a comprar: ";
             System.out.print(text);
             movieID = Validate.valIdExist(movies.length, text);
-        }
+            while( Validate.isMovieSoldOut(info, movieID)){
+                System.out.println("Disculpe la película está agotada, seleccione otra pelicula ");
+                System.out.print(text);
+                movieID = Validate.valIdExist(movies.length, text);
+            }
 
-        for (int j = 0; j < showtimes[0].length; j++) {
-            System.out.println((j + 1) + ". " + showtimes[movieID][j]);
-        }
-        text = "Introduzca el ID del horario a comprar: ";
-        System.out.print(text);
-        timeID = Validate.valIdExist(showtimes[0].length, text);
-        while (info[movieID][timeID][2] == 0) {
-            System.out.println("Disculpe, los asientos estan agotados, seleccione otro horario");
-            System.out.println(text);
+            for (int j = 0; j < showtimes[0].length; j++) {
+                System.out.println((j + 1) + ". " + showtimes[movieID][j]);
+            }
+            text = "Introduzca el ID del horario a comprar: ";
+            System.out.print(text);
             timeID = Validate.valIdExist(showtimes[0].length, text);
-        }
+            while (info[movieID][timeID][2] == 0) {
+                System.out.println("Disculpe, los asientos estan agotados, seleccione otro horario");
+                System.out.println(text);
+                timeID = Validate.valIdExist(showtimes[0].length, text);
+            }
 
-        text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas disponibles: " + info[movieID][timeID][2];
-        System.out.println(text);
-        seatQty = Validate.validSeatQty(info[movieID][timeID][2], text);
-        info[movieID][timeID][2] -= seatQty;
+            text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas disponibles: " + info[movieID][timeID][2];
+            System.out.println(text);
+            seatQty = Validate.validSeatQty(info[movieID][timeID][2], text);
+            info[movieID][timeID][2] -= seatQty;
 
-        text = "Seleccione tipo de entrada a comprar:\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)";
-        System.out.println(text);
-        ticketID = Validate.valIdExist(info[0][0].length-1, text);
+            text = "Seleccione tipo de entrada a comprar:\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)";
+            System.out.println(text);
+            ticketID = Validate.valIdExist(info[0][0].length-1, text);
 
-        if (ticketID == 1) {
-            info[movieID][timeID][0] += seatQty;
-        } else {
-            info[movieID][timeID][1] += seatQty;
+            if (ticketID == 1) {
+                info[movieID][timeID][0] += seatQty;
+            } else {
+                info[movieID][timeID][1] += seatQty;
+            }
         }
 
     }
@@ -120,11 +121,11 @@ public class Process {
         String text = "";
         int aux = 0, plus = 0;
         Validate.valArchive("-----------------------Reporte de ventas-----------------------", route ,true );
-        if(showTimes != null && movie != null ){
+        if (showTimes != null && movie != null ){
             for (int i = 0; i < showTimes.length; i++) {
                 text = "Opción " + (i + 1) + ":";
                 Validate.valArchive(text, route, true);
-                text = "Nombre:                   |   ventas n   |   ventas s   |    total $";
+                text = "Nombre:                   |   Ventas n   |   Ventas s   |    TOTAL $";
                 Validate.valArchive(text, route, true);
                 text = String.format("%-7s", movie[i]);
                 Validate.valArchive(text, route, true);
@@ -164,11 +165,15 @@ public class Process {
                     break;
                 case 2:
                     if ( Validate.isCinemaSoldOut(matrix)){
-                        System.out.println("Disculpe, todas las películas están agotadas, vuelva otro día \nPresione ENTER para continuar");
+                        System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
+                        System.out.print("\nPresione ENTER para continuar: ");
                         enter.nextLine();
                     }
                     else {
                         buyTicket(name, times, matrix);
+                        System.out.println("¡Gracias por comprar en CineUjap!");
+                        System.out.print("\nPresione ENTER para continuar: ");
+                        enter.nextLine();
                     }
                     break;
                 case 3:
@@ -182,14 +187,16 @@ public class Process {
                         showReport(name, times, route, matrix);
                         band = 1;
                     }
-                    System.out.println("El informe ya fue impreso, cierre el programa para verlo!!");
+                    System.out.println("El informe ya fue impreso, cierre el programa para verlo");
+                    System.out.print("\nPresione ENTER para continuar: ");
+                    enter.nextLine();
                     break;
                 case 5:
-                    System.out.println("Gracias por elegir CineUjap, vuelva pronto");
+                    System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:
                     System.out.println("\n¡ERROR! Elija una opción valida");
-                    System.out.println("Presione ENTER para continuar: ");
+                    System.out.print("Presione ENTER para continuar: ");
                     enter.nextLine();
             }
         } while (option != 5);
