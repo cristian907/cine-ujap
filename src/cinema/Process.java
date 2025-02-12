@@ -78,18 +78,19 @@ public class Process {
         }
         text = "Introduzca el ID de la pelicula a comprar: ";
         System.out.print(text);
-        movieID = enter.nextInt() - 1;
+        movieID = Validate.valIdExist(enter.nextInt() - 1, movies.length, text);
 
         for (int j = 0; j < showtimes[0].length; j++) {
             System.out.println((j + 1) + ". " + showtimes[movieID][j]);
         }
         text = "Introduzca el ID del horario a comprar: ";
         System.out.print(text);
-        timeID = enter.nextInt() - 1;
+        timeID = Validate.valIdExist(enter.nextInt() - 1, showtimes[0].length, text);
+//        timeID = enter.nextInt() - 1;
 
         text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas dispoibles: " + info[movieID][timeID][0];
         System.out.println(text);
-        seatQty = enter.nextInt();
+//        seatQty = enter.nextInt();
 
         info[movieID][timeID][0] -= seatQty;
 
@@ -120,7 +121,6 @@ public class Process {
             System.out.println("5. Cerrar Programa");
             System.out.print("\nSeleccione una opción: ");
             option = Validate.valInt(text);
-
             switch (option) {
                 case 1:
                     showCase(name, times);
@@ -142,7 +142,7 @@ public class Process {
                     break;
                 default:
                     System.out.println("\n¡ERROR! Elija una opción valida");
-                    System.out.println("Presione enter para continuar: ");
+                    System.out.println("Presione ENTER para continuar: ");
                     enter.nextLine();
             }
         } while (option != 5);

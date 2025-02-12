@@ -77,15 +77,17 @@ public class Validate {
 
     public static int valIdExist(int enter, int num, String text) {
         Scanner read = new Scanner(System.in);
-        {
-            while (enter < 1 || enter > num) {
-                System.out.println("Error: el id no existe");
+
+            while (enter < 0 || enter > num-1) {
+                System.out.println("Error: el ID no existe");
                 System.out.print(text);
-                enter = read.nextInt();
+                enter = read.nextInt()-1;
             }
-        }
+
         return enter;
     }
+
+//    public static int validSeatQty(int enter, int)
 
     public static int valInt(String text) {
         Scanner read = new Scanner(System.in);
