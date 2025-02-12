@@ -81,6 +81,11 @@ public class Process {
         text = "Introduzca el ID de la pelicula a comprar: ";
         System.out.print(text);
         movieID = Validate.valIdExist(movies.length, text);
+        while( Validate.isMovieSoldOut(info, movieID)){
+            System.out.println("Disculpe la película está agotada, seleccione otra pelicula ");
+            System.out.print(text);
+            movieID = Validate.valIdExist(movies.length, text);
+        }
 
         for (int j = 0; j < showtimes[0].length; j++) {
             System.out.println((j + 1) + ". " + showtimes[movieID][j]);
@@ -158,7 +163,13 @@ public class Process {
                     showCase(name, times);
                     break;
                 case 2:
-                    buyTicket(name, times, matrix);
+                    if ( Validate.isCinemaSoldOut(matrix)){
+                        System.out.println("Disculpe, todas las películas están agotadas, vuelva otro día \nPresione ENTER para continuar");
+                        enter.nextLine();
+                    }
+                    else {
+                        buyTicket(name, times, matrix);
+                    }
                     break;
                 case 3:
                     iniMovie(name);
