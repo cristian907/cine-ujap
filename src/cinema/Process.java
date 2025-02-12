@@ -140,7 +140,7 @@ public class Process {
                     System.out.println("Gracias por elegir CineUjap, vuelva pronto");
                     break;
                 default:
-                    System.out.println("¡Error! Elija una opción valida");
+                    System.out.println("\n¡ERROR! Elija una opción valida");
             }
         } while (option != 5);
     }
