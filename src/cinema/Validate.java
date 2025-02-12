@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Validate {
-    // vali
+    // metodo para validar la cantidad de peliculas
     public static int valSize(String text) {
         int size = 0;
         Scanner read = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class Validate {
                 System.out.print(text);
                 size = read.nextInt();
 
-                if (size < 1 ) {
+                if (size < 1) {
                     System.out.println("Error: No se admiten valores menores a 1");
                 } else if (size > 5) {
                     System.out.println("Error: No se admiten valores mayores a 5");
@@ -31,7 +31,7 @@ public class Validate {
             }
         }
     }
-
+    // metodo para validad los horarios de cada pelicula
     public static String validHour(String time, String text) {
         Scanner enter = new Scanner(System.in);
         while (true) {
@@ -62,12 +62,12 @@ public class Validate {
         }
 
     }
-
+    // metodo para validar el nombre de las peliculas
     public static String validMovieName(String name, String text) {
         Scanner enter = new Scanner(System.in);
         while (true) {
-            if (name.length() > 30) {
-                System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre");
+            if (name.length() > 50) {
+                System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre");
                 System.out.print(text);
                 name = enter.nextLine();
             } else if (name.isEmpty()) {
@@ -79,7 +79,7 @@ public class Validate {
             }
         }
     }
-
+    // metodo para validar los ID
     public static int valIdExist(int num, String text) {
         Scanner read = new Scanner(System.in);
         int enter;
@@ -100,7 +100,7 @@ public class Validate {
 
         }
     }
-
+    // metodo para validar la compra de asientos
     public static int validSeatQty(int num, String text) {
         Scanner read = new Scanner(System.in);
         int enter;
@@ -133,7 +133,7 @@ public class Validate {
     public static void checkSeatQty(int seats) {
 
     }
-
+    // metodo para validar los enteros
     public static int valInt(String text) {
         Scanner read = new Scanner(System.in);
         int option = 0;
@@ -148,7 +148,7 @@ public class Validate {
             return option;
         }
     }
-
+    // metodo para validad la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
         try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))) {
             addArchive.write(content);
@@ -159,6 +159,7 @@ public class Validate {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
+    // metodo para validar si las entradas a una funcion no estan agotadas
     public static boolean isMovieSoldOut(int[][][] info, int id){
         for (int j = 0; j < info[0].length; j++) {
             if(info[id][j][2] != 0){
@@ -167,6 +168,7 @@ public class Validate {
         }
         return true;
     }
+    // metodo para verificar si el cine no esta agotado
     public static boolean isCinemaSoldOut(int[][][] info){
         for (int i = 0; i < info.length; i++) {
             for (int j = 0; j < info[0].length; j++) {
