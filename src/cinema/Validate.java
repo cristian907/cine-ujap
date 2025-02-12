@@ -159,6 +159,7 @@ public class Validate {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
+
     public static boolean isMovieSoldOut(int[][][] info, int id){
         for (int j = 0; j < info[0].length; j++) {
             if(info[id][j][2] != 0){
@@ -177,5 +178,4 @@ public class Validate {
         }
         return true;
     }
-
 }
