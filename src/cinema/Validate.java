@@ -1,5 +1,7 @@
 package cinema;
 
+// importamos las librerias necesarias
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,7 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Validate {
-
+    // vali
     public static int valSize(String text) {
         int size = 0;
         Scanner read = new Scanner(System.in);
