@@ -1,5 +1,8 @@
 package cinema;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Validate {
@@ -98,6 +101,17 @@ public class Validate {
             } catch (Exception e) {
                 return option;
             }
+        }
+    }
+
+    public static void valArchive(String content, String route, boolean boo){
+        try(BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))){
+            addArchive.write(content);
+            if (boo){
+                addArchive.newLine();
+            }
+        }catch(IOException e){
+            System.out.println("Error al escribir el archivo: "+ e.getMessage());
         }
     }
 }
