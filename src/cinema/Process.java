@@ -53,7 +53,7 @@ public class Process {
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        System.out.println("\tCATALOGO\n");
+        System.out.println("\n\tCATALOGO\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
