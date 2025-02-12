@@ -95,9 +95,6 @@ public class Validate {
         try{
             System.out.print(text);
             option = read.nextInt();
-            if (option < 1 || option > 5) {
-                option = 0;
-            }
             return option;
         } catch (Exception e) {
             return option;

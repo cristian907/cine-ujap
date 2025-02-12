@@ -53,7 +53,7 @@ public class Process {
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        System.out.println("\tCATALOGO\n");
+        System.out.println("\n\tCATALOGO\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
@@ -106,10 +106,34 @@ public class Process {
 
     }
 
-    public static void showMenu(String[] name, String[][] times, int[][][] matrix) {
+    public static void showReport(String[] movie, String[][] showTimes, String route, int info[][][]){
+        String text = "";
+
+        Validate.valArchive("----------------Reporte de ventas----------------", route ,true );
+        if(showTimes != null && movie != null ){
+            for (int i = 0; i < showTimes.length; i++) {
+                text = "Opción "+ (i+1) +":";
+                Validate.valArchive(text, route, true);
+                text = "Nombre:                   |   ventas n   |   ventas s   |    total $";
+                Validate.valArchive(text, route, true);
+                text = String.format("%-7s",movie[i]);
+                Validate.valArchive(text, route, true);
+                for (int j = 0; j < showTimes[0].length; j++) {
+                    text = String.format("%-30s%4d$        \t%4d$       \t%4d$", showTimes[i][j], info[i][j][1], info[i][j][2], info[i][j][1] + info[i][j][2]);
+                    Validate.valArchive(text, route, true);
+                }
+                text = "";
+                Validate.valArchive(text, route, true);
+            }
+
+        }
+
+    }
+
+    public static void showMenu(String[] name, String[][] times, int[][][] matrix, String route) {
         Scanner enter = new Scanner(System.in);
         String text = "";
-        int option;
+        int option, band = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
         do {
             System.out.println("\nMenu de Opciones");
@@ -135,7 +159,11 @@ public class Process {
                     attachData(times, name);
                     break;
                 case 4:
-                    System.out.println("falta reporte de ventas");
+                    if(band == 0) {
+                        showReport(name, times, route, matrix);
+                        band = 1;
+                    }
+                    System.out.println("El informe ya fue impreso, cierre el programa para verlo!!");
                     break;
                 case 5:
                     System.out.println("Gracias por elegir CineUjap, vuelva pronto");
