@@ -78,45 +78,48 @@ public class Process {
         }
         text = "Introduzca el ID de la pelicula a comprar: ";
         System.out.print(text);
-        movieID = Validate.valIdExist(enter.nextInt() - 1, movies.length, text);
+        movieID = Validate.valIdExist(movies.length, text);
 
         for (int j = 0; j < showtimes[0].length; j++) {
             System.out.println((j + 1) + ". " + showtimes[movieID][j]);
         }
         text = "Introduzca el ID del horario a comprar: ";
         System.out.print(text);
-        timeID = Validate.valIdExist(enter.nextInt() - 1, showtimes[0].length, text);
-//        timeID = enter.nextInt() - 1;
+        timeID = Validate.valIdExist(showtimes[0].length, text);
+        if (info[movieID][timeID][0] == 0) {
+            System.out.println("Disculpe, los asientos estan agotados, seleccione otro horario");
+            System.out.println(text);
+            timeID = Validate.valIdExist(showtimes[0].length, text);
+        }
 
         text = "Seleccione la cantidad de entradas a comprar\nCantidad de entradas dispoibles: " + info[movieID][timeID][0];
         System.out.println(text);
-//        seatQty = enter.nextInt();
-
+        seatQty = Validate.validSeatQty(enter.nextInt(), info[movieID][timeID][0], text);
         info[movieID][timeID][0] -= seatQty;
 
         text = "Seleccione tipo de entrada a comprar:\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)";
         System.out.println(text);
-        ticketID = enter.nextInt();
+//        ticketID = Validate.valIdExist(enter.nextInt(), info[0][0].length, text);
 
-        if (ticketID == 1) {
-            info[movieID][timeID][1] += seatQty;
-        } else {
-            info[movieID][timeID][2] += seatQty;
-        }
+//        if (ticketID == 1) {
+//            info[movieID][timeID][1] += seatQty;
+//        } else {
+//            info[movieID][timeID][2] += seatQty;
+//        }
 
     }
 
-    public static void showReport(String[] movie, String[][] showTimes, String route, int info[][][]){
+    public static void showReport(String[] movie, String[][] showTimes, String route, int info[][][]) {
         String text = "";
         int aux = 0, plus = 0;
         Validate.valArchive("-----------------------Reporte de ventas-----------------------", route ,true );
         if(showTimes != null && movie != null ){
             for (int i = 0; i < showTimes.length; i++) {
-                text = "Opción "+ (i+1) +":";
+                text = "Opción " + (i + 1) + ":";
                 Validate.valArchive(text, route, true);
                 text = "Nombre:                   |   ventas n   |   ventas s   |    total $";
                 Validate.valArchive(text, route, true);
-                text = String.format("%-7s",movie[i]);
+                text = String.format("%-7s", movie[i]);
                 Validate.valArchive(text, route, true);
                 for (int j = 0; j < showTimes[0].length; j++) {
                     aux = (info[i][j][1])*3 + (info[i][j][2])*6;
@@ -163,7 +166,7 @@ public class Process {
                     attachData(times, name);
                     break;
                 case 4:
-                    if(band == 0) {
+                    if (band == 0) {
                         showReport(name, times, route, matrix);
                         band = 1;
                     }

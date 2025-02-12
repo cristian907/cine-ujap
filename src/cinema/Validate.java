@@ -3,6 +3,7 @@ package cinema;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Validate {
@@ -75,40 +76,65 @@ public class Validate {
         }
     }
 
-    public static int valIdExist(int enter, int num, String text) {
+    public static int valIdExist(int num, String text) {
         Scanner read = new Scanner(System.in);
-
-            while (enter < 0 || enter > num-1) {
-                System.out.println("Error: el ID no existe");
+        int enter;
+        while (true) {
+            try {
+                enter = read.nextInt() - 1;
+                while (enter < 0 || enter > num - 1) {
+                    System.out.println("Error: el ID no existe\n");
+                    System.out.print(text);
+                    enter = read.nextInt() - 1;
+                }
+                return enter;
+            } catch (Exception e) {
+                System.out.println("Error: Ingrese numeros, no caracteres");
                 System.out.print(text);
-                enter = read.nextInt()-1;
+                read.nextLine();
             }
+
+        }
+    }
+
+    public static int validSeatQty(int enter, int num, String text) {
+        Scanner read = new Scanner(System.in);
+        while (enter > num) {
+            System.out.println("Error: Solo quedan disponibles " + num + " Asientos\n");
+            System.out.println(text);
+            enter = read.nextInt();
+        }
 
         return enter;
     }
 
-//    public static int validSeatQty(int enter, int)
+    public static void checkSeatQty(int seats) {
+
+    }
 
     public static int valInt(String text) {
         Scanner read = new Scanner(System.in);
         int option = 0;
-        try{
+        try {
             System.out.print(text);
             option = read.nextInt();
+            if (option < 1 || option > 5) {
+                option = 0;
+            }
             return option;
         } catch (Exception e) {
             return option;
         }
     }
 
-    public static void valArchive(String content, String route, boolean boo){
-        try(BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))){
+    public static void valArchive(String content, String route, boolean boo) {
+        try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))) {
             addArchive.write(content);
-            if (boo){
+            if (boo) {
                 addArchive.newLine();
             }
-        }catch(IOException e){
-            System.out.println("Error al escribir el archivo: "+ e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
 }
