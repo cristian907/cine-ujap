@@ -90,17 +90,12 @@ public class Validate {
     public static int valInt(String text) {
         Scanner read = new Scanner(System.in);
         int option = 0;
-        while(true){
-            try{
-                System.out.print(text);
-                option = read.nextInt();
-                if (option < 1 || option > 5) {
-                    option = 0;
-                }
-                return option;
-            } catch (Exception e) {
-                return option;
-            }
+        try{
+            System.out.print(text);
+            option = read.nextInt();
+            return option;
+        } catch (Exception e) {
+            return option;
         }
     }
 
@@ -115,5 +110,3 @@ public class Validate {
         }
     }
 }
-
-

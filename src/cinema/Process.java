@@ -1,5 +1,6 @@
 package cinema;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Process {
@@ -52,7 +53,7 @@ public class Process {
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        System.out.println("\tCATALOGO\n");
+        System.out.println("\n\tCATALOGO\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
@@ -169,6 +170,8 @@ public class Process {
                     break;
                 default:
                     System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.println("Presione enter para continuar: ");
+                    enter.nextLine();
             }
         } while (option != 5);
     }
