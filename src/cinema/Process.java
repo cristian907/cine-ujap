@@ -138,7 +138,7 @@ public class Process {
         int aux = 0, plus = 0;
         File report = new File(route);
         if(report.exists()) {
-            boolean delete = report.delete();
+            boolean delete = report.delete(); //hola
         }
         Validate.valArchive("----------------------------Reporte de ventas----------------------------", route ,true );
         if (showTimes != null && movie != null ){
