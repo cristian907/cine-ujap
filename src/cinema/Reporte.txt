@@ -1,6 +1,0 @@
-----------------Reporte de ventas----------------
-Opción 1:
-Nombre:                   |   ventas n   |   ventas s   |    total $
-werwerwe
-04:00                            0$        	   0$       	   0$
-
