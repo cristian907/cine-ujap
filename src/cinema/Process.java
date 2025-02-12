@@ -59,9 +59,9 @@ public class Process {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
                 for (int j = 0; j < showtime[0].length - 1; j++) {
-                    System.out.printf("\t%-6s  //\t", showtime[i][j]);
+                    System.out.printf("\t%-6s \t\t//\t", showtime[i][j]);
                 }
-                System.out.printf("\t%-6s", showtime[i][showtime[0].length - 1]);
+                System.out.printf("\t%-6s\n", showtime[i][showtime[0].length - 1]);
                 System.out.println();
             }
             System.out.print("\nPresione ENTER para continuar: ");
@@ -165,14 +165,14 @@ public class Process {
                     break;
                 case 2:
                     if ( Validate.isCinemaSoldOut(matrix)){
-                        System.out.println("Disculpe, todas las películas están agotadas, vuelva otro día");
-                        System.out.print("Presione ENTER para continuar: ");
+                        System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
+                        System.out.print("\nPresione ENTER para continuar: ");
                         enter.nextLine();
                     }
                     else {
                         buyTicket(name, times, matrix);
                         System.out.println("¡Gracias por comprar en CineUjap!");
-                        System.out.print("Presione ENTER para continuar: ");
+                        System.out.print("\nPresione ENTER para continuar: ");
                         enter.nextLine();
                     }
                     break;
