@@ -2,6 +2,7 @@ package cinema;
 
 import java.sql.SQLOutput;
 import java.util.Scanner;
+import java.io.File;
 
 public class Process {
     public static void iniSeats(int[][][] matrix) {
@@ -135,6 +136,10 @@ public class Process {
     public static void showReport(String[] movie, String[][] showTimes, String route, int[][][] info) {
         String text = "";
         int aux = 0, plus = 0;
+        File report = new File(route);
+        if(report.exists()) {
+            boolean delete = report.delete();
+        }
         Validate.valArchive("----------------------------Reporte de ventas----------------------------", route ,true );
         if (showTimes != null && movie != null ){
             for (int i = 0; i < showTimes.length; i++) {
