@@ -1,5 +1,6 @@
 package cinema;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Process {
@@ -141,6 +142,8 @@ public class Process {
                     break;
                 default:
                     System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.println("Presione enter para continuar: ");
+                    enter.nextLine();
             }
         } while (option != 5);
     }
