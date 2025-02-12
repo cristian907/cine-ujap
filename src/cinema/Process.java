@@ -86,7 +86,7 @@ public class Process {
         text = "Introduzca el ID del horario a comprar: ";
         System.out.print(text);
         timeID = Validate.valIdExist(showtimes[0].length, text);
-        if (info[movieID][timeID][2] == 0) {
+        while (info[movieID][timeID][2] == 0) {
             System.out.println("Disculpe, los asientos estan agotados, seleccione otro horario");
             System.out.println(text);
             timeID = Validate.valIdExist(showtimes[0].length, text);
@@ -131,10 +131,9 @@ public class Process {
                 Validate.valArchive(text, route, true);
                 text = "";
                 Validate.valArchive(text, route, true);
+                plus = 0;
             }
-
         }
-
     }
 
     public static void showMenu(String[] name, String[][] times, int[][][] matrix, String route) {
