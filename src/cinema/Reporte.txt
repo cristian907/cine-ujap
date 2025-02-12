@@ -1,6 +1,15 @@
-----------------Reporte de ventas----------------
+-----------------------Reporte de ventas-----------------------
 Opción 1:
 Nombre:                   |   ventas n   |   ventas s   |    total $
-werwerwe
+ala    
+01:00                           30$        	  60$       	  90$
+02:00                            0$        	   0$       	   0$
+															  90$
+
+Opción 2:
+Nombre:                   |   ventas n   |   ventas s   |    total $
+olo    
+03:00                            0$        	   0$       	   0$
 04:00                            0$        	   0$       	   0$
+															  90$
 

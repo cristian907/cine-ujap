@@ -16,8 +16,10 @@ public class Validate {
                 System.out.print(text);
                 size = read.nextInt();
 
-                if (size < 1) {
-                    System.out.println("Error: no se admiten valores menores a 1");
+                if (size < 1 ) {
+                    System.out.println("Error: No se admiten valores menores a 1");
+                } else if (size > 5) {
+                    System.out.println("Error: No se admiten valores mayores a 5");
                 } else {
                     return size;
                 }
@@ -97,15 +99,25 @@ public class Validate {
         }
     }
 
-    public static int validSeatQty(int enter, int num, String text) {
+    public static int validSeatQty(int num, String text) {
         Scanner read = new Scanner(System.in);
-        while (enter > num) {
-            System.out.println("Error: Solo quedan disponibles " + num + " Asientos\n");
-            System.out.println(text);
-            enter = read.nextInt();
-        }
+        int enter;
+        while (true) {
+            try {
+                enter = read.nextInt();
+                while (enter > num) {
+                    System.out.println("Solo quedan disponibles " + num + " Asientos\n");
+                    System.out.println(text);
+                    enter = read.nextInt();
+                }
+                return enter;
 
-        return enter;
+            } catch (Exception e) {
+                System.out.println("Error: Ingrese numeros, no caracteres");
+                System.out.println(text);
+                read.nextLine();
+            }
+        }
     }
 
     public static void checkSeatQty(int seats) {
