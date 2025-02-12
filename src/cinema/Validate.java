@@ -16,8 +16,10 @@ public class Validate {
                 System.out.print(text);
                 size = read.nextInt();
 
-                if (size < 1) {
-                    System.out.println("Error: no se admiten valores menores a 1");
+                if (size < 1 ) {
+                    System.out.println("Error: No se admiten valores menores a 1");
+                } else if (size > 5) {
+                    System.out.println("Error: No se admiten valores mayores a 5");
                 } else {
                     return size;
                 }
@@ -104,7 +106,7 @@ public class Validate {
             try {
                 enter = read.nextInt();
                 while (enter > num) {
-                    System.out.println("Error: Solo quedan disponibles " + num + " Asientos\n");
+                    System.out.println("Solo quedan disponibles " + num + " Asientos\n");
                     System.out.println(text);
                     enter = read.nextInt();
                 }

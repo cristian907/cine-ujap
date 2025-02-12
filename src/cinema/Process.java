@@ -53,17 +53,19 @@ public class Process {
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        System.out.println("\n\tCATALOGO\n");
+        Scanner enter = new Scanner(System.in);
+        System.out.println("\n------------------------------CATALOGO------------------------------\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
                 System.out.printf("%-25s\n", name[i]);
                 for (int j = 0; j < showtime[0].length - 1; j++) {
-                    System.out.printf("%-6s  //   ", showtime[i][j]);
+                    System.out.printf("\t%-6s  //   ", showtime[i][j]);
                 }
                 System.out.printf("%-6s", showtime[i][showtime[0].length - 1]);
                 System.out.println();
             }
-
+            System.out.print("Presione ENTER para continuar: ");
+            enter.nextLine();
         }
 
     }
