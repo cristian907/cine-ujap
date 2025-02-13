@@ -9,7 +9,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Validate {
-    // vali
     public static int valSize(String text) {
         int size = 0;
         Scanner read = new Scanner(System.in);
@@ -60,7 +59,6 @@ public class Validate {
 
             }
         }
-
     }
 
     public static String validMovieName(String name, String text) {
@@ -86,7 +84,7 @@ public class Validate {
         while (true) {
             try {
                 enter = read.nextInt() - 1;
-                while (enter < 0 || enter > num - 1) {
+                while (enter < -1 || enter > num - 1) {
                     System.out.println("¡ERROR! El ID no existe\n");
                     System.out.print(text);
                     enter = read.nextInt() - 1;
@@ -108,14 +106,14 @@ public class Validate {
             try {
                 enter = read.nextInt();
 
-                if (enter < 1) {
+                if (enter < 0) {
                     System.out.println("Introduzca un numero de entradas valido\n");
                     System.out.println(text);
                     enter = read.nextInt();
                 }
 
                 while (enter > num) {
-                    System.out.println("Hay " + num + " asientos disponibles\n");
+                    System.out.println("Disculpe, solo hay " + num + " asientos disponibles\n");
                     System.out.println(text);
                     enter = read.nextInt();
                 }
@@ -128,10 +126,6 @@ public class Validate {
                 read.nextLine();
             }
         }
-    }
-
-    public static void checkSeatQty(int seats) {
-
     }
 
     public static int valInt(String text) {
