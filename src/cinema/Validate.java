@@ -6,9 +6,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Validate {
+    //metodo para validar el tamaño del vector
     public static int valSize(String text) {
         int size = 0;
         Scanner read = new Scanner(System.in);
@@ -17,7 +19,7 @@ public class Validate {
                 System.out.print(text);
                 size = read.nextInt();
 
-                if (size < 1 ) {
+                if (size < 1) {
                     System.out.println("Error: No se admiten valores menores a 1.");
                 } else if (size > 5) {
                     System.out.println("Error: No se admiten valores mayores a 5.");
@@ -31,7 +33,8 @@ public class Validate {
         }
     }
 
-    public static String validHour(String time, String text) {
+    // metodo para validar el horario de la pelicula
+    public static String validHour(String time, String text, String showtimes[]) {
         Scanner enter = new Scanner(System.in);
         while (true) {
 
@@ -42,25 +45,31 @@ public class Validate {
                 continue;
             }
             String[] parts = time.split(":");
-            try {
-                int hour = Integer.parseInt(parts[0]);
-                int minutes = Integer.parseInt(parts[1]);
-                if (hour < 0 || hour > 24 || minutes < 0 || minutes >= 60) {
-                    System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60.");
+
+            int hour = Integer.parseInt(parts[0]);
+            int minutes = Integer.parseInt(parts[1]);
+            if (hour < 0 || hour > 24 || minutes < 0 || minutes >= 60) {
+                System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60.");
+                System.out.print(text);
+                time = enter.nextLine();
+                continue;
+
+            }
+            String str = "%02d:%02d";
+            for (int i = 0; i < showtimes.length; i++) {
+                if (Objects.equals(time, showtimes[i])) {
+                    System.out.println("Error: ese horario ya existe para esta pelicula.");
                     System.out.print(text);
                     time = enter.nextLine();
                     continue;
                 }
-                String str = "%02d:%02d";
                 return String.format(str, hour, minutes);
-
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Ingrese numeros, no caracteres.");
-
             }
+
         }
     }
 
+    // metodo para validar el nombre de la pelicula
     public static String validMovieName(String name, String text) {
         Scanner enter = new Scanner(System.in);
         while (true) {
@@ -78,6 +87,7 @@ public class Validate {
         }
     }
 
+    // metodo para validar la existencia el ID introducido
     public static int valIdExist(int num, String text) {
         Scanner read = new Scanner(System.in);
         int enter;
@@ -99,6 +109,7 @@ public class Validate {
         }
     }
 
+    // metodo para validar el ID de las entradas
     public static int validSeatQty(int num, String text) {
         Scanner read = new Scanner(System.in);
         int enter;
@@ -128,7 +139,8 @@ public class Validate {
         }
     }
 
-    public static int valInt(String text) {
+    // validar el ID del menu
+    public static int valOpt(String text) {
         Scanner read = new Scanner(System.in);
         int option = 0;
         try {
@@ -143,6 +155,7 @@ public class Validate {
         }
     }
 
+    // metodo para validar la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
         try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))) {
             addArchive.write(content);
@@ -154,15 +167,18 @@ public class Validate {
         }
     }
 
-    public static boolean isMovieSoldOut(int[][][] info, int id){
+    // metodo para validar si la pelicula esta agotada
+    public static boolean isMovieSoldOut(int[][][] info, int id) {
         for (int j = 0; j < info[0].length; j++) {
-            if(info[id][j][2] != 0){
+            if (info[id][j][2] != 0) {
                 return false;
             }
         }
         return true;
     }
-    public static boolean isCinemaSoldOut(int[][][] info){
+
+    // metodo para validar si el cine esta agotado
+    public static boolean isCinemaSoldOut(int[][][] info) {
         for (int i = 0; i < info.length; i++) {
             for (int j = 0; j < info[0].length; j++) {
                 if (info[i][j][2] != 0) {
