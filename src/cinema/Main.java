@@ -19,20 +19,20 @@ public class Main {
         text = "\nIntroduzca la cantidad de horarios por pelicula: ";
         times = Validate.valSize(text, key);
 
-        //Instanciacion de Arreglos
+        // Instanciacion de Arreglos
         movies = new String[movie];
         showtimes = new String[movie][times];
         movieInfo = new int[movie][times][3];
 
-        //Inicializacion de Arreglos
+        // Inicializacion de Arreglos
         Process.iniSeats(movieInfo);
         Process.iniShowtime(showtimes);
         Process.iniMovie(movies);
 
-        //LLenado inicial de datos de los arreglos
+        // Llenado inicial de datos de los arreglos
         Process.attachData(showtimes, movies, key);
 
-        //Ejecucion del menu de opciones
+        // Ejecucion del menu de opciones
         Process.showMenu(movies, showtimes, movieInfo, route, key);
 
         movieInfo = null;

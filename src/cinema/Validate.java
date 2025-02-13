@@ -1,6 +1,6 @@
 package cinema;
 
-// importamos las librerias necesarias
+// Importamos las librerias necesarias
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Validate {
-    //metodo para validar el tamaño del vector
+    // Metodo para validar el tamaño del vector
     public static int valSize(String text, Scanner key) {
         int size = 0;
         while (true) {
@@ -29,7 +29,7 @@ public class Validate {
         }
     }
 
-    // metodo para validar el horario de la pelicula
+    // Metodo para validar el horario de la pelicula
     public static String validHour(String time, String text, Scanner key) {
         while (true) {
 
@@ -54,7 +54,7 @@ public class Validate {
         }
     }
 
-    // metodo para validar el nombre de la pelicula
+    // Metodo para validar el nombre de la pelicula
     public static String validMovieName(String name, String text, Scanner key) {
         while (true) {
             if (name.length() > 50) {
@@ -71,7 +71,7 @@ public class Validate {
         }
     }
 
-    // metodo para validar la existencia el ID introducido
+    // Metodo para validar la existencia el ID introducido
     public static int valIdExist(int num, String text, Scanner key) {
         int enter = 0;
         while (true) {
@@ -90,7 +90,7 @@ public class Validate {
         }
     }
 
-    // metodo para validar el ID de las entradas
+    // Metodo para validar el ID de las entradas
     public static int validSeatQty(int num, String text, Scanner key) {
         int enter = 0;
         while (true) {
@@ -117,7 +117,7 @@ public class Validate {
         }
     }
 
-    // validar el ID del menu
+    // Validar el ID del menu
     public static int valOpt(String text, Scanner key) {
         int option = 0;
         try {
@@ -132,7 +132,7 @@ public class Validate {
         }
     }
 
-    // metodo para validar la escritura del archivo
+    // Metodo para validar la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
         try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))) {
             addArchive.write(content);
@@ -144,7 +144,7 @@ public class Validate {
         }
     }
 
-    // metodo para validar si la pelicula esta agotada
+    // Metodo para validar si la pelicula esta agotada
     public static boolean isMovieSoldOut(int[][][] info, int id) {
         for (int j = 0; j < info[0].length; j++) {
             if (info[id][j][2] != 0) {
@@ -154,7 +154,7 @@ public class Validate {
         return true;
     }
 
-    // metodo para validar si el cine esta agotado
+    // Metodo para validar si el cine esta agotado
     public static boolean isCinemaSoldOut(int[][][] info) {
         for (int i = 0; i < info.length; i++) {
             for (int j = 0; j < info[0].length; j++) {
