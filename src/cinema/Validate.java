@@ -9,7 +9,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Validate {
-    // vali
     public static int valSize(String text) {
         int size = 0;
         Scanner read = new Scanner(System.in);
@@ -19,14 +18,14 @@ public class Validate {
                 size = read.nextInt();
 
                 if (size < 1 ) {
-                    System.out.println("Error: No se admiten valores menores a 1");
+                    System.out.println("Error: No se admiten valores menores a 1.");
                 } else if (size > 5) {
-                    System.out.println("Error: No se admiten valores mayores a 5");
+                    System.out.println("Error: No se admiten valores mayores a 5.");
                 } else {
                     return size;
                 }
             } catch (Exception e) {
-                System.out.println("Error: Verifique que esta escribiendo numeros y no caracteres");
+                System.out.println("Error: Verifique que esta escribiendo numeros y no caracteres.");
                 read.nextLine();
             }
         }
@@ -47,7 +46,7 @@ public class Validate {
                 int hour = Integer.parseInt(parts[0]);
                 int minutes = Integer.parseInt(parts[1]);
                 if (hour < 0 || hour > 24 || minutes < 0 || minutes >= 60) {
-                    System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60");
+                    System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60.");
                     System.out.print(text);
                     time = enter.nextLine();
                     continue;
@@ -56,22 +55,21 @@ public class Validate {
                 return String.format(str, hour, minutes);
 
             } catch (NumberFormatException e) {
-                System.out.println("Error: Ingrese numeros, no caracteres");
+                System.out.println("Error: Ingrese numeros, no caracteres.");
 
             }
         }
-
     }
 
     public static String validMovieName(String name, String text) {
         Scanner enter = new Scanner(System.in);
         while (true) {
             if (name.length() > 30) {
-                System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre");
+                System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre.");
                 System.out.print(text);
                 name = enter.nextLine();
             } else if (name.isEmpty()) {
-                System.out.println("Error: Introduzca un nombre");
+                System.out.println("Error: Introduzca un nombre.");
                 System.out.print(text);
                 name = enter.nextLine();
             } else {
@@ -86,14 +84,14 @@ public class Validate {
         while (true) {
             try {
                 enter = read.nextInt() - 1;
-                while (enter < 0 || enter > num - 1) {
-                    System.out.println("¡ERROR! El ID no existe\n");
+                while (enter < -1 || enter > num - 1) {
+                    System.out.println("¡ERROR! El ID no existe.\n");
                     System.out.print(text);
                     enter = read.nextInt() - 1;
                 }
                 return enter;
             } catch (Exception e) {
-                System.out.println("¡ERROR! Ingrese numeros, no caracteres\n");
+                System.out.println("¡ERROR! Ingrese numeros, no caracteres.\n");
                 System.out.print(text);
                 read.nextLine();
             }
@@ -108,14 +106,14 @@ public class Validate {
             try {
                 enter = read.nextInt();
 
-                if (enter < 1) {
-                    System.out.println("Introduzca un numero de entradas valido\n");
+                if (enter < 0) {
+                    System.out.println("Introduzca un numero de entradas valido.\n");
                     System.out.println(text);
                     enter = read.nextInt();
                 }
 
                 while (enter > num) {
-                    System.out.println("Hay " + num + " asientos disponibles\n");
+                    System.out.println("Disculpe, solo hay " + num + " asientos disponibles.\n");
                     System.out.println(text);
                     enter = read.nextInt();
                 }
@@ -123,15 +121,11 @@ public class Validate {
                 return enter;
 
             } catch (Exception e) {
-                System.out.println("¡ERROR! Ingrese numeros, no caracteres\n");
+                System.out.println("¡ERROR! Ingrese numeros, no caracteres.\n");
                 System.out.println(text);
                 read.nextLine();
             }
         }
-    }
-
-    public static void checkSeatQty(int seats) {
-
     }
 
     public static int valInt(String text) {
