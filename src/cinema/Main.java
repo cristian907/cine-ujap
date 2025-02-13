@@ -10,7 +10,8 @@ public class Main {
         String[] movies;
         int movie, times = 0;
         Scanner key = new Scanner(System.in);
-        String route = "cine-ujap-main/src/Reporte.txt";
+        String route = System.getProperty("user.dir")+"/src/cinema/Report.txt";
+        System.out.println(route);
 
         // Peticion de longitud de los arreglos
         text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
@@ -18,6 +19,7 @@ public class Main {
 
         text = "\nIntroduzca la cantidad de horarios por pelicula: ";
         times = Validate.valSize(text, key);
+
 
         // Instanciacion de Arreglos
         movies = new String[movie];
