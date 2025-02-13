@@ -10,7 +10,7 @@ public class Main {
         String[] movies;
         int movie, times = 0;
         Scanner key = new Scanner(System.in);
-        String route = "src/cinema/Reporte.txt";
+        String route = "cine-ujap-main/src/Reporte.txt";
 
         // Peticion de longitud de los arreglos
         text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
