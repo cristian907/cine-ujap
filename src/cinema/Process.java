@@ -39,7 +39,7 @@ public class Process {
         String text = "";
         Scanner enter = new Scanner(System.in);
         for (int i = 0; i < showtime.length; i++) {
-            text = "Introduzca el nombre de la pelicula #" + (i + 1) + ": ";
+            text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
             name[i] = Validate.validMovieName(enter.nextLine(), text);
             for (int j = 0; j < showtime[0].length; j++) {
@@ -112,8 +112,8 @@ public class Process {
             seatQty = Validate.validSeatQty(info[movieID][timeID][2], text);
             if (seatQty==0) return;
 
-            text = "Seleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)";
-            System.out.println(text);
+            text = "Seleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
+            System.out.print(text);
             ticketID = Validate.valIdExist(info[0][0].length-1, text);
             if (ticketID==-1) return;
 
@@ -128,14 +128,14 @@ public class Process {
             }
             info[movieID][timeID][2] -= seatQty;
 
-            System.out.println("---------------------------------Recibo de venta---------------------------------");
+            System.out.println("---------------------------------Recibo de Compra---------------------------------");
             System.out.printf("%-50s %30s\n","Pelicula : ",movieName);
             System.out.printf("%-50s %30s\n","Horario : ",showTime);
             System.out.printf("%-50s %30s\n","Tipo de entrada comprada : ",status);
             System.out.printf("%-50s %30d\n","Cantidad de entradas adquiridas : ",seatQty);
             System.out.printf("%-50s %29d$\n","Monto total : ",price);
-            System.out.println("\n¡Gracias por comprar en CineUjap!");
-            System.out.print("\nPresione ENTER para continuar: ");
+            System.out.printf("\n%57s","¡Gracias por comprar en CineUjap!");
+            System.out.print("\n\nPresione ENTER para continuar: ");
             enter.nextLine();
         }
     }
@@ -145,7 +145,7 @@ public class Process {
         int aux = 0, plus = 0;
         File report = new File(route);
         if(report.exists()) {
-            boolean delete = report.delete(); //hola
+            boolean delete = report.delete();
         }
         Validate.valArchive("----------------------------Reporte de ventas----------------------------", route ,true );
         if (showTimes != null && movie != null ){
@@ -208,7 +208,7 @@ public class Process {
                     break;
                 case 4:
                     showReport(name, times, route, matrix);
-                    System.out.println("El informe ya fue impreso, cierre el programa para verlo");
+                    System.out.println("El informe ya fue impreso, cierre el programa para verlo.");
                     System.out.print("\nPresione ENTER para continuar: ");
                     enter.nextLine();
                     break;
@@ -216,7 +216,7 @@ public class Process {
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:
-                    System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.println("\n¡ERROR! Elija una opción valida.");
                     System.out.print("Presione ENTER para continuar: ");
                     enter.nextLine();
             }

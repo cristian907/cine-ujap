@@ -13,7 +13,7 @@ public class Main {
         text = "Introduzca la cantidad de peliculas para el día de hoy: ";
         movie = Validate.valSize(text);
 
-        text = "Introduzca la cantidad de horarios por pelicula: ";
+        text = "\nIntroduzca la cantidad de horarios por pelicula: ";
         times = Validate.valSize(text);
 
         //Instanciacion de Arreglos
