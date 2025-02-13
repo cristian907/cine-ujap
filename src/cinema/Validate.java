@@ -44,7 +44,7 @@ public class Validate {
             String[] parts = time.split(":");
             int hour = Integer.parseInt(parts[0]);
             int minutes = Integer.parseInt(parts[1]);
-            if (hour < 0 || hour > 23 || minutes < 0 || minutes >= 59) {
+            if (hour < 0 || hour > 23 || minutes < 0 || minutes > 59) {
                 System.out.println("Error: la hora tiene que estar entre 0 y 23 y los minutos entre 0 y 59.");
                 System.out.print("\n" + text);
                 time = key.nextLine();
