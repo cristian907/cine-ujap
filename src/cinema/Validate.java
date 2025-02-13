@@ -34,7 +34,7 @@ public class Validate {
     }
 
     // metodo para validar el horario de la pelicula
-    public static String validHour(String time, String text, String showtimes[]) {
+    public static String validHour(String time, String text, String[] showtimes) {
         Scanner enter = new Scanner(System.in);
         while (true) {
 
@@ -53,9 +53,7 @@ public class Validate {
                 System.out.print(text);
                 time = enter.nextLine();
                 continue;
-
             }
-            String str = "%02d:%02d";
             for (int i = 0; i < showtimes.length; i++) {
                 if (Objects.equals(time, showtimes[i])) {
                     System.out.println("Error: ese horario ya existe para esta pelicula.");
@@ -63,6 +61,7 @@ public class Validate {
                     time = enter.nextLine();
                     continue;
                 }
+                String str = "%02d:%02d";
                 return String.format(str, hour, minutes);
             }
 
