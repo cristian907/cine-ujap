@@ -150,10 +150,10 @@ public class Process {
                     aux = (info[i][j][0]) * 3 + (info[i][j][1]) * 6;
                     plus += aux;
                     plusTotal += aux;
-                    text = String.format("%5s        %4d$            %4d$            %4d$", showTimes[i][j], info[i][j][0] * 3, info[i][j][1] * 6, aux);
+                    text = String.format("%5s       %4d$           %4d$           %4d$", showTimes[i][j], info[i][j][0] * 3, info[i][j][1] * 6, aux);
                     Validate.valArchive(text, route, true);
                 }
-                text = String.format("                                               %4d$", plus);
+                text = String.format("                                            %4d$", plus);
                 Validate.valArchive(text, route, true);
                 text = "";
                 Validate.valArchive(text, route, true);
