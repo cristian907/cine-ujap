@@ -37,21 +37,21 @@ public class Process {
 
     public static void attachData(String[][] showtime, String[] name) {
         String text = "";
-        Scanner enter = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         for (int i = 0; i < showtime.length; i++) {
             text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
-            name[i] = Validate.validMovieName(enter.nextLine(), text);
+            name[i] = Validate.validMovieName(key.nextLine(), text);
             for (int j = 0; j < showtime[0].length; j++) {
                 text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
                 System.out.print(text);
-                showtime[i][j] = Validate.validHour(enter.nextLine(), text, showtime[i]);
+                showtime[i][j] = Validate.validHour(key.nextLine(), text, showtime[i]);
             }
         }
     }
 
     public static void showCase(String[] name, String[][] showtime) {
-        Scanner enter = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         System.out.println("\n----------------------------------CATALOGO----------------------------------\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
@@ -63,14 +63,14 @@ public class Process {
                 System.out.println();
             }
             System.out.print("\nPresione ENTER para continuar: ");
-            enter.nextLine();
+            key.nextLine();
         }
     }
 
     public static void buyTicket(String[] movies, String[][] showtimes, int[][][] info) {
         int movieID, timeID, ticketID, seatQty;
         String text;
-        Scanner enter = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         String status, movieName, showTime;
         int price;
 
@@ -93,7 +93,7 @@ public class Process {
             for (int j = 0; j < showtimes[0].length; j++) {
                 System.out.println((j + 1) + ". " + showtimes[movieID][j]);
             }
-            text = "Introduzca el ID del horario a comprar (0 para cancelar): ";
+            text = "\nIntroduzca el ID del horario a comprar (0 para cancelar): ";
             System.out.print(text);
             timeID = Validate.valIdExist(showtimes[0].length, text);
             if (timeID == -1) return;
@@ -104,12 +104,12 @@ public class Process {
             }
             showTime = showtimes[movieID][timeID];
 
-            text = "Seleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2];
+            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2];
             System.out.println(text);
             seatQty = Validate.validSeatQty(info[movieID][timeID][2], text);
             if (seatQty == 0) return;
 
-            text = "Seleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
+            text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
             System.out.print(text);
             ticketID = Validate.valIdExist(info[0][0].length - 1, text);
             if (ticketID == -1) return;
@@ -133,7 +133,7 @@ public class Process {
             System.out.printf("%-50s %29d$\n", "Monto total : ", price);
             System.out.printf("\n%57s", "¡Gracias por comprar en CineUjap!");
             System.out.print("\n\nPresione ENTER para continuar: ");
-            enter.nextLine();
+            key.nextLine();
         }
     }
 
@@ -141,7 +141,7 @@ public class Process {
         String text;
         int aux, plus = 0, plusTotal = 0;
         File report = new File(route);
-        if (report.exists()) report.delete(); //hola
+        if (report.exists()) report.delete();
         Validate.valArchive("---------------------Reporte de ventas--------------------", route, true);
         if (showTimes != null && movie != null) {
             for (int i = 0; i < showTimes.length; i++) {
@@ -170,7 +170,7 @@ public class Process {
     }
 
     public static void showMenu(String[] name, String[][] times, int[][][] matrix, String route) {
-        Scanner enter = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         String text = "";
         int option, band = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
@@ -192,7 +192,7 @@ public class Process {
                     if (Validate.isCinemaSoldOut(matrix)) {
                         System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
                         System.out.print("\nPresione ENTER para continuar: ");
-                        enter.nextLine();
+                        key.nextLine();
                     } else {
                         buyTicket(name, times, matrix);
                     }
@@ -214,7 +214,7 @@ public class Process {
                     showReport(name, times, route, matrix);
                     System.out.println("El informe ya fue impreso, cierre el programa para verlo");
                     System.out.print("\nPresione ENTER para continuar: ");
-                    enter.nextLine();
+                    key.nextLine();
                     band = 1;
                     break;
                 case 5:
@@ -223,7 +223,7 @@ public class Process {
                 default:
                     System.out.println("\n¡ERROR! Elija una opción valida");
                     System.out.print("Presione ENTER para continuar: ");
-                    enter.nextLine();
+                    key.nextLine();
             }
         } while (option != 5);
     }

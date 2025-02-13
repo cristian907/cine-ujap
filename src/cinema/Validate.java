@@ -11,11 +11,11 @@ public class Validate {
     //metodo para validar el tamaño del vector
     public static int valSize(String text) {
         int size;
-        Scanner read = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         while (true) {
             try {
                 System.out.print(text);
-                size = read.nextInt();
+                size = key.nextInt();
 
                 if (size < 1) {
                     System.out.println("Error: No se admiten valores menores a 1.");
@@ -26,20 +26,20 @@ public class Validate {
                 }
             } catch (Exception e) {
                 System.out.println("Error: Verifique que esta escribiendo numeros y no caracteres.");
-                read.nextLine();
+                key.nextLine();
             }
         }
     }
 
     // metodo para validar el horario de la pelicula
     public static String validHour(String time, String text, String[] showtimes) {
-        Scanner enter = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         while (true) {
 
             if (!time.matches("\\d{1,2}:\\d{2}")) {
                 System.out.println("Error: Formato incorrecto, es H:MM");
                 System.out.print(text);
-                time = enter.nextLine();
+                time = key.nextLine();
                 continue;
             }
             String[] parts = time.split(":");
@@ -48,7 +48,7 @@ public class Validate {
             if (hour < 0 || hour > 23 || minutes < 0 || minutes >= 59) {
                 System.out.println("Error: la hora tiene que estar entre 0 y 23 y los minutos entre 0 y 59.");
                 System.out.print(text);
-                time = enter.nextLine();
+                time = key.nextLine();
                 continue;
             }
             String str = "%02d:%02d";
@@ -58,16 +58,16 @@ public class Validate {
 
     // metodo para validar el nombre de la pelicula
     public static String validMovieName(String name, String text) {
-        Scanner enter = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         while (true) {
             if (name.length() > 50) {
                 System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre.");
                 System.out.print(text);
-                name = enter.nextLine();
+                name = key.nextLine();
             } else if (name.isEmpty()) {
                 System.out.println("Error: Introduzca un nombre.");
                 System.out.print(text);
-                name = enter.nextLine();
+                name = key.nextLine();
             } else {
                 return name.trim();
             }
@@ -76,43 +76,43 @@ public class Validate {
 
     // metodo para validar la existencia el ID introducido
     public static int valIdExist(int num, String text) {
-        Scanner read = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         int enter;
         while (true) {
             try {
-                enter = read.nextInt() - 1;
+                enter = key.nextInt() - 1;
                 while (enter < -1 || enter > num - 1) {
                     System.out.println("¡ERROR! El ID no existe.\n");
                     System.out.print(text);
-                    enter = read.nextInt() - 1;
+                    enter = key.nextInt() - 1;
                 }
                 return enter;
             } catch (Exception e) {
                 System.out.println("¡ERROR! Ingrese numeros, no caracteres.\n");
                 System.out.print(text);
-                read.nextLine();
+                key.nextLine();
             }
         }
     }
 
     // metodo para validar el ID de las entradas
     public static int validSeatQty(int num, String text) {
-        Scanner read = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         int enter;
         while (true) {
             try {
-                enter = read.nextInt();
+                enter = key.nextInt();
 
                 if (enter < 0) {
                     System.out.println("Introduzca un numero de entradas valido.\n");
                     System.out.println(text);
-                    enter = read.nextInt();
+                    enter = key.nextInt();
                 }
 
                 while (enter > num) {
                     System.out.println("Disculpe, solo hay " + num + " asientos disponibles.\n");
                     System.out.println(text);
-                    enter = read.nextInt();
+                    enter = key.nextInt();
                 }
 
                 return enter;
@@ -120,18 +120,18 @@ public class Validate {
             } catch (Exception e) {
                 System.out.println("¡ERROR! Ingrese numeros, no caracteres.\n");
                 System.out.println(text);
-                read.nextLine();
+                key.nextLine();
             }
         }
     }
 
     // validar el ID del menu
     public static int valOpt(String text) {
-        Scanner read = new Scanner(System.in);
+        Scanner key = new Scanner(System.in);
         int option = 0;
         try {
             System.out.print(text);
-            option = read.nextInt();
+            option = key.nextInt();
             if (option < 1 || option > 5) {
                 option = 0;
             }
