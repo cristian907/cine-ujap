@@ -5,8 +5,6 @@ package cinema;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Validate {
@@ -45,26 +43,16 @@ public class Validate {
                 continue;
             }
             String[] parts = time.split(":");
-
             int hour = Integer.parseInt(parts[0]);
             int minutes = Integer.parseInt(parts[1]);
-            if (hour < 0 || hour > 24 || minutes < 0 || minutes >= 60) {
-                System.out.println("Error: la hora tiene que estar entre 0 y 24 y los minutos entre 0 y 60.");
+            if (hour < 0 || hour > 23 || minutes < 0 || minutes >= 59) {
+                System.out.println("Error: la hora tiene que estar entre 0 y 23 y los minutos entre 0 y 59.");
                 System.out.print(text);
                 time = enter.nextLine();
                 continue;
             }
-            for (int i = 0; i < showtimes.length; i++) {
-                if (Objects.equals(time, showtimes[i])) {
-                    System.out.println("Error: ese horario ya existe para esta pelicula.");
-                    System.out.print(text);
-                    time = enter.nextLine();
-                    continue;
-                }
-                String str = "%02d:%02d";
-                return String.format(str, hour, minutes);
-            }
-
+            String str = "%02d:%02d";
+            return String.format(str, hour, minutes);
         }
     }
 
@@ -104,7 +92,6 @@ public class Validate {
                 System.out.print(text);
                 read.nextLine();
             }
-
         }
     }
 

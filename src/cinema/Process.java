@@ -172,7 +172,7 @@ public class Process {
     public static void showMenu(String[] name, String[][] times, int[][][] matrix, String route) {
         Scanner enter = new Scanner(System.in);
         String text = "";
-        int option, sel, band = 0;
+        int option, band = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
         do {
             System.out.println("\nMenu de Opciones");
