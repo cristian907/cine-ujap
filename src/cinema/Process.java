@@ -35,23 +35,21 @@ public class Process {
         }
     }
 
-    public static void attachData(String[][] showtime, String[] name) {
+    public static void attachData(String[][] showtime, String[] name, Scanner key) {
         String text = "";
-        Scanner key = new Scanner(System.in);
         for (int i = 0; i < showtime.length; i++) {
             text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
-            name[i] = Validate.validMovieName(key.nextLine(), text);
+            name[i] = Validate.validMovieName(key.nextLine(), text, key);
             for (int j = 0; j < showtime[0].length; j++) {
                 text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
                 System.out.print(text);
-                showtime[i][j] = Validate.validHour(key.nextLine(), text, showtime[i]);
+                showtime[i][j] = Validate.validHour(key.nextLine(), text, key);
             }
         }
     }
 
-    public static void showCase(String[] name, String[][] showtime) {
-        Scanner key = new Scanner(System.in);
+    private static void showCase(String[] name, String[][] showtime,Scanner key) {
         System.out.println("\n----------------------------------CATALOGO----------------------------------\n");
         if (name != null && showtime != null) {
             for (int i = 0; i < showtime.length; i++) {
@@ -67,10 +65,9 @@ public class Process {
         }
     }
 
-    public static void buyTicket(String[] movies, String[][] showtimes, int[][][] info) {
+    private static void buyTicket(String[] movies, String[][] showtimes, int[][][] info, Scanner key) {
         int movieID, timeID, ticketID, seatQty, price = 0;
         String text, status, movieName, showTime = "";
-        Scanner key = new Scanner(System.in);
 
         if (movies != null && showtimes != null && info != null) {
             for (int i = 0; i < movies.length; i++) {
@@ -78,13 +75,13 @@ public class Process {
             }
             text = "\nIntroduzca el ID de la pelicula a comprar (0 para cancelar): ";
             System.out.print(text);
-            movieID = Validate.valIdExist(movies.length, text);
+            movieID = Validate.valIdExist(movies.length, text, key);
             if (movieID == -1) return;
 
             while (Validate.isMovieSoldOut(info, movieID)) {
                 System.out.println("Disculpe la película está agotada, seleccione otra pelicula.");
                 System.out.print(text);
-                movieID = Validate.valIdExist(movies.length, text);
+                movieID = Validate.valIdExist(movies.length, text, key);
             }
             movieName = movies[movieID];
 
@@ -93,23 +90,23 @@ public class Process {
             }
             text = "\nIntroduzca el ID del horario a comprar (0 para cancelar): ";
             System.out.print(text);
-            timeID = Validate.valIdExist(showtimes[0].length, text);
+            timeID = Validate.valIdExist(showtimes[0].length, text, key);
             if (timeID == -1) return;
             while (info[movieID][timeID][2] == 0) {
                 System.out.println("Disculpe, los asientos estan agotados, seleccione otro horario.");
                 System.out.println(text);
-                timeID = Validate.valIdExist(showtimes[0].length, text);
+                timeID = Validate.valIdExist(showtimes[0].length, text, key);
             }
             showTime = showtimes[movieID][timeID];
 
             text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2];
             System.out.println(text);
-            seatQty = Validate.validSeatQty(info[movieID][timeID][2], text);
+            seatQty = Validate.validSeatQty(info[movieID][timeID][2], text, key);
             if (seatQty == 0) return;
 
             text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
             System.out.print(text);
-            ticketID = Validate.valIdExist(info[0][0].length - 1, text);
+            ticketID = Validate.valIdExist(info[0][0].length - 1, text, key);
             if (ticketID == -1) return;
 
             if (ticketID == 0) {
@@ -135,7 +132,7 @@ public class Process {
         }
     }
 
-    public static void showReport(String[] movie, String[][] showTimes, String route, int[][][] info) {
+    private static void showReport(String[] movie, String[][] showTimes, String route, int[][][] info) {
         String text = "";
         int aux, plus = 0, plusTotal = 0;
         File report = new File(route);
@@ -167,8 +164,7 @@ public class Process {
         }
     }
 
-    public static void showMenu(String[] name, String[][] times, int[][][] matrix, String route) {
-        Scanner key = new Scanner(System.in);
+    public static void showMenu(String[] name, String[][] times, int[][][] matrix, String route, Scanner key) {
         String text = "";
         int option, band = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
@@ -181,10 +177,10 @@ public class Process {
             System.out.println("4. Escribir reporte de ventas");
             System.out.println("5. Cerrar Programa");
             text = "\nSeleccione una opción: ";
-            option = Validate.valOpt(text);
+            option = Validate.valOpt(text, key);
             switch (option) {
                 case 1:
-                    showCase(name, times);
+                    showCase(name, times, key);
                     break;
                 case 2:
                     if (Validate.isCinemaSoldOut(matrix)) {
@@ -192,20 +188,20 @@ public class Process {
                         System.out.print("\nPresione ENTER para continuar: ");
                         key.nextLine();
                     } else {
-                        buyTicket(name, times, matrix);
+                        buyTicket(name, times, matrix, key);
                     }
                     break;
                 case 3:
                     iniMovie(name);
                     iniShowtime(times);
                     iniSeats(matrix);
-                    attachData(times, name);
+                    attachData(times, name, key);
                     break;
                 case 4:
                     if (band == 1) {
                         text = "El informe ya existe, ¿Desea sobreescribirlo? (0 = No, 1 = Si)";
                         System.out.println(text);
-                        if (Validate.valIdExist(2, text) + 1 == 0) {
+                        if (Validate.valIdExist(2, text, key) + 1 == 0) {
                             break;
                         }
                     }
