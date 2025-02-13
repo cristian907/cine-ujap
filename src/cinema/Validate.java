@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Validate {
     //metodo para validar el tamaño del vector
     public static int valSize(String text) {
-        int size;
+        int size = 0;
         Scanner key = new Scanner(System.in);
         while (true) {
             try {
@@ -52,6 +52,7 @@ public class Validate {
                 continue;
             }
             String str = "%02d:%02d";
+            parts = null;
             return String.format(str, hour, minutes);
         }
     }
@@ -77,7 +78,7 @@ public class Validate {
     // metodo para validar la existencia el ID introducido
     public static int valIdExist(int num, String text) {
         Scanner key = new Scanner(System.in);
-        int enter;
+        int enter = 0;
         while (true) {
             try {
                 enter = key.nextInt() - 1;
@@ -98,7 +99,7 @@ public class Validate {
     // metodo para validar el ID de las entradas
     public static int validSeatQty(int num, String text) {
         Scanner key = new Scanner(System.in);
-        int enter;
+        int enter = 0;
         while (true) {
             try {
                 enter = key.nextInt();
@@ -114,7 +115,6 @@ public class Validate {
                     System.out.println(text);
                     enter = key.nextInt();
                 }
-
                 return enter;
 
             } catch (Exception e) {

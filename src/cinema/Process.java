@@ -68,11 +68,9 @@ public class Process {
     }
 
     public static void buyTicket(String[] movies, String[][] showtimes, int[][][] info) {
-        int movieID, timeID, ticketID, seatQty;
-        String text;
+        int movieID, timeID, ticketID, seatQty, price = 0;
+        String text, status, movieName, showTime = "";
         Scanner key = new Scanner(System.in);
-        String status, movieName, showTime;
-        int price;
 
         if (movies != null && showtimes != null && info != null) {
             for (int i = 0; i < movies.length; i++) {
@@ -138,7 +136,7 @@ public class Process {
     }
 
     public static void showReport(String[] movie, String[][] showTimes, String route, int[][][] info) {
-        String text;
+        String text = "";
         int aux, plus = 0, plusTotal = 0;
         File report = new File(route);
         if (report.exists()) report.delete();

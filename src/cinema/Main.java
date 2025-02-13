@@ -6,7 +6,7 @@ public class Main {
         int[][][] info;
         String[][] showtimes;
         String[] movies;
-        int movie, times;
+        int movie, times = 0;
         String route = "src/cinema/Reporte.txt";
 
         // Peticion de longitud de los arreglos
