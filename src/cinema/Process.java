@@ -78,7 +78,7 @@ public class Process {
             for (int i = 0; i < movies.length; i++) {
                 System.out.println((i + 1) + ". " + movies[i]);
             }
-            text = "Introduzca el ID de la pelicula a comprar (0 para cancelar): ";
+            text = "\nIntroduzca el ID de la pelicula a comprar (0 para cancelar): ";
             System.out.print(text);
             movieID = Validate.valIdExist(movies.length, text);
             if (movieID == -1) return;
@@ -126,7 +126,7 @@ public class Process {
             info[movieID][timeID][2] -= seatQty;
 
             System.out.println("---------------------------------Recibo de Compra---------------------------------");
-            System.out.printf("%-50s %30s\n", "Pelicula : ", movieName);
+            System.out.printf("%-30s %50s\n", "Pelicula : ", movieName);
             System.out.printf("%-50s %30s\n", "Horario : ", showTime);
             System.out.printf("%-50s %30s\n", "Tipo de entrada comprada : ", status);
             System.out.printf("%-50s %30d\n", "Cantidad de entradas adquiridas : ", seatQty);
@@ -142,23 +142,23 @@ public class Process {
         int aux, plus = 0, plusTotal = 0;
         File report = new File(route);
         if (report.exists()) report.delete(); //hola
-        Validate.valArchive("----------------------------Reporte de ventas----------------------------", route, true);
+        Validate.valArchive("---------------------Reporte de ventas--------------------", route, true);
         if (showTimes != null && movie != null) {
             for (int i = 0; i < showTimes.length; i++) {
-                text = "Opción " + (i + 1) + ":";
+                text = "Película " + (i + 1) + ":";
                 Validate.valArchive(text, route, true);
-                text = "Nombre:                   |   Ventas n   |   Ventas s   |    TOTAL $";
+                text = String.format("Nombre: %7s", movie[i]);
                 Validate.valArchive(text, route, true);
-                text = String.format("%-7s", movie[i]);
+                text = "Hora    |   Ventas n   |    Ventas s   |     TOTAL $";
                 Validate.valArchive(text, route, true);
                 for (int j = 0; j < showTimes[0].length; j++) {
                     aux = (info[i][j][0]) * 3 + (info[i][j][1]) * 6;
                     plus += aux;
                     plusTotal += aux;
-                    text = String.format("%-30s%4d$        \t%4d$       \t%4d$", showTimes[i][j], info[i][j][0] * 3, info[i][j][1] * 6, aux);
+                    text = String.format("%5s\t\t%4d$\t\t\t%4d$\t\t\t%4d$", showTimes[i][j], info[i][j][0] * 3, info[i][j][1] * 6, aux);
                     Validate.valArchive(text, route, true);
                 }
-                text = String.format("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%4d$", plus);
+                text = String.format("\t\t\t\t\t\t\t\t\t\t\t%4d$", plus);
                 Validate.valArchive(text, route, true);
                 text = "";
                 Validate.valArchive(text, route, true);

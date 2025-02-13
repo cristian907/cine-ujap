@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Validate {
     //metodo para validar el tamaño del vector
     public static int valSize(String text) {
-        int size = 0;
+        int size;
         Scanner read = new Scanner(System.in);
         while (true) {
             try {
@@ -60,8 +60,8 @@ public class Validate {
     public static String validMovieName(String name, String text) {
         Scanner enter = new Scanner(System.in);
         while (true) {
-            if (name.length() > 30) {
-                System.out.println("Error: Nombre mayor a 30 caracteres, por favor abreviar el nombre.");
+            if (name.length() > 50) {
+                System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre.");
                 System.out.print(text);
                 name = enter.nextLine();
             } else if (name.isEmpty()) {
