@@ -2,7 +2,6 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-cinema/Reporte.txt
 
 ### Eclipse ###
 .apt_generated
@@ -27,4 +26,5 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+.DS_Store!/src/cinema/Reporte.txt
+!/src/cinema/Reporte.txt
