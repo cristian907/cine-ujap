@@ -45,7 +45,7 @@ public class Process {
             for (int j = 0; j < showtime[0].length; j++) {
                 text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + name[i] + " (formato de 24 horas): ";
                 System.out.print(text);
-                showtime[i][j] = Validate.validHour(enter.nextLine(), text);
+                showtime[i][j] = Validate.validHour(enter.nextLine(), text, showtime[i]);
             }
         }
 
@@ -185,7 +185,7 @@ public class Process {
             System.out.println("4. Escribir reporte de ventas");
             System.out.println("5. Cerrar Programa");
             System.out.print("\nSeleccione una opción: ");
-            option = Validate.valInt(text);
+            option = Validate.valOpt(text);
             switch (option) {
                 case 1:
                     showCase(name, times);
