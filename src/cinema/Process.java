@@ -49,7 +49,7 @@ public class Process {
         }
     }
 
-    private static void showCase(String[] names, String[][] times,Scanner key) {
+    private static void showCase(String[] names, String[][] times, Scanner key) {
         System.out.println("\n-----------------------------------------CATALOGO-----------------------------------------\n");
         if (names != null && times != null) {
             for (int i = 0; i < times.length; i++) {

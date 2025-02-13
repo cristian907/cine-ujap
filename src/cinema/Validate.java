@@ -2,6 +2,8 @@ package cinema;
 
 // Importamos las librerias necesarias
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,7 +37,7 @@ public class Validate {
 
             if (!time.matches("\\d{1,2}:\\d{2}")) {
                 System.out.println("Error: Formato incorrecto, es H:MM");
-                System.out.print("\n"+text);
+                System.out.print("\n" + text);
                 time = key.nextLine();
                 continue;
             }
@@ -44,7 +46,7 @@ public class Validate {
             int minutes = Integer.parseInt(parts[1]);
             if (hour < 0 || hour > 23 || minutes < 0 || minutes >= 59) {
                 System.out.println("Error: la hora tiene que estar entre 0 y 23 y los minutos entre 0 y 59.");
-                System.out.print("\n"+text);
+                System.out.print("\n" + text);
                 time = key.nextLine();
                 continue;
             }
