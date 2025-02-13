@@ -11,7 +11,6 @@ public class Main {
         int movie, times = 0;
         Scanner key = new Scanner(System.in);
         String route = System.getProperty("user.dir")+"/src/cinema/Report.txt";
-        System.out.println(route);
 
         // Peticion de longitud de los arreglos
         text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
