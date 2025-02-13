@@ -1,8 +1,0 @@
-----------------------------Reporte de ventas----------------------------
-Opción 1:
-Nombre:                   |   Ventas n   |   Ventas s   |    TOTAL $
-al     
-10:00                            0$        	  60$       	  60$
-															  60$
-
-El total de ventas del dia fue de: 60$
