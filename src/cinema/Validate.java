@@ -88,7 +88,7 @@ public class Validate {
             } catch (Exception e) {
                 System.out.println("¡ERROR! Ingrese un ID valido.");
                 System.out.print(text);
-            }
+            } 
         }
     }
 
