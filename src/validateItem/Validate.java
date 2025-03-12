@@ -9,7 +9,8 @@ import java.util.Scanner;
 
 public class Validate {
     // Metodo para validar el tamaño del vector
-    public static int valSize(String text, Scanner key) {
+    public static int valSize(String text) {
+        Scanner key = new Scanner(System.in);
         int size = 0;
         while (true) {
             try {
@@ -30,7 +31,8 @@ public class Validate {
     }
 
     // Metodo para validar el horario de la pelicula
-    public static String validHour(String time, String text, Scanner key) {
+    public static String validHour(String time, String text) {
+        Scanner key = new Scanner(System.in);
         while (true) {
 
             if (!time.matches("\\d{1,2}:\\d{2}")) {
@@ -55,7 +57,8 @@ public class Validate {
     }
 
     // Metodo para validar el nombre de la pelicula
-    public static String validMovieName(String name, String text, Scanner key) {
+    public static String validMovieName(String name, String text) {
+        Scanner key = new Scanner(System.in);
         while (true) {
             if (name.length() > 50) {
                 System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre.");
@@ -72,7 +75,8 @@ public class Validate {
     }
 
     // Metodo para validar la existencia el ID introducido
-    public static int valIdExist(int num, String text, Scanner key) {
+    public static int valIdExist(int num, String text) {
+        Scanner key = new Scanner(System.in);
         int enter = 0;
         while (true) {
             try {
@@ -91,7 +95,8 @@ public class Validate {
     }
 
     // Metodo para validar el ID de las entradas
-    public static int validSeatQty(int num, String text, Scanner key) {
+    public static int validSeatQty(int num, String text) {
+        Scanner key = new Scanner(System.in);
         int enter = 0;
         while (true) {
             try {
@@ -118,7 +123,8 @@ public class Validate {
     }
 
     // Validar el ID del menu
-    public static int valOpt(String text, Scanner key) {
+    public static int valOpt(String text) {
+        Scanner key = new Scanner(System.in);
         int option = 0;
         try {
             System.out.print(text);
