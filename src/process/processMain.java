@@ -9,8 +9,6 @@ public class processMain {
 
         //Process desarrollo
         process.attachData(biArray, strArray);
-        process.showCase(strArray,biArray);
-
         process.showMenu(strArray,biArray,triArray);
     }
 
