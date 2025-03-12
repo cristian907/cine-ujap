@@ -10,7 +10,7 @@ public class processMain {
         //Process desarrollo
         process.attachData(biArray, strArray);
         process.showCase(strArray,biArray);
-        process.buyTicket(strArray,biArray,triArray);
+
         process.showMenu(strArray,biArray,triArray);
     }
 
