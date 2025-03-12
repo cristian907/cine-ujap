@@ -1,5 +1,7 @@
 package cinema;
 
+import validateItem.Validate;
+
 import java.util.Scanner;
 
 public class Main {

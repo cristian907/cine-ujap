@@ -1,8 +1,6 @@
-package cinema;
+package validateItem;
 
 // Importamos las librerias necesarias
-
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
