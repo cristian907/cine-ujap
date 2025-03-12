@@ -135,7 +135,7 @@ public class process {
                 System.out.print("\n\nPresione ENTER para continuar: ");
                 key.nextLine();
             }
-            key=null;
+            key.close();
         }
 
         private static void showReport(String[] movie, String[][] showTimes, String route, int[][][] info) {
@@ -227,7 +227,7 @@ public class process {
                         key.nextLine();
                 }
             } while (option != 5);
-        key=null;
+        key.close();
         }
     }
 
