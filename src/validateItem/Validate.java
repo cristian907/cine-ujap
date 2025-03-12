@@ -31,8 +31,9 @@ public class Validate {
     }
 
     // Metodo para validar el horario de la pelicula
-    public static String validHour(String time, String text) {
+    public static String validHour(String text) {
         Scanner key = new Scanner(System.in);
+        String time = key.nextLine();
         while (true) {
 
             if (!time.matches("\\d{1,2}:\\d{2}")) {
@@ -57,8 +58,9 @@ public class Validate {
     }
 
     // Metodo para validar el nombre de la pelicula
-    public static String validMovieName(String name, String text) {
+    public static String validMovieName(String text) {
         Scanner key = new Scanner(System.in);
+        String name = key.nextLine();
         while (true) {
             if (name.length() > 50) {
                 System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre.");

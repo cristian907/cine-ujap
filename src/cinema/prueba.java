@@ -1,3 +1,5 @@
+/*
+
 package cinema;
 
 import validateItem.Validate;
@@ -5,7 +7,7 @@ import validateItem.Validate;
 import java.util.Scanner;
 import java.io.File;
 
-public class Process {
+public class prueba {
     public static void iniSeats(int[][][] info) {
         if (info != null) {
             for (int i = 0; i < info.length; i++) {
@@ -224,3 +226,5 @@ public class Process {
         } while (option != 5);
     }
 }
+
+ */

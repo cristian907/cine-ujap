@@ -1,6 +1,7 @@
 package cinema;
 
 import validateItem.Validate;
+import process.process;
 
 import java.util.Scanner;
 
@@ -11,14 +12,13 @@ public class Main {
         String[][] showtimes;
         String[] movies;
         int movie, times = 0;
-        Scanner key = new Scanner(System.in);
         String route = System.getProperty("user.dir")+"/src/cinema/Report.txt";
         // Peticion de longitud de los arreglos
         text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
-        movie = Validate.valSize(text, key);
+        movie = Validate.valSize(text);
 
         text = "\nIntroduzca la cantidad de horarios por pelicula: ";
-        times = Validate.valSize(text, key);
+        times = Validate.valSize(text);
 
 
         // Instanciacion de Arreglos
@@ -27,19 +27,18 @@ public class Main {
         movieInfo = new int[movie][times][3];
 
         // Inicializacion de Arreglos
-        Process.iniSeats(movieInfo);
-        Process.iniShowtime(showtimes);
-        Process.iniMovie(movies);
+        process.iniSeats(movieInfo);
+        process.iniShowtime(showtimes);
+        process.iniMovie(movies);
 
         // Llenado inicial de datos de los arreglos
-        Process.attachData(showtimes, movies, key);
+        process.attachData(showtimes, movies);
 
         // Ejecucion del menu de opciones
-        Process.showMenu(movies, showtimes, movieInfo, route, key);
+        process.showMenu(movies, showtimes, movieInfo, route);
 
         movieInfo = null;
         showtimes = null;
         movies = null;
-        key.close();
     }
 }
