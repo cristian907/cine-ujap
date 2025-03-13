@@ -8,5 +8,7 @@ public class storeMain {
         String route = Paths.get("").toRealPath().toString()+"/src/storage/";;
 
         storeArchive.storeItemMovie(strArray, biArray, triArray, route);
+        storeArchive.storeName(strArray,route);
+        storeArchive.storeHour(biArray,route);
     }
 }
