@@ -20,7 +20,7 @@ public class Validate {
         File fileB = new File(movies);
         File fileC = new File(times);
 
-        if (!fileA.exists() && !fileB.exists() && !fileC.exists()) {
+        if (!fileA.exists() || !fileB.exists() || !fileC.exists()) {
             System.out.println("No existen los archivos, se creara el catalogo manualmente");
             return false;
         }

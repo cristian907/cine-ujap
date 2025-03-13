@@ -177,9 +177,11 @@ public class Process {
             System.out.println("\nMenu de Opciones");
             System.out.println("1. Mostrar Cartelera");
             System.out.println("2. Comprar Entradas");
+            System.out.println("3. Buscar Peliculas por Nombre");
+            System.out.println("4. Buscar Peliculas por Horario");
             System.out.println("\n¡ATENCION SOLO PERSONAL AUTORIZADO!");
-            System.out.println("3. Cambiar Cartelera");
-            System.out.println("4. Cerrar Programa");
+            System.out.println("5. Cambiar Cartelera");
+            System.out.println("6. Cerrar Programa");
             text = "\nSeleccione una opción: ";
             option = Validate.valOpt(text, key);
             switch (option) {
@@ -196,12 +198,18 @@ public class Process {
                     }
                     break;
                 case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
                     iniMovie(names);
                     iniShowtime(times);
                     iniSeats(info);
                     attachData(times, names, key);
                     break;
-                case 4:
+                case 6:
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:
@@ -209,7 +217,7 @@ public class Process {
                     System.out.print("Presione ENTER para continuar: ");
                     key.nextLine();
             }
-        } while (option != 4);
+        } while (option != 6);
     }
 }
 

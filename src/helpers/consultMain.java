@@ -1,16 +1,17 @@
 package helpers;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
 public class consultMain{
 
-    public consultMain() throws FileNotFoundException {
-        Scanner archivo = new Scanner(new File("prueba.txt"));
-        String text="";
-        String prueba=consultData.consultTime(archivo, consultData.convertTime("1:00"), consultData.convertTime("3:00"), text);
-        consultData.showCaseTime(prueba);
+    public consultMain(boolean opt) throws IOException {
+        String movies = Paths.get("").toRealPath().toString()+"/src/storage/Movies.txt";
+        String times = Paths.get("").toRealPath().toString()+"/src/storage/Times.txt";
+
 
     }
 }
