@@ -1,10 +1,15 @@
 package process;
 
+import validateItem.Validate;
+
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class processMain {
-    public static  void process(int triArray[][][], String biArray[][], String strArray[], Scanner key){
-        //Inicio de Arrglos
+    public static void process(int[][][] triArray, String[][] biArray, String[] strArray, Scanner key) throws IOException {
+
+        //Inicio de Arreglos
         process.iniSeats(triArray);
         process.iniShowtime(biArray);
         process.iniMovie(strArray);
@@ -13,5 +18,4 @@ public class processMain {
         process.attachData(biArray, strArray, key);
         process.showMenu(strArray,biArray,triArray, key);
     }
-
 }

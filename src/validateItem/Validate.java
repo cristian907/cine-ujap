@@ -25,6 +25,29 @@ public class Validate {
         return true;
     }
 
+    public static Scanner readFile(String route) {
+
+        if (route == null || route.trim().isEmpty()) {
+            System.out.println("Error: Ruta Invalida");
+            return null;
+        }
+
+        File archive = new File(route);
+        if (!archive.isFile()) {
+            System.out.println("La ruta especificada no es un archivo: " + route);
+            return null;
+        }
+
+        try {
+            return new Scanner(archive);
+
+        } catch (IOException e) {
+            System.out.println("Error al abrir o leer el archivo");
+        }
+
+        return null;
+    }
+
     // Metodo para validar el tamaño del vector
     public static int valSize(String text, Scanner key) {
         int size = 0;
