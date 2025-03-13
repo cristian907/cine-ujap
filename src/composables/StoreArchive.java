@@ -4,10 +4,10 @@ import validateItem.Validate;
 
 import java.io.File;
 
-public class storeArchive {
+public class StoreArchive {
     public static void storeItemMovie(String[] movie, String[][] showTime, int[][][] info, String root) {
         String text = "";
-        String route = root + "storeMovieSchedule.txt";
+        String route = root + "MovieSchedule.txt";
         File report = new File(route);
         if (report.exists()) report.delete();
         if (movie != null && showTime != null) {
@@ -37,6 +37,7 @@ public class storeArchive {
                 Validate.valArchive(text, route, false);
             }
             Validate.valArchive("", route, false);
+        report = null;
         }
     }
 
@@ -53,12 +54,13 @@ public class storeArchive {
                 }
                 Validate.valArchive("\n", route, false);
             }
+        report = null;
         }
     }
 
     public static void storeShowReport(String[] movie, String[][] showTimes, int[][][] info,String root) {
         String text = "";
-        String route = root + "storeReport.txt";
+        String route = root + "Report.txt";
         int aux, plus = 0, plusTotal = 0;
         File report = new File(route);
         if (report.exists()) report.delete();
@@ -87,6 +89,6 @@ public class storeArchive {
             text = "El total de ventas del dia fue de: " + plusTotal + "$";
             Validate.valArchive(text, route, true);
         }
+    report = null;
     }
-
 }

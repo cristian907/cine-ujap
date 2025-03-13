@@ -1,4 +1,4 @@
-import composables.storeMain;
+import composables.StoreMain;
 import storage.LoadData;
 import validateItem.Validate;
 import process.ProcessMain;
@@ -41,7 +41,7 @@ public class Main {
         }
         //desarrollo
         ProcessMain.process(movieInfo, showtimes, movies, key, databaseExists);
-        storeMain.store(movieInfo, showtimes, movies);
+        StoreMain.store(movieInfo, showtimes, movies);
 
         movieInfo = null;
         showtimes = null;

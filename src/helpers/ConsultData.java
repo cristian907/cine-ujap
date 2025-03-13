@@ -2,7 +2,7 @@ package helpers;
 
 import java.util.Scanner;
 
-public class consultData {
+public class ConsultData {
 
     public static int convertTime(String text) {
         String[] time = text.split(":");

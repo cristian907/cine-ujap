@@ -1,9 +1,8 @@
 package process;
 
 import validateItem.Validate;
-import helpers.consultMain;
+import helpers.ConsultMain;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -170,10 +169,10 @@ public class Process {
                     }
                     break;
                 case 3:
-                    consultMain.consult(true, key);
+                    ConsultMain.consult(true, key);
                     break;
                 case 4:
-                    consultMain.consult(false, key);
+                    ConsultMain.consult(false, key);
                     break;
                 case 5:
                     iniMovie(names);
