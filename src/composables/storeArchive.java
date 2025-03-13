@@ -22,4 +22,29 @@ public class storeArchive {
             }
         }
     }
+    public static void storeName(String movie[],String root){
+        String text = "";
+        String route = root + "Movies.txt";
+        if (movie != null ) {
+            for (int i = 0; i < movie.length; i++) {
+                text = String.valueOf(movie[i])+" ";
+                Validate.valArchive(text, route, false);
+            }
+            Validate.valArchive("\n", route, false);
+        }
+    }
+    public static void storeHour(String showTime[][],String root){
+        String text = "";
+        String route = root + "Times.txt";
+        if (showTime != null ) {
+            for (int i = 0; i < showTime.length; i++) {
+                for (int j = 0; j < showTime[0].length; j++) {
+                    text = String.valueOf(showTime[i][j])+" ";
+                    Validate.valArchive(text, route, false);
+                }
+                Validate.valArchive("\n", route, false);
+            }
+        }
+    }
+
 }
