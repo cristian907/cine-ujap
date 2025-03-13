@@ -6,9 +6,25 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Validate {
+
+    public static boolean fileExists(Scanner key) throws IOException {
+        String route = Paths.get("").toRealPath().toString()+"/src/storage/";
+        String text = "";
+        File file = new File(route);
+
+        if (!file.exists()) {
+            System.out.println("No existe el catalogo");
+            return false;
+        }
+
+        System.out.println("archivo encontrado");
+        return true;
+    }
+
     // Metodo para validar el tamaño del vector
     public static int valSize(String text, Scanner key) {
         int size = 0;
@@ -137,7 +153,7 @@ public class Validate {
 
     // Metodo para validar la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
-        if (content == null || content.trim().isEmpty()){
+        if (content == null || content.trim().isEmpty()) {
             System.out.println("El contenido esta vacio, por lo tanto no se escribirá nada");
             return;
         }
@@ -150,6 +166,7 @@ public class Validate {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
+
     public static Scanner useArchive(String route) {
 
         if (route == null || route.trim().isEmpty()) {
