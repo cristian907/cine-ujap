@@ -3,13 +3,18 @@ package composables;
 import validateItem.Validate;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class StoreArchive {
-    public static void storeItemMovie(String[] movie, String[][] showTime, int[][][] info, String root) {
+    public static void storeItemMovie(String[] movie, String[][] showTime, int[][][] info, String root) throws IOException{
         String text = "";
         String route = root + "MovieSchedule.txt";
         File report = new File(route);
-        if (report.exists()) report.delete();
+        if (report.exists()) {
+            System.gc();
+            Files.delete(report.toPath());
+        }
         if (movie != null && showTime != null) {
             for (int i = 0; i < showTime.length; i++) {
 
