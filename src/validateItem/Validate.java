@@ -3,6 +3,7 @@ package validateItem;
 // Importamos las librerias necesarias
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -92,7 +93,7 @@ public class Validate {
             } catch (Exception e) {
                 System.out.println("¡ERROR! Ingrese un ID valido.");
                 System.out.print(text);
-            } 
+            }
         }
     }
 
@@ -142,6 +143,10 @@ public class Validate {
 
     // Metodo para validar la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
+        if (content == null || content.trim().isEmpty()){
+            System.out.println("El contenido esta vacio, por lo tanto no se escribirá nada");
+            return;
+        }
         try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))) {
             addArchive.write(content);
             if (boo) {
@@ -150,6 +155,31 @@ public class Validate {
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
+    }
+    public static Scanner useArchive(String route) {
+
+        if (route == null || route.trim().isEmpty()) {
+            System.out.println("La ruta no esta correcta, por favor ingrese una ruta correcta ");
+            return null;
+        }
+
+        File archive = new File(route);
+
+        // Verificar si es un archivo y no un directorio
+        if (!archive.isFile()) {
+            System.out.println("Esta ruta no es un archivo: " + route);
+            return null;
+        }
+
+        try {
+            return new Scanner(archive);
+
+        } catch (IOException e) {
+            // Manejo de excepciones al abrir el archivo
+            System.out.println("Error al leer el archivo" + e.getMessage());
+        }
+
+        return null;
     }
 
     // Metodo para validar si la pelicula esta agotada
