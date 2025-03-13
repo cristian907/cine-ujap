@@ -50,22 +50,22 @@ public class Validate {
 
     // Metodo para validar el tamaño del vector
     public static int valSize(String text, Scanner key) {
-        int size = 0;
-        while (true) {
-            try {
-                System.out.print(text);
-                size = Integer.parseInt(key.nextLine());
+        try {
+            System.out.print(text);
+            int size = Integer.parseInt(key.nextLine());
 
-                if (size < 1) {
-                    System.out.println("Error: No se admiten valores menores a 1.");
-                } else if (size > 5) {
-                    System.out.println("Error: No se admiten valores mayores a 5.");
-                } else {
-                    return size;
-                }
-            } catch (Exception e) {
-                System.out.println("Error: Verifique que esta escribiendo numeros.");
+            if (size < 1) {
+                System.out.println("Error: No se admiten valores menores a 1.");
+                return valSize(text, key);
+            } else if (size > 5) {
+                System.out.println("Error: No se admiten valores mayores a 5.");
+                return valSize(text, key);
+            } else {
+                return size;
             }
+        } catch (Exception e) {
+            System.out.println("Error: Verifique que está escribiendo números.");
+            return valSize(text, key);
         }
     }
 
@@ -136,30 +136,27 @@ public class Validate {
     }
 
     // Metodo para validar el ID de las entradas
-    public static int validSeatQty(int num, String text, Scanner key) {
-        int enter = 0;
-        while (true) {
-            try {
-                enter = Integer.parseInt(key.nextLine());
-
-                if (enter < 0) {
-                    System.out.println("Introduzca un numero de entradas valido.");
-                    System.out.println(text);
-                    enter = Integer.parseInt(key.nextLine());
-                }
-
-                while (enter > num) {
-                    System.out.println("Disculpe, solo hay " + num + " asientos disponibles.");
-                    System.out.println(text);
-                    enter = Integer.parseInt(key.nextLine());
-                }
-                return enter;
-
-            } catch (Exception e) {
-                System.out.println("¡ERROR! Ingrese numeros, no caracteres.");
-                System.out.println(text);
-            }
+    public static int validSeatQtypart1(int num, String text, Scanner key) {
+        try {
+            System.out.print(text);
+            int enter = Integer.parseInt(key.nextLine());
+            return validateSeatQtypart2(num, text, key, enter);
+        } catch (Exception e) {
+            System.out.println("¡ERROR! Ingrese números, no caracteres.");
+            return validSeatQtypart1(num, text, key);
         }
+    }
+
+    public static int validateSeatQtypart2(int num, String text, Scanner key, int enter) {
+        if (enter < 0) {
+            System.out.println("Introduzca un número de entradas válido.");
+            return validSeatQtypart1(num, text, key);
+        }
+        if (enter > num) {
+            System.out.println("Disculpe, solo hay " + num + " asientos disponibles.");
+            return validSeatQtypart1(num, text, key);
+        }
+        return enter;
     }
 
     // Validar el ID del menu
