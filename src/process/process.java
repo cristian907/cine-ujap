@@ -44,7 +44,7 @@ public class process {
         for (int i = 0; i < times.length; i++) {
             text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
-            names[i] = Validate.validMovieName(text, key);
+            names[i] = Validate.validMovieName(text, key, names);
             for (int j = 0; j < times[0].length; j++) {
                 text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
                 System.out.print(text);
