@@ -2,10 +2,8 @@ import composables.storeMain;
 import loader.LoadData;
 import validateItem.Validate;
 import process.processMain;
-import composables.storeMain;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
@@ -14,35 +12,36 @@ public class Main {
         int[][][] movieInfo;
         String[][] showtimes;
         String[] movies;
-        int movie = 0, times = 0;
+        int movieQty = 0, timeQty = 0;
         Scanner key = new Scanner(System.in);
 
-        if (Validate.fileExists(key)) {
+        boolean databaseExists = Validate.fileExists(key);
+
+        if (databaseExists) {
             movies = LoadData.loadNames();
             showtimes = LoadData.loadTimes(movies);
             if (movies != null && showtimes != null) {
-                movie = movies.length;
+                movieInfo = new int[movies.length][showtimes.length][3];
             } else {
-                System.out.println("Fallo al cargar archivo");
+                System.out.println("Error: Fallo al cargar el archivo");
+                return;
             }
         } else {
             // Peticion de longitud de los arreglos
             text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
-            movie = Validate.valSize(text, key);
+            movieQty = Validate.valSize(text, key);
 
             text = "\nIntroduzca la cantidad de horarios por pelicula: ";
-            times = Validate.valSize(text, key);
-
+            timeQty = Validate.valSize(text, key);
 
             // Instanciacion de Arreglos
-            movies = new String[movie];
-            showtimes = new String[movie][times];
+            movies = new String[movieQty];
+            showtimes = new String[movieQty][timeQty];
+            movieInfo = new int[movieQty][timeQty][3];
         }
-            movieInfo = new int[movie][times][3];
-
 
         //desarrollo
-        processMain.process(movieInfo, showtimes, movies, key);
+        processMain.process(movieInfo, showtimes, movies, key, databaseExists);
         storeMain.store(movieInfo, showtimes, movies);
 
         movieInfo = null;

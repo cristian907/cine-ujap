@@ -7,15 +7,18 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class processMain {
-    public static void process(int[][][] triArray, String[][] biArray, String[] strArray, Scanner key) throws IOException {
+    public static void process(int[][][] triArray, String[][] biArray, String[] strArray, Scanner key, boolean databaseExists) throws IOException {
 
-        //Inicio de Arreglos
         process.iniSeats(triArray);
-        process.iniShowtime(biArray);
-        process.iniMovie(strArray);
+        if (!databaseExists) {
+            //Inicio de Arreglos
+            process.iniShowtime(biArray);
+            process.iniMovie(strArray);
 
-        //Process desarrollo
-        process.attachData(biArray, strArray, key);
+            //Process desarrollo
+            process.attachData(biArray, strArray, key);
+        }
+
         process.showMenu(strArray,biArray,triArray, key);
     }
 }
