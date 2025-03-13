@@ -1,6 +1,6 @@
 package validateItem;
 
-// Importamos las librerias necesarias
+
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,11 +11,10 @@ import java.util.Scanner;
 
 public class Validate {
 
-    public static boolean fileExists(Scanner key) throws IOException {
+    public static boolean fileExists() throws IOException {
         String data = Paths.get("").toRealPath().toString()+"/src/storage/MovieSchedule.txt";
         String movies = Paths.get("").toRealPath().toString()+"/src/storage/Movies.txt";
         String times = Paths.get("").toRealPath().toString()+"/src/storage/Times.txt";
-        String text = "";
         File fileA = new File(data);
         File fileB = new File(movies);
         File fileC = new File(times);

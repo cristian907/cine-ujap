@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class StoreArchive {
-    public static void storeItemMovie(String[] movie, String[][] showTime, int[][][] info, String root) throws IOException{
+    public static void storeItemMovie(String[] movie, String[][] showTime,  String root) throws IOException{
         String text = "";
         String route = root + "MovieSchedule.txt";
         File report = new File(route);
@@ -28,6 +28,7 @@ public class StoreArchive {
                 text = String.valueOf(showTime[i][showTime[0].length - 1]);
                 Validate.valArchive(text, route, i < showTime.length - 1);
             }
+        report = null;
         }
     }
 

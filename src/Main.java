@@ -15,7 +15,7 @@ public class Main {
         int movieQty = 0, timeQty = 0;
         Scanner key = new Scanner(System.in);
 
-        boolean databaseExists = Validate.fileExists(key);
+        boolean databaseExists = Validate.fileExists();
 
         if (databaseExists) {
             movies = LoadData.loadNames();

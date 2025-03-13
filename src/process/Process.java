@@ -144,7 +144,7 @@ public class Process {
 
     public static void showMenu(String[] names, String[][] times, int[][][] info, Scanner key) throws IOException {
         String text = "";
-        int option, band = 0;
+        int option;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
         do {
             System.out.println("\nMenu de Opciones");
