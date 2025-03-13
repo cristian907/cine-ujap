@@ -33,9 +33,9 @@ public class storeArchive {
         if (movie != null ) {
             for (int i = 0; i < movie.length; i++) {
                 text = String.valueOf(movie[i])+" ";
-                Validate.valArchive(text, route, true);
+                Validate.valArchive(text, route, false);
             }
-            Validate.valArchive("\n", route, false);
+            Validate.valArchive("", route, false);
         }
     }
     public static void storeHour(String[][] showTime, String root){

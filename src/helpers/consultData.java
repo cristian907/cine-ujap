@@ -63,6 +63,14 @@ public class consultData {
         return consultTime(arch, min, max, text);
     }
 
+    public static void showCaseMovie(String[] name) {
+        System.out.print(name[0] + " - ");
+        for (int i = 1; i < name.length; i++) {
+            System.out.print(name[i] + " ");
+        }
+        System.out.println();
+    }
+
     public static void showCaseTime(String text) {
         String[] line = text.split("/");
         System.out.println("Peliculas disponibles en este horario");
