@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Validate {
 
     public static boolean fileExists(Scanner key) throws IOException {
-        String route = Paths.get("").toRealPath().toString()+"/src/storage/";
+        String route = Paths.get("").toRealPath().toString()+"/src/storage/storeMovieSchedule.txt";
         String text = "";
         File file = new File(route);
 
