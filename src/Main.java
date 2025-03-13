@@ -1,6 +1,8 @@
 import validateItem.Validate;
 import process.processMain;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         String text = "";
@@ -9,16 +11,16 @@ public class Main {
         String[] movies;
         int movie, times = 0;
         String route = System.getProperty("user.dir")+"/src/cinema/Report.txt";
-
+        Scanner key = new Scanner(System.in);
 
 
         // Peticion de longitud de los arreglos
 
         text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
-        movie = Validate.valSize(text);
+        movie = Validate.valSize(text, key);
 
         text = "\nIntroduzca la cantidad de horarios por pelicula: ";
-        times = Validate.valSize(text);
+        times = Validate.valSize(text, key);
 
 
         // Instanciacion de Arreglos
@@ -27,10 +29,11 @@ public class Main {
         movieInfo = new int[movie][times][3];
 
         //desarrollo
-        processMain.process(movieInfo,showtimes,movies);
+        processMain.process(movieInfo,showtimes,movies,key);
 
         movieInfo = null;
         showtimes = null;
         movies = null;
+        key.close();
     }
 }

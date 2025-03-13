@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 public class Validate {
     // Metodo para validar el tamaño del vector
-    public static int valSize(String text) {
-        Scanner key = new Scanner(System.in);
+    public static int valSize(String text, Scanner key) {
         int size = 0;
         while (true) {
             try {
@@ -32,8 +31,7 @@ public class Validate {
     }
 
     // Metodo para validar el horario de la pelicula
-    public static String validHour(String text) {
-        Scanner key = new Scanner(System.in);
+    public static String validHour(String text, Scanner key) {
         String time = key.nextLine();
         while (true) {
 
@@ -59,8 +57,7 @@ public class Validate {
     }
 
     // Metodo para validar el nombre de la pelicula
-    public static String validMovieName(String text) {
-        Scanner key = new Scanner(System.in);
+    public static String validMovieName(String text, Scanner key) {
         String name = key.nextLine();
         while (true) {
             if (name.length() > 50) {
@@ -78,8 +75,7 @@ public class Validate {
     }
 
     // Metodo para validar la existencia el ID introducido
-    public static int valIdExist(int num, String text) {
-        Scanner key = new Scanner(System.in);
+    public static int valIdExist(int num, String text, Scanner key) {
         int enter = 0;
         while (true) {
             try {
@@ -98,8 +94,7 @@ public class Validate {
     }
 
     // Metodo para validar el ID de las entradas
-    public static int validSeatQty(int num, String text) {
-        Scanner key = new Scanner(System.in);
+    public static int validSeatQty(int num, String text, Scanner key) {
         int enter = 0;
         while (true) {
             try {
@@ -126,8 +121,7 @@ public class Validate {
     }
 
     // Validar el ID del menu
-    public static int valOpt(String text) {
-        Scanner key = new Scanner(System.in);
+    public static int valOpt(String text, Scanner key) {
         int option = 0;
         try {
             System.out.print(text);
