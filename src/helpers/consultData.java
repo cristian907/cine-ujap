@@ -44,7 +44,14 @@ public class consultData {
             return line;
         }
 
-        return consultName(arch, name);
+        String[] result = consultName(arch, name);
+
+        // Procesamiento adicional: si result es nulo, imprimimos que no se encontró
+        if (result == null) {
+            System.out.println("El nombre " + name + " no fue encontrado en esta línea: " + String.join(" ", line));
+        }
+
+        return result;
 
     }
 

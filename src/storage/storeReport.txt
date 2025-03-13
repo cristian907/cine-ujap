@@ -2,10 +2,10 @@
 Película 1:
 Nombre:       a
 Hora    |   Ventas n   |    Ventas s   |     TOTAL $
-01:00          0$              0$              0$
-02:00          0$            120$            120$
+01:00         36$              0$             36$
+02:00          0$              0$              0$
 03:00          0$              0$              0$
-                                             120$
+                                              36$
 
 Película 2:
 Nombre:       b
@@ -20,7 +20,7 @@ Nombre:       c
 Hora    |   Ventas n   |    Ventas s   |     TOTAL $
 07:00          0$              0$              0$
 08:00          0$              0$              0$
-09:00          0$              0$              0$
-                                               0$
+09:00         60$              0$             60$
+                                              60$
 
-El total de ventas del dia fue de: 120$
+El total de ventas del dia fue de: 96$

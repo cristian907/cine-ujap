@@ -15,7 +15,7 @@ public class storeArchive {
 
                 text = String.valueOf(movie[i]) + " ";
                 Validate.valArchive(text, route, false);
-                for (int j = 0; j < showTime[i].length-1; j++) {
+                for (int j = 0; j < showTime[i].length - 1; j++) {
                     text = String.valueOf(showTime[i][j]) + " ";
 
                     Validate.valArchive(text, route, false);
@@ -25,28 +25,30 @@ public class storeArchive {
             }
         }
     }
-    public static void storeName(String[] movie, String root){
+
+    public static void storeName(String[] movie, String root) {
         String text = "";
         String route = root + "Movies.txt";
         File report = new File(route);
         if (report.exists()) report.delete();
-        if (movie != null ) {
+        if (movie != null) {
             for (int i = 0; i < movie.length; i++) {
-                text = String.valueOf(movie[i])+" ";
+                text = String.valueOf(movie[i]) + " ";
                 Validate.valArchive(text, route, false);
             }
             Validate.valArchive("", route, false);
         }
     }
-    public static void storeHour(String[][] showTime, String root){
+
+    public static void storeHour(String[][] showTime, String root) {
         String text = "";
         String route = root + "Times.txt";
         File report = new File(route);
         if (report.exists()) report.delete();
-        if (showTime != null ) {
+        if (showTime != null) {
             for (int i = 0; i < showTime.length; i++) {
                 for (int j = 0; j < showTime[0].length; j++) {
-                    text = String.valueOf(showTime[i][j])+" ";
+                    text = String.valueOf(showTime[i][j]) + " ";
                     Validate.valArchive(text, route, false);
                 }
                 Validate.valArchive("\n", route, false);
@@ -54,9 +56,9 @@ public class storeArchive {
         }
     }
 
-    public static void storeShowReport(String[] movie, String[][] showTimes, int[][][] info, String root) {
-        String route = root + "storeReport.txt";
+    public static void storeShowReport(String[] movie, String[][] showTimes, int[][][] info,String root) {
         String text = "";
+        String route = root + "storeReport.txt";
         int aux, plus = 0, plusTotal = 0;
         File report = new File(route);
         if (report.exists()) report.delete();
@@ -86,4 +88,5 @@ public class storeArchive {
             Validate.valArchive(text, route, true);
         }
     }
+
 }
