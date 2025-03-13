@@ -71,35 +71,14 @@ public class Validate {
             return String.format(str, hour, minutes);
         }
     }
-    public static boolean validNameNotTheSame(String[] names, String name, int i){
-        int n = names.length;
-        name=name.trim();
-        if (names[0].equals(null)){
-            return false;
-        }
-        else{
-            if (name.equals(names[i])){
-                return true;
-            }
-        }
-        i=i+1;
-        if (!names[n-1].equals(null)){
-            return false;
-        }
-        return (validNameNotTheSame(names, name, i));
 
-    }
 
     // Metodo para validar el nombre de la pelicula
     public static String validMovieName(String text, Scanner key, String[] names) {
         String name = key.nextLine();
         int i=0;
         while (true) {
-            if (validNameNotTheSame(names, name, i)){
-                System.out.println("Error: la pelicula ya existe, introduzca otra");
-                System.out.println(text);
-                name=key.nextLine();
-            }
+
             if (name.length() > 50) {
                 System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre.");
                 System.out.print(text);
