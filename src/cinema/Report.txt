@@ -1,0 +1,8 @@
+---------------------Reporte de ventas--------------------
+Película 1:
+Nombre:   larry
+Hora    |   Ventas n   |    Ventas s   |     TOTAL $
+12:00           0$               0$               0$
+                                                  0$
+
+El total de ventas del dia fue de: 0$

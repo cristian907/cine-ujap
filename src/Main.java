@@ -39,7 +39,7 @@ public class Main {
             showtimes = new String[movieQty][timeQty];
             movieInfo = new int[movieQty][timeQty][3];
         }
-
+        //prueba
         //desarrollo
         processMain.process(movieInfo, showtimes, movies, key, databaseExists);
         storeMain.store(movieInfo, showtimes, movies);
