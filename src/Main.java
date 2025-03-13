@@ -1,16 +1,18 @@
+import composables.storeMain;
 import validateItem.Validate;
 import process.processMain;
+import composables.storeMain;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws IOException {
         String text = "";
         int[][][] movieInfo;
         String[][] showtimes;
         String[] movies;
         int movie, times = 0;
-        String route = System.getProperty("user.dir")+"/src/cinema/Report.txt";
         Scanner key = new Scanner(System.in);
 
 
@@ -30,6 +32,7 @@ public class Main {
 
         //desarrollo
         processMain.process(movieInfo,showtimes,movies,key);
+        storeMain.store(movieInfo, showtimes, movies);
 
         movieInfo = null;
         showtimes = null;

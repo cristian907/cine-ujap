@@ -137,7 +137,7 @@ public class Validate {
 
     // Metodo para validar la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
-        if (content == null || content.trim().isEmpty()){
+        if (content == null){
             System.out.println("El contenido esta vacio, por lo tanto no se escribirá nada");
             return;
         }
