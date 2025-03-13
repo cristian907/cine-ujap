@@ -29,4 +29,6 @@ bin/
 .DS_Store!/src/cinema/Reporte.txt
 !/src/cinema/Reporte.txt
 .DS_Store!/src/cinema/Reporte.txt
-!/src/cinema/Reporte.txt
+!/src/cinema/Reporte.txt!/src/storage/Movies.txt
+!/src/storage/storeMovieSchedule.txt
+!/src/storage/Times.txt

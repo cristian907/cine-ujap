@@ -12,16 +12,21 @@ import java.util.Scanner;
 public class Validate {
 
     public static boolean fileExists(Scanner key) throws IOException {
-        String route = Paths.get("").toRealPath().toString()+"/src/storage/";
+        String data = Paths.get("").toRealPath().toString()+"/src/storage/storeMovieSchedule.txt";
+        String movies = Paths.get("").toRealPath().toString()+"/src/storage/Movies.txt";
+        String times = Paths.get("").toRealPath().toString()+"/src/storage/Times.txt";
         String text = "";
-        File file = new File(route);
+        File fileA = new File(data);
+        File fileB = new File(movies);
+        File fileC = new File(times);
 
-        if (!file.exists()) {
-            System.out.println("No existe el catalogo");
+        if (!fileA.exists() && !fileB.exists() && !fileC.exists()) {
+            System.out.println("No existen los archivos, se creara el catalogo manualmente");
             return false;
         }
-
-        System.out.println("archivo encontrado");
+        fileA = null;
+        fileB = null;
+        fileC = null;
         return true;
     }
 
@@ -32,19 +37,19 @@ public class Validate {
             return null;
         }
 
-        File archive = new File(route);
-        if (!archive.isFile()) {
+        File file = new File(route);
+        if (!file.isFile()) {
             System.out.println("La ruta especificada no es un archivo: " + route);
             return null;
         }
 
         try {
-            return new Scanner(archive);
+            return new Scanner(file);
 
         } catch (IOException e) {
             System.out.println("Error al abrir o leer el archivo");
         }
-
+        file = null;
         return null;
     }
 
@@ -188,32 +193,6 @@ public class Validate {
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
-    }
-
-    public static Scanner useArchive(String route) {
-
-        if (route == null || route.trim().isEmpty()) {
-            System.out.println("La ruta no esta correcta, por favor ingrese una ruta correcta ");
-            return null;
-        }
-
-        File archive = new File(route);
-
-        // Verificar si es un archivo y no un directorio
-        if (!archive.isFile()) {
-            System.out.println("Esta ruta no es un archivo: " + route);
-            return null;
-        }
-
-        try {
-            return new Scanner(archive);
-
-        } catch (IOException e) {
-            // Manejo de excepciones al abrir el archivo
-            System.out.println("Error al leer el archivo" + e.getMessage());
-        }
-
-        return null;
     }
 
     // Metodo para validar si la pelicula esta agotada

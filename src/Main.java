@@ -1,7 +1,7 @@
 import composables.storeMain;
-import loader.LoadData;
+import storage.LoadData;
 import validateItem.Validate;
-import process.processMain;
+import process.ProcessMain;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -39,9 +39,8 @@ public class Main {
             showtimes = new String[movieQty][timeQty];
             movieInfo = new int[movieQty][timeQty][3];
         }
-
         //desarrollo
-        processMain.process(movieInfo, showtimes, movies, key, databaseExists);
+        ProcessMain.process(movieInfo, showtimes, movies, key, databaseExists);
         storeMain.store(movieInfo, showtimes, movies);
 
         movieInfo = null;

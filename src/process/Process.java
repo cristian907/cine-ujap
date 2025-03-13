@@ -3,12 +3,10 @@ package process;
 import validateItem.Validate;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 
-public class process {
+public class Process {
 
     public static void iniSeats(int[][][] info) {
         if (info != null) {
@@ -105,9 +103,8 @@ public class process {
             }
             showTime = times[movieID][timeID];
 
-            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2];
-            System.out.println(text);
-            seatQty = Validate.validSeatQty(info[movieID][timeID][2], text, key);
+            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2]+"\n";
+            seatQty = Validate.validSeatQtypart1(info[movieID][timeID][2], text, key);
             if (seatQty == 0) return;
 
             text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
@@ -125,17 +122,19 @@ public class process {
                 price = seatQty * 6;
             }
             info[movieID][timeID][2] -= seatQty;
-
-            System.out.println("---------------------------------Recibo de Compra---------------------------------");
-            System.out.printf("%-30s %50s\n", "Pelicula : ", movieName);
-            System.out.printf("%-50s %30s\n", "Horario : ", showTime);
-            System.out.printf("%-50s %30s\n", "Tipo de entrada comprada : ", status);
-            System.out.printf("%-50s %30d\n", "Cantidad de entradas adquiridas : ", seatQty);
-            System.out.printf("%-50s %29d$\n", "Monto total : ", price);
-            System.out.printf("\n%57s", "¡Gracias por comprar en CineUjap!");
-            System.out.print("\n\nPresione ENTER para continuar: ");
+            printTicket(movieName, showTime, status, seatQty, price);
             key.nextLine();
         }
+    }
+    private static void printTicket(String movieName, String showTime, String status, int seatQty, int price) {
+        System.out.println("---------------------------------Recibo de Compra---------------------------------");
+        System.out.printf("%-30s %50s\n", "Pelicula : ", movieName);
+        System.out.printf("%-50s %30s\n", "Horario : ", showTime);
+        System.out.printf("%-50s %30s\n", "Tipo de entrada comprada : ", status);
+        System.out.printf("%-50s %30d\n", "Cantidad de entradas adquiridas : ", seatQty);
+        System.out.printf("%-50s %29d$\n", "Monto total : ", price);
+        System.out.printf("\n%57s", "¡Gracias por comprar en CineUjap!");
+        System.out.print("\n\nPresione ENTER para continuar: ");
     }
 
     private static void showReport(String[] movie, String[][] showTimes, String route, int[][][] info) {
