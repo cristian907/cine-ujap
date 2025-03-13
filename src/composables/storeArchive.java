@@ -5,7 +5,7 @@ import validateItem.Validate;
 import java.io.File;
 
 public class storeArchive {
-    public static void storeItemMovie(String movie[], String showTime[][], int[][][] info, String root) {
+    public static void storeItemMovie(String[] movie, String[][] showTime, int[][][] info, String root) {
         String text = "";
         String route = root + "storeMovieSchedule.txt";
         File report = new File(route);
@@ -25,7 +25,7 @@ public class storeArchive {
             }
         }
     }
-    public static void storeName(String movie[],String root){
+    public static void storeName(String[] movie, String root){
         String text = "";
         String route = root + "Movies.txt";
         File report = new File(route);
@@ -38,7 +38,7 @@ public class storeArchive {
             Validate.valArchive("\n", route, false);
         }
     }
-    public static void storeHour(String showTime[][],String root){
+    public static void storeHour(String[][] showTime, String root){
         String text = "";
         String route = root + "Times.txt";
         File report = new File(route);
