@@ -11,11 +11,11 @@ public class storeArchive {
         File report = new File(route);
         if (report.exists()) report.delete();
         if (movie != null && showTime != null) {
-            for (int i = 0; i < showTime.length-1; i++) {
+            for (int i = 0; i < showTime.length; i++) {
 
                 text = String.valueOf(movie[i]) + " ";
                 Validate.valArchive(text, route, false);
-                for (int j = 0; j < showTime[i].length; j++) {
+                for (int j = 0; j < showTime[i].length-1; j++) {
                     text = String.valueOf(showTime[i][j]) + " ";
 
                     Validate.valArchive(text, route, false);
@@ -44,7 +44,7 @@ public class storeArchive {
         File report = new File(route);
         if (report.exists()) report.delete();
         if (showTime != null ) {
-            for (int i = 0; i < showTime.length-1; i++) {
+            for (int i = 0; i < showTime.length; i++) {
                 for (int j = 0; j < showTime[0].length; j++) {
                     text = String.valueOf(showTime[i][j])+" ";
                     Validate.valArchive(text, route, false);
