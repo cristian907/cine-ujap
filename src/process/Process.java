@@ -72,8 +72,8 @@ public class Process {
     }
 
     public static void buyTicket(String[] movies, String[][] times, int[][][] info, Scanner key) {
-        int movieID, timeID, ticketID, seatQty, price = 0;
-        String text, status, movieName, showTime = "";
+        int movieID, timeID = 0;
+        String text, movieName, showTime = "";
 
         if (movies != null && times != null && info != null) {
             for (int i = 0; i < movies.length; i++) {
@@ -104,31 +104,33 @@ public class Process {
                 timeID = Validate.valIdExist(times[0].length, text, key);
             }
             showTime = times[movieID][timeID];
-
-            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2]+"\n";
-            seatQty = Validate.validSeatQtypart1(info[movieID][timeID][2], text, key);
-            if (seatQty == 0) return;
-
-            text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
-            System.out.print(text);
-            ticketID = Validate.valIdExist(info[0][0].length - 1, text, key);
-            if (ticketID == -1) return;
-
-            if (ticketID == 0) {
-                info[movieID][timeID][0] += seatQty;
-                status = "Entrada simple";
-                price = seatQty * 3;
-            } else {
-                info[movieID][timeID][1] += seatQty;
-                status = "Entrada con snack";
-                price = seatQty * 6;
-            }
-            info[movieID][timeID][2] -= seatQty;
-            printTicket(movieName, showTime, status, seatQty, price);
+            printTicket(info, movieID, timeID, movieName, showTime, key);
             key.nextLine();
         }
     }
-    private static void printTicket(String movieName, String showTime, String status, int seatQty, int price) {
+    private static void printTicket(int[][][] info, int movieID, int timeID, String movieName, String showTime, Scanner key) {
+        String text, status = "";
+        int seatQty, ticketID, price = 0;
+        text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2]+"\n";
+
+        seatQty = Validate.validSeatQtypart1(info[movieID][timeID][2], text, key);
+        if (seatQty == 0) return;
+
+        text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
+        System.out.print(text);
+        ticketID = Validate.valIdExist(info[0][0].length - 1, text, key);
+        if (ticketID == -1) return;
+
+        if (ticketID == 0) {
+            info[movieID][timeID][0] += seatQty;
+            status = "Entrada simple";
+            price = seatQty * 3;
+        } else {
+            info[movieID][timeID][1] += seatQty;
+            status = "Entrada con snack";
+            price = seatQty * 6;
+        }
+        info[movieID][timeID][2] -= seatQty;
         System.out.println("---------------------------------Recibo de Compra---------------------------------");
         System.out.printf("%-30s %50s\n", "Pelicula : ", movieName);
         System.out.printf("%-50s %30s\n", "Horario : ", showTime);
@@ -138,7 +140,6 @@ public class Process {
         System.out.printf("\n%57s", "¡Gracias por comprar en CineUjap!");
         System.out.print("\n\nPresione ENTER para continuar: ");
     }
-
 
 
     public static void showMenu(String[] names, String[][] times, int[][][] info, Scanner key) throws IOException {
