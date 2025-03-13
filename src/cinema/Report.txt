@@ -1,8 +1,16 @@
 ---------------------Reporte de ventas--------------------
 Película 1:
-Nombre:   larry
+Nombre:      xd
 Hora    |   Ventas n   |    Ventas s   |     TOTAL $
-12:00           0$               0$               0$
-                                                  0$
+12:00          0$              0$              0$
+15:00          0$             18$             18$
+                                              18$
 
-El total de ventas del dia fue de: 0$
+Película 2:
+Nombre:      fe
+Hora    |   Ventas n   |    Ventas s   |     TOTAL $
+13:15          0$              0$              0$
+18:45          0$              0$              0$
+                                               0$
+
+El total de ventas del dia fue de: 18$

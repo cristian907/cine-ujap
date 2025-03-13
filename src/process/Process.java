@@ -1,8 +1,10 @@
 package process;
 
 import validateItem.Validate;
+import helpers.consultMain;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -44,7 +46,7 @@ public class Process {
         for (int i = 0; i < times.length; i++) {
             text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
-            names[i] = Validate.validMovieName(text, key, names);
+            names[i] = Validate.validMovieName(text, key);
             for (int j = 0; j < times[0].length; j++) {
                 text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
                 System.out.print(text);
@@ -169,7 +171,7 @@ public class Process {
         }
     }
 
-    public static void showMenu(String[] names, String[][] times, int[][][] info, Scanner key) {
+    public static void showMenu(String[] names, String[][] times, int[][][] info, Scanner key) throws IOException {
         String text = "";
         int option, band = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
@@ -177,9 +179,11 @@ public class Process {
             System.out.println("\nMenu de Opciones");
             System.out.println("1. Mostrar Cartelera");
             System.out.println("2. Comprar Entradas");
+            System.out.println("3. Buscar Peliculas por Nombre");
+            System.out.println("4. Buscar Peliculas por Horario");
             System.out.println("\n¡ATENCION SOLO PERSONAL AUTORIZADO!");
-            System.out.println("3. Cambiar Cartelera");
-            System.out.println("4. Cerrar Programa");
+            System.out.println("5. Cambiar Cartelera");
+            System.out.println("6. Cerrar Programa");
             text = "\nSeleccione una opción: ";
             option = Validate.valOpt(text, key);
             switch (option) {
@@ -196,12 +200,18 @@ public class Process {
                     }
                     break;
                 case 3:
+                    consultMain.consult(true, key);
+                    break;
+                case 4:
+                    consultMain.consult(false, key);
+                    break;
+                case 5:
                     iniMovie(names);
                     iniShowtime(times);
                     iniSeats(info);
                     attachData(times, names, key);
                     break;
-                case 4:
+                case 6:
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:
@@ -209,7 +219,7 @@ public class Process {
                     System.out.print("Presione ENTER para continuar: ");
                     key.nextLine();
             }
-        } while (option != 4);
+        } while (option != 6);
     }
 }
 

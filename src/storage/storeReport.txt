@@ -1,0 +1,26 @@
+---------------------Reporte de ventas--------------------
+Película 1:
+Nombre:       a
+Hora    |   Ventas n   |    Ventas s   |     TOTAL $
+01:00          0$              0$              0$
+02:00          0$            120$            120$
+03:00          0$              0$              0$
+                                             120$
+
+Película 2:
+Nombre:       b
+Hora    |   Ventas n   |    Ventas s   |     TOTAL $
+04:00          0$              0$              0$
+05:00          0$              0$              0$
+06:00          0$              0$              0$
+                                               0$
+
+Película 3:
+Nombre:       c
+Hora    |   Ventas n   |    Ventas s   |     TOTAL $
+07:00          0$              0$              0$
+08:00          0$              0$              0$
+09:00          0$              0$              0$
+                                               0$
+
+El total de ventas del dia fue de: 120$

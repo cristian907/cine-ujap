@@ -20,7 +20,7 @@ public class Validate {
         File fileB = new File(movies);
         File fileC = new File(times);
 
-        if (!fileA.exists() && !fileB.exists() && !fileC.exists()) {
+        if (!fileA.exists() || !fileB.exists() || !fileC.exists()) {
             System.out.println("No existen los archivos, se creara el catalogo manualmente");
             return false;
         }
@@ -102,7 +102,7 @@ public class Validate {
 
 
     // Metodo para validar el nombre de la pelicula
-    public static String validMovieName(String text, Scanner key, String[] names) {
+    public static String validMovieName(String text, Scanner key) {
         String name = key.nextLine();
         int i=0;
         while (true) {
@@ -170,7 +170,7 @@ public class Validate {
         try {
             System.out.print(text);
             option = Integer.parseInt(key.nextLine());
-            if (option < 1 || option > 5) {
+            if (option < 1 || option > 10) {
                 option = 0;
             }
             return option;
