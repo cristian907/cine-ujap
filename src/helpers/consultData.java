@@ -3,18 +3,26 @@ package helpers;
 import java.util.Scanner;
 
 public class consultData {
-    public static String[] consult(Scanner arch, String name){
-
-        if (!arch.hasNextLine()){
+    public static String[] consultName(Scanner arch, String name) {
+        name=name.toLowerCase();
+        if (!arch.hasNextLine()) {
             return null;
         }
-        String[] line=arch.nextLine().split(" ");
-        String value=line[0];
 
-        if (value.equals(name)){
+        String[] line = arch.nextLine().split(" ");
+        String value = line[0].toLowerCase();
+
+        if (value.equals(name)) {
             return line;
         }
-        return consult(arch, name);
+        String[] result = consultName(arch, name);
+        if (result != null) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = result[i].toLowerCase();
+            }
+        }
+
+        return result;
     }
     public static int convertTime(String text){
         String[] time=text.split(":");
