@@ -35,8 +35,8 @@ public class Main {
             timeQty = Validate.valSize(text, key);
 
             // Instanciacion de Arreglos
-            movies = new String[movieQty];
-            showtimes = new String[movieQty][timeQty];
+            movies = new String[movieQty*2];
+            showtimes = new String[movieQty][timeQty+1];
             movieInfo = new int[movieQty][timeQty][3];
         }
         //desarrollo
