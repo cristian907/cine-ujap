@@ -43,29 +43,15 @@ public class Process {
 
     public static void attachData(String[][] times, String[] names, Scanner key) {
         String text = "";
-        int conter=0;
-        int conter2=0;
-        int band=0;
-        for (int i = 0; i < names.length; i=i+2) {
+        for (int i = 0; i < times.length; i++) {
             text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
             System.out.print(text);
             names[i] = Validate.validMovieName(text, key);
-            text = "\nIntroduzca el genero de la pelicula #" + (i + 1) + ": ";
-            System.out.print(text);
-            names[i+1] = Validate.validMovieName(text, key);
-            for (int j = 0; j < times[0].length-1; j++) {
-                text = "Introduzca el horario #" + (j+1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
+            for (int j = 0; j < times[0].length; j++) {
+                text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
                 System.out.print(text);
-                times[conter2][j] = Validate.validHour(text, key);
-                if (band==0) {
-                    conter++;
-                    band=1;
-                }
+                times[i][j] = Validate.validHour(text, key);
             }
-            text = "\nIntroduzca la duracion de la pelicula #" + (i + 1) + ": ";
-            System.out.print(text);
-            times[conter2][conter] = Validate.validMovieName(text, key);
-            conter2++;
         }
     }
 
