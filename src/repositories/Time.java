@@ -1,7 +1,5 @@
 package repositories;
 
-import java.util.Scanner;
-
 public class Time {
 
     private String iniHour;
@@ -12,10 +10,12 @@ public class Time {
 
     }
 
-    public Time(String iniHour, String dure, String serialArchiveNumber) throws IllegalArgumentException{
+    public Time(String iniHour, String finHour, String serialArchiveNumber) throws IllegalArgumentException{
 
-        this.utilValiniHour(iniHour);
-        this.calcHour(dure);
+//        this.utilValHour(iniHour);
+        this.iniHour = utilValHour(iniHour);
+//        this.utilValHour(finHour);
+        this.finHour = utilValHour(finHour);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 
         if (this.iniHour == null || this.serialArchiveNumber == null || this.finHour == null){
@@ -48,13 +48,13 @@ public class Time {
         this.serialArchiveNumber = (serial.isEmpty()) ? null: serial;
     }
 
-    private void utilValiniHour(String hour) throws IllegalArgumentException{
+    private String utilValHour(String hour) throws IllegalArgumentException{
 
         if (!hour.matches("\\d{1,2}:\\d{2}")){
             throw new IllegalArgumentException(" [la hora debe estar escrita en formato hh:mm] ");
 
         }else{
-            this.iniHour=hour;
+            return hour;
         }
     }
 

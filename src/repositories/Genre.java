@@ -6,9 +6,9 @@ public class Genre {
     private String movieName;
     private String serialArchiveNumber;
 
-    public Genre(String genre, String name, String serialArchiveNumber){
+    public Genre(String genre, String serialArchiveNumber){
 
-        this.utilValMovieName(name);
+//        this.utilValMovieName(name);
         this.utilValGenre(genre);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 

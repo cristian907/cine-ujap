@@ -7,13 +7,13 @@ public class Movie {
     private String serialArchiveNumber;
 
 
-    public Movie(String movieName, String movieGenre, String serialArchiveNumber){
+    public Movie(String movieName, String serialArchiveNumber){
 
         this.utilValMovieName(movieName);
-        this.utilValGenre(movieGenre);
+//        this.utilValGenre(movieGenre);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 
-        if (this.movieName == null || this.serialArchiveNumber == null || this.movieGenre == null){
+        if (this.movieName == null || this.serialArchiveNumber == null){
             throw new IllegalArgumentException("- Error-Instancia: Objeto incompleto. ");
         }
 
@@ -54,15 +54,15 @@ public class Movie {
         }
 
     }
-    private void utilValGenre(String genre) throws IllegalArgumentException{
-
-        String moGenre = genre.trim().toLowerCase();
-
-        if (moGenre.equals("suspenso") || moGenre.equals("terror") || moGenre.equals("comedia") || moGenre.equals("romance")
-                || moGenre.equals("documental") || moGenre.equals("experimental") || moGenre.equals("accion")){
-            this.movieGenre = moGenre;
-        } else{
-            throw new IllegalArgumentException(" [El genero no es valido] los disponibles son comedia, terror, romance, suspenso, documental y experimental" );
-        }
-    }
+//    private void utilValGenre(String genre) throws IllegalArgumentException{
+//
+//        String moGenre = genre.trim().toLowerCase();
+//
+//        if (moGenre.equals("suspenso") || moGenre.equals("terror") || moGenre.equals("comedia") || moGenre.equals("romance")
+//                || moGenre.equals("documental") || moGenre.equals("experimental") || moGenre.equals("accion")){
+//            this.movieGenre = moGenre;
+//        } else{
+//            throw new IllegalArgumentException(" [El genero no es valido] los disponibles son comedia, terror, romance, suspenso, documental y experimental" );
+//        }
+//    }
 }

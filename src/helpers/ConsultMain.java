@@ -8,66 +8,35 @@ import java.util.Scanner;
 
 public class ConsultMain {
 
-    public static void consult(int opt, Scanner key) throws IOException {
-
-
-        String text;
-
-        if (opt==0) {
-            String movies = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
-            Scanner file = Validate.readFile(movies);
-            text = "Introduzca el nombre de la pelicula a buscar: ";
-            System.out.println(text);
-            String name = Validate.validMovieName(text, key);
-            String[] res;
-            if (file != null) {
-                res = ConsultData.consultName(file, name);
-                if (res != null) {
-                    ConsultData.showCaseMovie(res);
-                    file = null;
-                } else {
-                    System.out.println("El nombre no fue encontrado.");
-                }
+    public static void consult(Scanner key) throws IOException {
+        String text = "";
+        int option, opt = 0;
+        System.out.println("\n\nSeleccione el modo de busqueda:");
+        do {
+            System.out.println("\nMenu de Opciones");
+            System.out.println("1. Busqueda de peliculas por nombre");
+            System.out.println("2. Busqueda de peliculas por horario");
+            System.out.println("3. Busqueda de peliculas por género");
+            System.out.println("4. Terminar busqueda");
+            text = "\nSeleccione una opción: ";
+            option = Validate.valOpt(text, key);
+            switch (option) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
+                    break;
+                default:
+                    System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.print("Presione ENTER para continuar: ");
+                    key.nextLine();
             }
-            file = null;
-        } else if (opt == 1){
-            String times = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
-            Scanner file = Validate.readFile(times);
-            text = "Introduzca el primer horario del rango a buscar: ";
-            System.out.println(text);
-            String hi = Validate.validHour(text, key);
-            text = "Introduzca el segundo horario del rango a buscar: ";
-            System.out.println(text);
-            String hf = Validate.validHour(text, key);
-            String r = "";
-            if (file != null) {
-                String res = ConsultData.consultTime(file, ConsultData.convertTime(hi), ConsultData.convertTime(hf), r);
-                if (!res.trim().isEmpty()) {
-                    ConsultData.showCaseTime(res);
-                    file = null;
-                } else {
-                    System.out.println("Disculpe, no hay peliculas en ese rango.");
-                }
-            }
-            file = null;
-        } else{
-            String genres = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
-            Scanner file = Validate.readFile(genres);
-            text = "Introduzca el nombre de la pelicula a buscar: ";
-            System.out.println(text);
-            String name = Validate.validMovieName(text, key);
-            String movies = "";
-            if (file != null) {
-                movies = ConsultData.consultGenre(file, name, movies);
-                if (movies != null) {
-                    ConsultData.showCaseGenres(movies);
-                    file = null;
-                } else {
-                    System.out.println("El nombre no fue encontrado.");
-                }
-            }
-            file = null;
-        }
+        } while (option != 4);
+
 
     }
 
