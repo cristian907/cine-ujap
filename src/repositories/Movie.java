@@ -6,6 +6,11 @@ public class Movie {
     private String movieGender;
     private String serialArchiveNumber;
 
+    public Movie(){
+
+
+    }
+
     public Movie(String movieName, String movieGender, String serialArchiveNumber){
 
         this.utilValMovieName(movieName);

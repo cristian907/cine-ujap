@@ -41,29 +41,55 @@ public class Process {
         }
     }
 
-    public static void attachData(String[][] times, String[] names, Scanner key) {
-        String text = "";
-        for (int i = 0; i < times.length; i++) {
-            text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
-            System.out.print(text);
-            names[i] = Validate.validMovieName(text, key);
-            for (int j = 0; j < times[0].length; j++) {
-                text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
-                System.out.print(text);
-                times[i][j] = Validate.validHour(text, key);
+    public static void inigenres(String[] genres) {
+        if (genres != null) {
+            for (int i = 0; i < genres.length; i++) {
+                genres[i] = "";
             }
         }
     }
 
-    public static void showCase(String[] names, String[][] times, Scanner key) {
+    public static void inifinShowtime(String[][] finTimes) {
+        if (finTimes != null) {
+            for (int i = 0; i < finTimes.length; i++) {
+                for (int j = 0; j < finTimes[i].length; j++) {
+                    finTimes[i][j] = "";
+                }
+            }
+        }
+    }
+
+    public static void attachData(String[][] times, String[] names, String[] genres, String[][] finShowTimes, Scanner key) {
+        String text, dure = "";
+        for (int i = 0; i < times.length; i++) {
+            text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
+            System.out.print(text);
+            names[i] = Validate.validMovieName(text, key);
+            text = "\nIntroduzca el genero de la pelicula #" + (i + 1) + ": ";
+            System.out.print(text);
+            genres[i] = Validate.validMovieName(text, key);
+            text = "\nIntroduzca la duracion de la pelicula #" + (i + 1) + ": ";
+            System.out.print(text);
+            dure = Validate.validHour(text, key);
+            for (int j = 0; j < times[0].length; j++) {
+                text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
+                System.out.print(text);
+                times[i][j] = Validate.validHour(text, key);
+                finShowTimes[i][j] = Validate.calcHour(dure, times[i][j]);
+            }
+        }
+    }
+
+    public static void showCase(String[] names, String[][] times,String[] genres, String[][] finShowTimes, Scanner key) {
         System.out.println("\n-----------------------------------------CATALOGO-----------------------------------------\n");
         if (names != null && times != null) {
             for (int i = 0; i < times.length; i++) {
                 System.out.printf("%-25s\n", names[i]);
+                System.out.printf("genero: %-25s\n", genres[i]);
                 for (int j = 0; j < times[0].length - 1; j++) {
-                    System.out.printf("\t%-6s \t\t//\t", times[i][j]);
+                    System.out.printf("\t%-5s - %-5s \t\t//\t", times[i][j], finShowTimes[i][j]);
                 }
-                System.out.printf("\t%-6s\n", times[i][times[0].length - 1]);
+                System.out.printf("\t%-5s - %-5s\n", times[i][times[0].length - 1], finShowTimes[i][finShowTimes[0].length - 1]);
                 System.out.println();
             }
             System.out.print("\nPresione ENTER para continuar: ");
@@ -142,7 +168,7 @@ public class Process {
     }
 
 
-    public static void showMenu(String[] names, String[][] times, int[][][] info, Scanner key) throws IOException {
+    public static void showMenu(String[] names, String[][] times, int[][][] info, String[] genres, String[][] finShowTimes, Scanner key) throws IOException {
         String text = "";
         int option;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
@@ -159,7 +185,7 @@ public class Process {
             option = Validate.valOpt(text, key);
             switch (option) {
                 case 1:
-                    showCase(names, times, key);
+                    showCase(names, times, genres, finShowTimes, key);
                     break;
                 case 2:
                     if (Validate.isCinemaSoldOut(info)) {
@@ -180,7 +206,7 @@ public class Process {
                     iniMovie(names);
                     iniShowtime(times);
                     iniSeats(info);
-                    attachData(times, names, key);
+                    attachData(times, names, genres, finShowTimes,key);
                     break;
                 case 6:
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");

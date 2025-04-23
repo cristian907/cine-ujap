@@ -12,21 +12,24 @@ public class Main {
         int[][][] movieInfo;
         String[][] showtimes;
         String[] movies;
+        String[][] finShowtimes;
+        String[] geners;
+
         int movieQty = 0, timeQty = 0;
         Scanner key = new Scanner(System.in);
 
-        boolean databaseExists = Validate.fileExists();
-
-        if (databaseExists) {
-            movies = LoadData.loadNames();
-            showtimes = LoadData.loadTimes(movies);
-            if (movies != null && showtimes != null) {
-                movieInfo = new int[movies.length][showtimes.length][3];
-            } else {
-                System.out.println("Error: Fallo al cargar el archivo");
-                return;
-            }
-        } else {
+//        boolean databaseExists = Validate.fileExists();
+//
+//        if (databaseExists) {
+//            movies = LoadData.loadNames();
+//            showtimes = LoadData.loadTimes(movies);
+//            if (movies != null && showtimes != null) {
+//                movieInfo = new int[movies.length][showtimes.length][3];
+//            } else {
+//                System.out.println("Error: Fallo al cargar el archivo");
+//               // return;
+//            }
+//        } else {
             // Peticion de longitud de los arreglos
             text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
             movieQty = Validate.valSize(text, key);
@@ -38,14 +41,17 @@ public class Main {
             movies = new String[movieQty];
             showtimes = new String[movieQty][timeQty];
             movieInfo = new int[movieQty][timeQty][3];
-        }
-        //desarrollo
-        ProcessMain.process(movieInfo, showtimes, movies, key, databaseExists);
-        StoreMain.store(movieInfo, showtimes, movies);
+            geners = new String[movieQty];
+            finShowtimes = new String[movieQty][timeQty];
+//        }
+            //desarrollo
+            ProcessMain.process(movieInfo, showtimes, movies, geners, finShowtimes, key);
+            StoreMain.store(movieInfo, showtimes, movies);
 
-        movieInfo = null;
-        showtimes = null;
-        movies = null;
-        key.close();
+            movieInfo = null;
+            showtimes = null;
+            movies = null;
+            key.close();
+        }
     }
-}
+

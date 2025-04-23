@@ -4,18 +4,20 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class ProcessMain {
-    public static void process(int[][][] triArray, String[][] biArray, String[] strArray, Scanner key, boolean databaseExists) throws IOException {
+    public static void process(int[][][] movieInfo, String[][] showTimes, String[] movies, String[] genres, String[][] finShowTime, Scanner key) throws IOException {
 
-        Process.iniSeats(triArray);
-        if (!databaseExists) {
+        Process.iniSeats(movieInfo);
+       // if (!databaseExists) {
             //Inicio de Arreglos
-            Process.iniShowtime(biArray);
-            Process.iniMovie(strArray);
+            Process.iniShowtime(showTimes);
+            Process.iniMovie(movies);
+            Process.inigenres(genres);
+            Process.inifinShowtime(finShowTime);
 
             //Process desarrollo
-            Process.attachData(biArray, strArray, key);
-        }
+            Process.attachData(showTimes, movies, genres, finShowTime, key);
+       // }
 
-        Process.showMenu(strArray,biArray,triArray, key);
+        Process.showMenu(movies,showTimes,movieInfo, genres, finShowTime, key);
     }
 }

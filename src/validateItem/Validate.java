@@ -99,6 +99,31 @@ public class Validate {
         }
     }
 
+    public static String calcHour(String dure, String iniHour){
+
+        String[] parts = iniHour.split(":");
+        int hour = Integer.parseInt(parts[0]);
+        int minutes = Integer.parseInt(parts[1]);
+        String[] dureParts = dure.split(":");
+        int dureHour = Integer.parseInt(dureParts[0]);
+        int dureMinutes = Integer.parseInt(dureParts[1]);
+        int finMinutes = dureMinutes + minutes;
+        int finHour = dureHour + hour;
+        if (finMinutes>59){
+            finMinutes-=60;
+            finHour++;
+        }
+        if (finHour>23){
+            finHour-=24;
+        }
+
+        String str = "%02d:%02d";
+        parts = null;
+        dureParts = null;
+        return String.format(str, finHour, finMinutes);
+
+    }
+
 
     // Metodo para validar el nombre de la pelicula
     public static String validMovieName(String text, Scanner key) {
