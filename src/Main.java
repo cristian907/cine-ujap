@@ -1,9 +1,12 @@
 import composables.StoreMain;
+import repositories.ArchiveUtil;
 import storage.LoadData;
 import validateItem.Validate;
 import process.ProcessMain;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
@@ -14,6 +17,16 @@ public class Main {
         String[] movies;
         String[][] finShowtimes;
         String[] geners;
+        ArchiveUtil archive = null;
+
+        String router = Paths.get("").toRealPath().toString()+"/src/storage/";
+
+        try {
+            archive = new ArchiveUtil(router);
+        } catch (FileNotFoundException | IllegalArgumentException e) {
+            System.out.println("- Error-Instancia: ["+e.getMessage()+"] ");
+            return;
+        }
 
         int movieQty = 0, timeQty = 0;
         Scanner key = new Scanner(System.in);
@@ -46,7 +59,7 @@ public class Main {
 //        }
             //desarrollo
             ProcessMain.process(movieInfo, showtimes, movies, geners, finShowtimes, key);
-            StoreMain.store(movieInfo, showtimes, movies);
+            StoreMain.store(movieInfo, showtimes, movies ,geners, archive);
 
             movieInfo = null;
             showtimes = null;
