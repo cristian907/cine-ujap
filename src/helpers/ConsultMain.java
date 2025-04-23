@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class ConsultMain {
 
-    public static void consult(boolean opt, Scanner key) throws IOException {
+    public static void consult(int opt, Scanner key) throws IOException {
 
 
         String text;
 
-        if (opt) {
+        if (opt==0) {
             String movies = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
             Scanner file = Validate.readFile(movies);
             text = "Introduzca el nombre de la pelicula a buscar: ";
@@ -30,7 +30,7 @@ public class ConsultMain {
                 }
             }
             file = null;
-        } else {
+        } else if (opt == 1){
             String times = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
             Scanner file = Validate.readFile(times);
             text = "Introduzca el primer horario del rango a buscar: ";
@@ -50,7 +50,26 @@ public class ConsultMain {
                 }
             }
             file = null;
+        } else{
+            String genres = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
+            Scanner file = Validate.readFile(genres);
+            text = "Introduzca el nombre de la pelicula a buscar: ";
+            System.out.println(text);
+            String name = Validate.validMovieName(text, key);
+            String movies = "";
+            if (file != null) {
+                movies = ConsultData.consultGenre(file, name, movies);
+                if (movies != null) {
+                    ConsultData.showCaseGenres(movies);
+                    file = null;
+                } else {
+                    System.out.println("El nombre no fue encontrado.");
+                }
+            }
+            file = null;
         }
 
     }
+
+
 }

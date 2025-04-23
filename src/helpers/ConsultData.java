@@ -1,5 +1,6 @@
 package helpers;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsultData {
@@ -44,6 +45,7 @@ public class ConsultData {
 
         String[] line = arch.nextLine().split(" ");
         String value = line[0].toLowerCase();
+        line = Arrays.copyOfRange(line, 1, line.length);
 
         if (value.equals(name)) {
             return line;
@@ -78,6 +80,21 @@ public class ConsultData {
         return consultTime(arch, min, max, text);
     }
 
+    public static String consultGenre(Scanner arch, String genre, String movies){
+
+        if (!arch.hasNextLine()){
+            return movies;
+        }
+        String[] line = arch.nextLine().split(" ");
+        String value = line[1].toLowerCase();
+        if (value.equals(genre)){
+            movies = movies + line[0] + " ";
+        }
+
+        line = null;
+        return consultGenre(arch, genre, movies);
+    }
+
     public static void showCaseMovie(String[] name) {
         if (name != null) {
             System.out.print(name[0] + " - ");
@@ -91,6 +108,14 @@ public class ConsultData {
     public static void showCaseTime(String text) {
         String[] line = text.split("/");
         System.out.println("Peliculas disponibles en este horario");
+        for (int i = 0; i < line.length; i++) {
+            System.out.println(line[i]);
+        }
+        line = null;
+    }
+    public static void showCaseGenres(String text){
+        String[] line = text.split(" ");
+        System.out.println("peliculas pertenecientes a este genero");
         for (int i = 0; i < line.length; i++) {
             System.out.println(line[i]);
         }

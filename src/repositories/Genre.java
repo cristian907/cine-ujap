@@ -58,7 +58,7 @@ public class Genre {
         String moGender = gender.trim().toLowerCase();
 
         if (moGender.equals("suspenso") || moGender.equals("terror") || moGender.equals("comedia") || moGender.equals("romance")
-                || moGender.equals("documental") || moGender.equals("experimental")){
+                || moGender.equals("documental") || moGender.equals("experimental") || moGender.equals("accion")){
             this.movieGenre = moGender;
         } else{
             throw new IllegalArgumentException(" [El genero no es valido] los disponibles son comedia, terror, romance, suspenso, documental y experimental" );
