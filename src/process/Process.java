@@ -61,21 +61,23 @@ public class Process {
 
     public static void attachData(String[][] times, String[] names, String[] genres, String[][] finShowTimes, Scanner key) {
         String text, dure = "";
-        for (int i = 0; i < times.length; i++) {
-            text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
-            System.out.print(text);
-            names[i] = Validate.validMovieName(text, key);
-            text = "\nIntroduzca el genero de la pelicula #" + (i + 1) + ": ";
-            System.out.print(text);
-            genres[i] = Validate.validMovieName(text, key);
-            text = "\nIntroduzca la duracion de la pelicula #" + (i + 1) + ": ";
-            System.out.print(text);
-            dure = Validate.validHour(text, key);
-            for (int j = 0; j < times[0].length; j++) {
-                text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
+        if (times != null && finShowTimes != null && names != null && genres != null) {
+            for (int i = 0; i < times.length; i++) {
+                text = "\nIntroduzca el nombre de la pelicula #" + (i + 1) + ": ";
                 System.out.print(text);
-                times[i][j] = Validate.validHour(text, key);
-                finShowTimes[i][j] = Validate.calcHour(dure, times[i][j]);
+                names[i] = Validate.validMovieName(text, key);
+                text = "\nIntroduzca el genero de la pelicula #" + (i + 1) + ": ";
+                System.out.print(text);
+                genres[i] = Validate.validMovieName(text, key);
+                text = "\nIntroduzca la duracion de la pelicula #" + (i + 1) + ": ";
+                System.out.print(text);
+                dure = Validate.validHour(text, key);
+                for (int j = 0; j < times[0].length; j++) {
+                    text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
+                    System.out.print(text);
+                    times[i][j] = Validate.validHour(text, key);
+                    finShowTimes[i][j] = Validate.calcHour(dure, times[i][j]);
+                }
             }
         }
     }
@@ -135,36 +137,38 @@ public class Process {
         }
     }
     private static void printTicket(int[][][] info, int movieID, int timeID, String movieName, String showTime, Scanner key) {
-        String text, status = "";
-        int seatQty, ticketID, price = 0;
-        text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2]+"\n";
+        if (info != null) {
+            String text, status = "";
+            int seatQty, ticketID, price = 0;
+            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2]+"\n";
 
-        seatQty = Validate.validSeatQtypart1(info[movieID][timeID][2], text, key);
-        if (seatQty == 0) return;
+            seatQty = Validate.validSeatQtypart1(info[movieID][timeID][2], text, key);
+            if (seatQty == 0) return;
 
-        text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
-        System.out.print(text);
-        ticketID = Validate.valIdExist(info[0][0].length - 1, text, key);
-        if (ticketID == -1) return;
+            text = "\nSeleccione tipo de entrada a comprar (0 para cancelar):\n1. Entrada simple (3$)\n2. Entrada con Snack (6$)\n";
+            System.out.print(text);
+            ticketID = Validate.valIdExist(info[0][0].length - 1, text, key);
+            if (ticketID == -1) return;
 
-        if (ticketID == 0) {
-            info[movieID][timeID][0] += seatQty;
-            status = "Entrada simple";
-            price = seatQty * 3;
-        } else {
-            info[movieID][timeID][1] += seatQty;
-            status = "Entrada con snack";
-            price = seatQty * 6;
+            if (ticketID == 0) {
+                info[movieID][timeID][0] += seatQty;
+                status = "Entrada simple";
+                price = seatQty * 3;
+            } else {
+                info[movieID][timeID][1] += seatQty;
+                status = "Entrada con snack";
+                price = seatQty * 6;
+            }
+            info[movieID][timeID][2] -= seatQty;
+            System.out.println("---------------------------------Recibo de Compra---------------------------------");
+            System.out.printf("%-30s %50s\n", "Pelicula : ", movieName);
+            System.out.printf("%-50s %30s\n", "Horario : ", showTime);
+            System.out.printf("%-50s %30s\n", "Tipo de entrada comprada : ", status);
+            System.out.printf("%-50s %30d\n", "Cantidad de entradas adquiridas : ", seatQty);
+            System.out.printf("%-50s %29d$\n", "Monto total : ", price);
+            System.out.printf("\n%57s", "¡Gracias por comprar en CineUjap!");
+            System.out.print("\n\nPresione ENTER para continuar: ");
         }
-        info[movieID][timeID][2] -= seatQty;
-        System.out.println("---------------------------------Recibo de Compra---------------------------------");
-        System.out.printf("%-30s %50s\n", "Pelicula : ", movieName);
-        System.out.printf("%-50s %30s\n", "Horario : ", showTime);
-        System.out.printf("%-50s %30s\n", "Tipo de entrada comprada : ", status);
-        System.out.printf("%-50s %30d\n", "Cantidad de entradas adquiridas : ", seatQty);
-        System.out.printf("%-50s %29d$\n", "Monto total : ", price);
-        System.out.printf("\n%57s", "¡Gracias por comprar en CineUjap!");
-        System.out.print("\n\nPresione ENTER para continuar: ");
     }
 
 
@@ -172,59 +176,60 @@ public class Process {
         String text = "";
         int option, opt = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
-        do {
-            System.out.println("\nMenu de Opciones");
-            System.out.println("1. Mostrar Cartelera");
-            System.out.println("2. Comprar Entradas");
-            System.out.println("3. Buscar Peliculas por Nombre");
-            System.out.println("4. Buscar Peliculas por Horario");
-            System.out.println("5. Buscar Peliculas por genero");
-            System.out.println("\n¡ATENCION SOLO PERSONAL AUTORIZADO!");
-            System.out.println("6. Cambiar Cartelera");
-            System.out.println("7. Cerrar Programa");
-            text = "\nSeleccione una opción: ";
-            option = Validate.valOpt(text, key);
-            switch (option) {
-                case 1:
-                    showCase(names, times, genres, finShowTimes, key);
-                    break;
-                case 2:
-                    if (Validate.isCinemaSoldOut(info)) {
-                        System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
-                        System.out.print("\nPresione ENTER para continuar: ");
+
+        if (names != null && times != null && info != null && genres != null) {
+            do {
+                System.out.println("\nMenu de Opciones");
+                System.out.println("1. Mostrar Cartelera");
+                System.out.println("2. Comprar Entradas");
+                System.out.println("3. Buscar Peliculas por Nombre");
+                System.out.println("4. Buscar Peliculas por Horario");
+                System.out.println("5. Buscar Peliculas por genero");
+                System.out.println("\n¡ATENCION SOLO PERSONAL AUTORIZADO!");
+                System.out.println("6. Cambiar Cartelera");
+                System.out.println("7. Cerrar Programa");
+                text = "\nSeleccione una opción: ";
+                option = Validate.valOpt(text, key);
+                switch (option) {
+                    case 1:
+                        showCase(names, times, genres, finShowTimes, key);
+                        break;
+                    case 2:
+                        if (Validate.isCinemaSoldOut(info)) {
+                            System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
+                            System.out.print("\nPresione ENTER para continuar: ");
+                            key.nextLine();
+                        } else {
+                            buyTicket(names, times, info, key);
+                        }
+                        break;
+                    case 3:
+                        opt = 0;
+                        ConsultMain.consult(opt, key);
+                        break;
+                    case 4:
+                        opt = 1;
+                        ConsultMain.consult(opt, key);
+                        break;
+                    case 5:
+                        opt = 2;
+                        ConsultMain.consult(opt, key);
+                        break;
+                    case 6:
+                        iniMovie(names);
+                        iniShowtime(times);
+                        iniSeats(info);
+                        attachData(times, names, genres, finShowTimes,key);
+                        break;
+                    case 7:
+                        System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
+                        break;
+                    default:
+                        System.out.println("\n¡ERROR! Elija una opción valida");
+                        System.out.print("Presione ENTER para continuar: ");
                         key.nextLine();
-                    } else {
-                        buyTicket(names, times, info, key);
-                    }
-                    break;
-                case 3:
-                    opt = 0;
-                    ConsultMain.consult(opt, key);
-                    break;
-                case 4:
-                    opt = 1;
-                    ConsultMain.consult(opt, key);
-                    break;
-                case 5:
-                    opt = 2;
-                    ConsultMain.consult(opt, key);
-                    break;
-                case 6:
-                    iniMovie(names);
-                    iniShowtime(times);
-                    iniSeats(info);
-                    attachData(times, names, genres, finShowTimes,key);
-                    break;
-                case 7:
-                    System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
-                    break;
-                default:
-                    System.out.println("\n¡ERROR! Elija una opción valida");
-                    System.out.print("Presione ENTER para continuar: ");
-                    key.nextLine();
-            }
-        } while (option != 6);
+                }
+            } while (option != 7);
+        }
     }
 }
-
-

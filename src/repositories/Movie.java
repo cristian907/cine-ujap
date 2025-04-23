@@ -3,21 +3,17 @@ package repositories;
 public class Movie {
 
     private String movieName;
-    private String movieGender;
+    private String movieGenre;
     private String serialArchiveNumber;
 
-    public Movie(){
 
-
-    }
-
-    public Movie(String movieName, String movieGender, String serialArchiveNumber){
+    public Movie(String movieName, String movieGenre, String serialArchiveNumber){
 
         this.utilValMovieName(movieName);
-        this.utilValGender(movieGender);
+        this.utilValGenre(movieGenre);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 
-        if (this.movieName == null || this.serialArchiveNumber == null || this.movieGender == null){
+        if (this.movieName == null || this.serialArchiveNumber == null || this.movieGenre == null){
             throw new IllegalArgumentException("- Error-Instancia: Objeto incompleto. ");
         }
 
@@ -31,12 +27,12 @@ public class Movie {
         this.movieName = name;
     }
 
-    public String getmovieGender() {
-        return movieGender;
+    public String getmovieGenre() {
+        return movieGenre;
     }
 
-    public void setMovieGender(String gender) {
-        this.movieGender = gender;
+    public void setMovieGenre(String genre) {
+        this.movieGenre = genre;
     }
 
     public String getSerialArchive(){
@@ -58,17 +54,15 @@ public class Movie {
         }
 
     }
-    private void utilValGender(String gender) throws IllegalArgumentException{
+    private void utilValGenre(String genre) throws IllegalArgumentException{
 
-        String moGender = gender.trim().toLowerCase();
+        String moGenre = genre.trim().toLowerCase();
 
-        if (moGender.equals("suspenso") || moGender.equals("terror") || moGender.equals("comedia") || moGender.equals("romance")
-                || moGender.equals("documental") || moGender.equals("experimental") || moGender.equals("accion")){
-            this.movieGender = moGender;
+        if (moGenre.equals("suspenso") || moGenre.equals("terror") || moGenre.equals("comedia") || moGenre.equals("romance")
+                || moGenre.equals("documental") || moGenre.equals("experimental") || moGenre.equals("accion")){
+            this.movieGenre = moGenre;
         } else{
             throw new IllegalArgumentException(" [El genero no es valido] los disponibles son comedia, terror, romance, suspenso, documental y experimental" );
         }
     }
-
-
 }
