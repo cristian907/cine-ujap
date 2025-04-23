@@ -1,4 +1,6 @@
-package repositories;
+package Structure;
+
+
 
 public class Stack<T> {
     private Node<T> stack;

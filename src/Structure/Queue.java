@@ -1,4 +1,8 @@
-package repositories;
+package Structure;
+
+
+
+
 
 public class Queue<T> {
     private Node<T> front;
