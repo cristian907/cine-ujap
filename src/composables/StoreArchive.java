@@ -152,9 +152,6 @@ public class StoreArchive {
                 text = String.format("                                            %4d$", plus);
                 //Validate.valArchive(text, route, true);
                 archive.setCreateArchive(text,routeName,true);
-                text = "";
-                //Validate.valArchive(text, route, true);
-                archive.setCreateArchive(text,routeName,true);
                 plus = 0;
             }
             text = "El total de ventas del dia fue de: " + plusTotal + "$";
