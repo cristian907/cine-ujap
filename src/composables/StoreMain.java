@@ -15,7 +15,7 @@ public class StoreMain {
             StoreArchive.storeItemMovie(strArray, biArray, archive,checking);
             StoreArchive.storeName(strArray,archive,checking);
             StoreArchive.storeHour(biArray,archive,checking);
-            StoreArchive.storeNameAndGender(strArray,genArray,archive,checking);
+            StoreArchive.storeNameAndGenre(strArray,genArray,archive,checking);
             StoreArchive.storeShowReport(strArray,biArray,triArray,archive,checking);
             return;
         }

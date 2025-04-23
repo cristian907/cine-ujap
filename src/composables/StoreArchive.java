@@ -15,10 +15,9 @@ public class StoreArchive {
         String text = "";
         int cont = 0;
         LocalDateTime time = LocalDateTime.now();
-        String definitiveHour = time.toString().substring(0,time.toString().length()-16);
         String routeName;
         if(!checking){
-            routeName = "MoviesWithHours"+definitiveHour+"_serial"+randomSerial;
+            routeName = "MoviesWithHours_"+time+"_serial"+randomSerial;
         }else{
             routeName = "MoviesWithHours";
         }
@@ -45,10 +44,9 @@ public class StoreArchive {
     public static void storeName(String[] movie, ArchiveUtil archive, boolean checking) {
         String text = "";
         LocalDateTime time = LocalDateTime.now();
-        String definitiveHour = time.toString().substring(0,time.toString().length()-16);
         String routeName;
         if(!checking){
-            routeName = "MovieStore"+definitiveHour+"_serial"+randomSerial;
+            routeName = "MovieStore_"+time+"_serial"+randomSerial;
         }else{
             routeName = "MovieStore";
         }
@@ -64,19 +62,18 @@ public class StoreArchive {
         }
     }
 
-    public static void storeNameAndGender(String[] movie, String[] gender, ArchiveUtil archive, boolean checking) {
+    public static void storeNameAndGenre(String[] movie, String[] genre, ArchiveUtil archive, boolean checking) {
         String text = ""; int cont = 0;
         LocalDateTime time = LocalDateTime.now();
-        String definitiveHour = time.toString().substring(0,time.toString().length()-16);
         String routeName;
         if(!checking){
-            routeName = "MovieAndGenderStore"+definitiveHour+"_serial"+randomSerial;
+            routeName = "MovieAndGenreStore_"+time+"_serial"+randomSerial;
         }else{
-            routeName = "MovieAndGenderStore";
+            routeName = "MovieAndGenreStore";
         }
-        if (movie != null && gender != null) {
+        if (movie != null && genre != null) {
             for (int i = 0; i < movie.length; i++) {
-                text = movie[i] + " "+gender[i];
+                text = movie[i] + " "+genre[i];
                 if(cont < movie.length-1) {
                     archive.setCreateArchive(text, routeName, true);
                 }else{
@@ -92,10 +89,9 @@ public class StoreArchive {
         String text = "";
         int cont = 0;
         LocalDateTime time = LocalDateTime.now();
-        String definitiveHour = time.toString().substring(0,time.toString().length()-16);
         String routeName;
         if(!checking){
-            routeName = "timeStore"+definitiveHour+"_serial"+randomSerial;
+            routeName = "timeStore_"+time+"_serial"+randomSerial;
         }else{
             routeName = "timeStore";
         }
@@ -121,10 +117,9 @@ public class StoreArchive {
         String text = "";
         int aux, plus = 0, plusTotal = 0;
         LocalDateTime time = LocalDateTime.now();
-        String definitiveHour = time.toString().substring(0,time.toString().length()-16);
         String routeName;
         if(!checking){
-            routeName = "ReportStore"+definitiveHour+"_serial"+randomSerial;
+            routeName = "ReportStore_"+time+"_serial"+randomSerial;
         }else{
             routeName = "ReportStore";
         }

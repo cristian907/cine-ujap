@@ -16,7 +16,7 @@ public class Main {
         String[][] showtimes;
         String[] movies;
         String[][] finShowtimes;
-        String[] geners;
+        String[] genres;
         ArchiveUtil archive = null;
 
         String router = Paths.get("").toRealPath().toString()+"/src/storage/";
@@ -54,16 +54,19 @@ public class Main {
             movies = new String[movieQty];
             showtimes = new String[movieQty][timeQty];
             movieInfo = new int[movieQty][timeQty][3];
-            geners = new String[movieQty];
+            genres = new String[movieQty];
             finShowtimes = new String[movieQty][timeQty];
 //        }
             //desarrollo
-            ProcessMain.process(movieInfo, showtimes, movies, geners, finShowtimes, key);
-            StoreMain.store(movieInfo, showtimes, movies ,geners, archive);
+            ProcessMain.process(movieInfo, showtimes, movies, genres, finShowtimes, key);
+            StoreMain.store(movieInfo, showtimes, movies ,genres, archive);
 
-            movieInfo = null;
-            showtimes = null;
             movies = null;
+            showtimes = null;
+            movieInfo = null;
+            genres = null;
+            finShowtimes = null;
+            archive = null;
             key.close();
         }
     }

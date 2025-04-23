@@ -8,24 +8,29 @@ public class ConsultData {
         String[] time = text.split(":");
         int h = Integer.parseInt(time[0]) * 60;
         int m = Integer.parseInt(time[1]);
+        time = null;
         return h + m;
     }
 
     public static boolean isMovieInRange(String[] line, int min, int max) {
-        for (int i = 1; i < line.length; i++) {
-            int t = convertTime(line[i]);
-            if (t >= min && t <= max) {
-                return true;
+        if (line != null) {
+            for (int i = 1; i < line.length; i++) {
+                int t = convertTime(line[i]);
+                if (t >= min && t <= max) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
     public static String getTimes(String text, String[] line, int min, int max) {
-        for (int i = 1; i < line.length; i++) {
-            int t = convertTime(line[i]);
-            if (t >= min && t <= max) {
-                text = text + " " + line[i];
+        if (line != null) {
+            for (int i = 1; i < line.length; i++) {
+                int t = convertTime(line[i]);
+                if (t >= min && t <= max) {
+                    text = text + " " + line[i];
+                }
             }
         }
         return text;
@@ -51,6 +56,7 @@ public class ConsultData {
             System.out.println("El nombre " + name + " no fue encontrado en esta línea: " + String.join(" ", line));
         }
 
+        line = null;
         return result;
 
     }
@@ -67,15 +73,19 @@ public class ConsultData {
             text = getTimes(text, line, min, max);
             text = text + "/";
         }
+
+        line = null;
         return consultTime(arch, min, max, text);
     }
 
     public static void showCaseMovie(String[] name) {
-        System.out.print(name[0] + " - ");
-        for (int i = 1; i < name.length; i++) {
-            System.out.print(name[i] + " ");
+        if (name != null) {
+            System.out.print(name[0] + " - ");
+            for (int i = 1; i < name.length; i++) {
+                System.out.print(name[i] + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     public static void showCaseTime(String text) {
