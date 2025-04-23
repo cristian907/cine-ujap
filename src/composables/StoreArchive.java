@@ -15,9 +15,10 @@ public class StoreArchive {
         String text = "";
         int cont = 0;
         LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
         String routeName;
         if(!checking){
-            routeName = "MoviesWithHours_"+time+"_serial"+randomSerial;
+            routeName = "MoviesWithHours_"+finalTime+"_serial"+randomSerial;
         }else{
             routeName = "MoviesWithHours";
         }
@@ -44,9 +45,10 @@ public class StoreArchive {
     public static void storeName(String[] movie, ArchiveUtil archive, boolean checking) {
         String text = "";
         LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
         String routeName;
         if(!checking){
-            routeName = "MovieStore_"+time+"_serial"+randomSerial;
+            routeName = "MovieStore_"+finalTime+"_serial"+randomSerial;
         }else{
             routeName = "MovieStore";
         }
@@ -65,9 +67,10 @@ public class StoreArchive {
     public static void storeNameAndGenre(String[] movie, String[] genre, ArchiveUtil archive, boolean checking) {
         String text = ""; int cont = 0;
         LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
         String routeName;
         if(!checking){
-            routeName = "MovieAndGenreStore_"+time+"_serial"+randomSerial;
+            routeName = "MovieAndGenreStore_"+finalTime+"_serial"+randomSerial;
         }else{
             routeName = "MovieAndGenreStore";
         }
@@ -89,9 +92,10 @@ public class StoreArchive {
         String text = "";
         int cont = 0;
         LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
         String routeName;
         if(!checking){
-            routeName = "timeStore_"+time+"_serial"+randomSerial;
+            routeName = "timeStore_"+finalTime+"_serial"+randomSerial;
         }else{
             routeName = "timeStore";
         }
@@ -117,9 +121,10 @@ public class StoreArchive {
         String text = "";
         int aux, plus = 0, plusTotal = 0;
         LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
         String routeName;
         if(!checking){
-            routeName = "ReportStore_"+time+"_serial"+randomSerial;
+            routeName = "ReportStore_"+finalTime+"_serial"+randomSerial;
         }else{
             routeName = "ReportStore";
         }

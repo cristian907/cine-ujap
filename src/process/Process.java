@@ -170,7 +170,7 @@ public class Process {
 
     public static void showMenu(String[] names, String[][] times, int[][][] info, String[] genres, String[][] finShowTimes, Scanner key) throws IOException {
         String text = "";
-        int option;
+        int option, opt = 0;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
         do {
             System.out.println("\nMenu de Opciones");
@@ -198,15 +198,15 @@ public class Process {
                     }
                     break;
                 case 3:
-                    int opt = 0;
+                    opt = 0;
                     ConsultMain.consult(opt, key);
                     break;
                 case 4:
-                    int opt = 1;
+                    opt = 1;
                     ConsultMain.consult(opt, key);
                     break;
                 case 5:
-                    int opt = 2;
+                    opt = 2;
                     ConsultMain.consult(opt, key);
                     break;
                 case 6:
