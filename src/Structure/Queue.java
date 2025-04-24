@@ -1,9 +1,4 @@
 package Structure;
-
-
-
-
-
 public class Queue<T> {
     private Node<T> front;
     private Node<T> last;

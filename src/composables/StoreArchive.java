@@ -42,7 +42,36 @@ public class StoreArchive {
         }
     }
 
-
+    public static void storeItemMovieOnlyHour(String[] movie, String[][] showTime, ArchiveUtil archive, boolean checking) throws IOException{
+        String text = "";
+        int cont = 0;
+        LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
+        String routeName;
+        if(!checking){
+            routeName = "MoviesWithOnlyHour_"+finalTime+"_serial"+randomSerial;
+        }else{
+            routeName = "MoviesWithOnlyHour";
+        }
+        if (movie != null && showTime != null) {
+            for (int i = 0; i < showTime.length; i++) {
+                text = movie[i] + " ";
+                archive.setCreateArchive(text,routeName,false);
+                for (int j = 0; j < showTime[i].length-1; j++) {
+                    text = showTime[i][j]+" ";
+                    archive.setCreateArchive(text,routeName,false);
+                }
+                cont++;
+                text = String.valueOf(showTime[i][showTime[0].length - 1]);
+                if(cont< movie.length){
+                    archive.setCreateArchive(text,routeName,true);
+                }else {
+                    archive.setCreateArchive(text,routeName,false);
+                }
+            }
+            time = null;
+        }
+    }
 
     public static void storeNameAndGenre(String[] movie, String[] genre, ArchiveUtil archive, boolean checking) {
         String text = ""; int cont = 0;
