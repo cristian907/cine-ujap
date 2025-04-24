@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class ArchiveUtil {
     private String router;
 
+    //Constructor
     public ArchiveUtil(String router) throws FileNotFoundException, IllegalArgumentException {
         if (router == null || router.isEmpty()) {
             throw new IllegalArgumentException("La ruta asignada no es válida.");
@@ -20,7 +21,6 @@ public class ArchiveUtil {
     }
 
     public Scanner getArchive(String nameArchive) {
-
         try {
             if (nameArchive == null || nameArchive.trim().isEmpty()) {
                 throw new IllegalArgumentException(" EL nombre del archivo es requerido. ");
@@ -38,6 +38,21 @@ public class ArchiveUtil {
         } catch (IOException | IllegalArgumentException e) {
             // Manejo de excepciones al abrir el archivo
             System.out.println("ReadArchive-Error: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public String[] getDirectories() {
+        try {
+            File directories = new File(this.router);
+
+            if (Objects.requireNonNull(directories.list()).length >= 1) {
+                return directories.list();
+            }
+            throw new FileNotFoundException(" No se encontraron archivos. ");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Directory-Error: "+ e.getMessage());
             return null;
         }
     }
@@ -63,20 +78,7 @@ public class ArchiveUtil {
         }
     }
 
-    public String[] getDirectories() {
-        try {
-            File directories = new File(this.router);
 
-            if (Objects.requireNonNull(directories.list()).length >= 1) {
-                return directories.list();
-            }
-            throw new FileNotFoundException(" No se encontraron archivos. ");
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Directory-Error: "+ e.getMessage());
-            return null;
-        }
-    }
 
     public boolean directoriesExist() {
         File directories = new File(this.router);

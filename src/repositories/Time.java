@@ -6,16 +6,15 @@ public class Time {
     private String finHour;
     private String serialArchiveNumber;
 
-    public Time(){
 
-    }
-
+    //Constructor
     public Time(String iniHour, String finHour, String serialArchiveNumber) throws IllegalArgumentException{
 
-//        this.utilValHour(iniHour);
+
         this.iniHour = utilValHour(iniHour);
-//        this.utilValHour(finHour);
+
         this.finHour = utilValHour(finHour);
+
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 
         if (this.iniHour == null || this.serialArchiveNumber == null || this.finHour == null){
@@ -23,31 +22,33 @@ public class Time {
         }
 
     }
-
+    //Getters
     public String getIniHour() {
         return iniHour;
-    }
-
-    public void setIniHour(String hour) {
-        this.iniHour = hour;
     }
 
     public String getFinHour() {
         return finHour;
     }
 
-    public void setFinHour(String hour) {
-        this.finHour = hour;
-    }
-
     public String getSerialArchive(){
         return this.serialArchiveNumber;
+    }
+
+    //Setters
+    public void setIniHour(String hour) {
+        this.iniHour = hour;
+    }
+
+    public void setFinHour(String hour) {
+        this.finHour = hour;
     }
 
     public void setSerialArchive(String serial){
         this.serialArchiveNumber = (serial.isEmpty()) ? null: serial;
     }
 
+    //Verifica el formato en el que debe ser ingresado la hora
     private String utilValHour(String hour) throws IllegalArgumentException{
 
         if (!hour.matches("\\d{1,2}:\\d{2}")){
@@ -58,6 +59,7 @@ public class Time {
         }
     }
 
+    /*
     private void calcHour(String dure){
 
         String[] parts = iniHour.split(":");
@@ -75,12 +77,10 @@ public class Time {
         if (finHour>23){
             finHour-=24;
         }
-
         String str = "%02d:%02d";
         parts = null;
         dureParts = null;
         this.finHour=String.format(str, finHour, finMinutes);
-
-    }
+    }*/
 
 }

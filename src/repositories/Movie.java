@@ -6,11 +6,10 @@ public class Movie {
     private String movieGenre;
     private String serialArchiveNumber;
 
-
+    //Constructor
     public Movie(String movieName, String serialArchiveNumber){
 
         this.utilValMovieName(movieName);
-//        this.utilValGenre(movieGenre);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 
         if (this.movieName == null || this.serialArchiveNumber == null){
@@ -18,25 +17,26 @@ public class Movie {
         }
 
     }
-
+    //Getters
     public String getmovieName() {
         return movieName;
-    }
-
-    public void setmovieName(String name) {
-        this.movieName = name;
     }
 
     public String getmovieGenre() {
         return movieGenre;
     }
 
-    public void setMovieGenre(String genre) {
-        this.movieGenre = genre;
-    }
-
     public String getSerialArchive(){
         return this.serialArchiveNumber;
+    }
+
+    //Setters
+    public void setmovieName(String name) {
+        this.movieName = name;
+    }
+
+    public void setMovieGenre(String genre) {
+        this.movieGenre = genre;
     }
 
     public void setSerialArchive(String serial){
@@ -44,7 +44,7 @@ public class Movie {
     }
 
 
-
+    //Verifica que el nombre no este vacio
     private void utilValMovieName(String name) throws IllegalArgumentException {
 
         if (name.trim().isEmpty()){
