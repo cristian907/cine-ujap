@@ -227,19 +227,19 @@ public class ConsultData {
         }
     }
 
-    public static void showCaseTime(String text) {
-        String[] line = text.split("/");
-        System.out.println("Peliculas disponibles en este horario");
+    public static void showCaseTime(Time time) {
+        String[] line = time.getMovies().split("/");
+        System.out.println("Peliculas disponibles en este horario: " + time.getIniHour() + "-" + time.getFinHour());
         for (int i = 0; i < line.length; i++) {
             System.out.println(line[i]);
         }
         line = null;
     }
 
-    public static void showCaseGenres(String text) {
-        String[] line = text.split("/");
+    public static void showCaseGenres(Genre genre) {
+        String[] line = genre.getMovies().split("/");
         System.out.println(line[0]);
-        System.out.println("peliculas pertenecientes a este genero");
+        System.out.println("peliculas pertenecientes a este genero: " + genre);
         for (int i = 0; i < line.length; i++) {
             System.out.println(line[i]);
         }
@@ -273,7 +273,6 @@ public class ConsultData {
 
             String[] res = consultName(movieFile, name);
             if (res != null) {
-//                ConsultData.showCaseMovie(res);
                 movieDefault.setmovieName(name);
                 movieDefault.setMovieTimes(res);
                 movieQueue.enqueue(movieDefault);
@@ -312,7 +311,6 @@ public class ConsultData {
 
             String res = consultTime(timeFile, convertTime(hi), convertTime(hf), r);
             if (!res.trim().isEmpty()) {
-                ConsultData.showCaseTime(res);
                 timeDefault.setIniHour(hi);
                 timeDefault.setFinHour(hf);
                 timeDefault.setMovies(res);
@@ -350,7 +348,6 @@ public class ConsultData {
 
             String res = consultGenre(genreFile, name, movies);
             if (!res.trim().isEmpty()) {
-                ConsultData.showCaseGenres(movies);
                 genreDefault.setMovieGenre(name);
                 genreDefault.setMovies(res);
                 genreQueue.enqueue(genreDefault);
@@ -365,7 +362,16 @@ public class ConsultData {
 
     public static void showCaseDequeue() {
         while(!movieQueue.isEmpty()) {
-
+            Movie movie = movieQueue.dequeue();
+            showCaseMovie(movie);
+        }
+        while(!timeQueue.isEmpty()) {
+            Time time = timeQueue.dequeue();
+            showCaseTime(time);
+        }
+        while(!genreQueue.isEmpty()) {
+            Genre genre = genreQueue.dequeue();
+            showCaseGenres(genre);
         }
     }
 }

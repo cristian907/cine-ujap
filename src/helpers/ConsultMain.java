@@ -39,8 +39,7 @@ public class ConsultMain {
                     ConsultData.selectSearch(2, key, arch);
                     break;
                 case 4:
-                    System.out.println(movieQueue.getPeek());
-                    System.out.println(movieQueue.getSize());
+                    ConsultData.showCaseDequeue();
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:
