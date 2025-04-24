@@ -12,9 +12,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static helpers.ConsultMain.movieQueue;
-import static helpers.ConsultMain.timeQueue;
-import static helpers.ConsultMain.genreQueue;
+import static helpers.ConsultMain.*;
 
 public class ConsultData {
 
@@ -40,7 +38,7 @@ public class ConsultData {
         System.out.println(text);
         for (int i = 0; i < items.length; i++) {
 
-            if (Objects.equals(items[i].split("_")[0], "MoviesWithHours")) {
+            if (Objects.equals(items[i].split("_")[0], "MoviesWithOnlyHour")) {
                 System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
                 select = select + (i + 1);
             }
@@ -364,14 +362,17 @@ public class ConsultData {
         while(!movieQueue.isEmpty()) {
             Movie movie = movieQueue.dequeue();
             showCaseMovie(movie);
+            stack.push(movie);
         }
         while(!timeQueue.isEmpty()) {
             Time time = timeQueue.dequeue();
             showCaseTime(time);
+            stack.push(time);
         }
         while(!genreQueue.isEmpty()) {
             Genre genre = genreQueue.dequeue();
             showCaseGenres(genre);
+            stack.push(genre);
         }
     }
 }
