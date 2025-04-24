@@ -1,6 +1,7 @@
 package helpers;
 
 import Structure.Queue;
+import Structure.Stack;
 import repositories.ArchiveUtil;
 import repositories.Genre;
 import repositories.Movie;
@@ -15,6 +16,7 @@ public class ConsultMain {
     public static Queue<Movie> movieQueue = new Queue<>();
     public static Queue<Time> timeQueue = new Queue<>();
     public static Queue<Genre> genreQueue = new Queue<>();
+    public static Stack<Object> stack = new Stack<>();
 
     public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
         String text = "";
