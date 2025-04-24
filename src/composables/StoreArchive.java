@@ -1,6 +1,9 @@
 package composables;
 
 import repositories.ArchiveUtil;
+import repositories.Genre;
+import repositories.Movie;
+import repositories.Time;
 import validateItem.Validate;
 
 import java.io.File;
@@ -142,4 +145,22 @@ public class StoreArchive {
         }
         time = null;
     }
+    public static void StackStore(Object data, ArchiveUtil archive) {
+        LocalDateTime time = LocalDateTime.now();
+        String finalTime = time.toString().replace(":","-");
+        String routeName;
+        routeName = "StackStore_"+finalTime+"_serial"+randomSerial;
+
+        String text = "";
+        if(data instanceof Movie){
+            Movie item = (Movie) data;
+            text = item.getmovieName();
+        }else if(data instanceof Genre){
+            Genre item = (Genre) data;
+        }else if(data instanceof Time){
+            Time item = (Time) data;
+        }
+
+    }
+
 }
