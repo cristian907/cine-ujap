@@ -33,8 +33,10 @@ public class ConsultMain {
                     ConsultData.selectSearch(0, key, arch);
                     break;
                 case 2:
+                    ConsultData.selectSearch(1, key, arch);
                     break;
                 case 3:
+                    ConsultData.selectSearch(2, key, arch);
                     break;
                 case 4:
                     System.out.println(movieQueue.getPeek());

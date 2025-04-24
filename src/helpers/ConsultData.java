@@ -5,6 +5,9 @@ import repositories.Genre;
 import repositories.Movie;
 import repositories.Time;
 import validateItem.Validate;
+
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -70,7 +73,7 @@ public class ConsultData {
         System.out.println(text);
         for (int i = 0; i < items.length; i++) {
 
-            if (Objects.equals(items[i].split("_")[0], "MoviesWithHours")) {
+            if (Objects.equals(items[i].split("_")[0], "MoviesWithOnlyHour")) {
                 System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
                 select = select + (i + 1);
             }
@@ -242,7 +245,7 @@ public class ConsultData {
         line = null;
     }
 
-    public static void selectSearch(int opt, Scanner key, ArchiveUtil archive) {
+    public static void selectSearch(int opt, Scanner key, ArchiveUtil archive) throws IOException {
         String text = "";
         String[] directoryList;
         if (opt == 0) {
@@ -356,6 +359,7 @@ public class ConsultData {
             }
             file = null;
         }
+        ConsultMain.consult(key, archive);
     }
 }
 
