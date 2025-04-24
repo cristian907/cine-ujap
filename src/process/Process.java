@@ -68,10 +68,10 @@ public class Process {
                 names[i] = Validate.validMovieName(text, key);
                 text = "\nIntroduzca el genero de la pelicula #" + (i + 1) + ": ";
                 System.out.print(text);
-                genres[i] = Validate.validMovieName(text, key);
+                genres[i] = Validate.validGenreName(text, key);
                 text = "\nIntroduzca la duracion de la pelicula #" + (i + 1) + ": ";
                 System.out.print(text);
-                dure = Validate.validHour(text, key);
+                dure = Validate.validfinHour(text, key);
                 for (int j = 0; j < times[0].length; j++) {
                     text = "Introduzca el horario #" + (j + 1) + " de la pelicula " + names[i] + " (formato de 24 horas): ";
                     System.out.print(text);
@@ -205,15 +205,15 @@ public class Process {
                         break;
                     case 3:
                         opt = 0;
-                        ConsultMain.consult(opt, key);
+                        //ConsultMain.consult(opt, key);
                         break;
                     case 4:
                         opt = 1;
-                        ConsultMain.consult(opt, key);
+                        //ConsultMain.consult(opt, key);
                         break;
                     case 5:
                         opt = 2;
-                        ConsultMain.consult(opt, key);
+                        //ConsultMain.consult(opt, key);
                         break;
                     case 6:
                         iniMovie(names);

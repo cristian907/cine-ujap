@@ -99,6 +99,31 @@ public class Validate {
         }
     }
 
+    public static String validfinHour(String text, Scanner key) {
+        String time = key.nextLine();
+        while (true) {
+
+            if (!time.matches("\\d{1,2}:\\d{2}")) {
+                System.out.println("Error: Formato incorrecto, es H:MM");
+                System.out.print("\n" + text);
+                time = key.nextLine();
+                continue;
+            }
+            String[] parts = time.split(":");
+            int hour = Integer.parseInt(parts[0]);
+            int minutes = Integer.parseInt(parts[1]);
+            if (hour < 0 || hour > 5 || minutes < 0 || minutes > 59) {
+                System.out.println("Error: la hora tiene que estar entre 0 y 5 y los minutos entre 0 y 59.");
+                System.out.print("\n" + text);
+                time = key.nextLine();
+                continue;
+            }
+            String str = "%02d:%02d";
+            parts = null;
+            return String.format(str, hour, minutes);
+        }
+    }
+
     public static String calcHour(String dure, String iniHour){
 
         String[] parts = iniHour.split(":");
@@ -141,6 +166,27 @@ public class Validate {
                 name = key.nextLine();
             } else {
                 return name.trim();
+            }
+        }
+    }
+
+    public static String validGenreName(String text, Scanner key) {
+        String genre = key.nextLine();
+        genre.toLowerCase();
+        int i=0;
+        while (true) {
+
+            if (!genre.equals("suspenso") && !genre.equals("terror") && !genre.equals("comedia") && !genre.equals("romance")
+                    && !genre.equals("documental") && !genre.equals("experimental") && !genre.equals("accion")) {
+                System.out.println("Error: el genero introducido no esta disponible");
+                System.out.print(text);
+                genre = key.nextLine();
+            } else if (genre.trim().isEmpty()) {
+                System.out.println("Error: Introduzca un nombre.");
+                System.out.print(text);
+                genre = key.nextLine();
+            } else {
+                return genre.trim();
             }
         }
     }

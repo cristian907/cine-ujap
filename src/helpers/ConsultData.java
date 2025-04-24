@@ -13,6 +13,64 @@ import java.util.Scanner;
 
 public class ConsultData {
 
+    public static String getItemsByIndex(String[] items, String index, String select) {
+
+        for (int i = 0; i < select.length(); i++) {
+            if (select.charAt(i) == index.charAt(0)){
+                return items[Integer.parseInt(index) - 1];
+            }
+        }
+        return null;
+    }
+
+    public static String getDirectories(String[] items, Movie movieDefault, int opt, Scanner key){
+
+        String txt = "";
+        String compare, select = "";
+        String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
+
+        if (items == null || items.length < 1){
+            return null;
+        }
+        System.out.println(text);
+        for (int i = 0; i < items.length; i++) {
+            switch (opt) {
+                case 0:
+                    if (Objects.equals(items[i].split("_")[0], "movieStore")) {
+                        System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
+                        select = select + (i + 1);
+                    }
+                    break;
+                case 1:
+                    if (Objects.equals(items[i].split("_")[0], "timeStore")) {
+                        System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
+                        select = select + (i + 1);
+                    }
+                    break;
+                case 2:
+                    if (Objects.equals(items[i].split("_")[0], "genreStore")) {
+                        System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
+                        select = select + (i + 1);
+                    }
+                    break;
+            }
+        }
+
+
+        String index = key.nextLine();
+        txt = getItemsByIndex(items, index, select);
+
+        if (txt == null){
+            return null;
+        }
+
+        String[] serialItem = txt.split("_");
+        compare = serialItem[serialItem.length - 1];
+        movieDefault.setSerialArchive(compare);
+
+        return txt;
+    }
+
     public static int convertTime(String text) {
         String[] time = text.split(":");
         int h = Integer.parseInt(time[0]) * 60;
