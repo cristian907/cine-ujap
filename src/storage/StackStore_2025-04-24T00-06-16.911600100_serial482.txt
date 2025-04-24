@@ -1,0 +1,10 @@
+Genero: terror
+a
+Rango: 01:00-12:00
+a - 02:00 03:00 04:00b - 04:00 06:00 08:00c - 02:00 06:00 09:00
+Pelicula: c
+Horario06:00 09:00 
+Pelicula: b
+Horario06:00 08:00 
+Pelicula: a
+Horario03:00 04:00 

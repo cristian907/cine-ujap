@@ -2,6 +2,7 @@ package helpers;
 
 import Structure.Queue;
 import Structure.Stack;
+import composables.StoreArchive;
 import repositories.ArchiveUtil;
 import repositories.Genre;
 import repositories.Movie;
@@ -42,6 +43,7 @@ public class ConsultMain {
                     break;
                 case 4:
                     ConsultData.showCaseDequeue();
+                    StoreArchive.StackStore(stack, arch);
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:

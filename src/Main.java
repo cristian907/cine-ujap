@@ -21,6 +21,7 @@ public class Main {
         String[] genres;
         ArchiveUtil archive = null;
         int movieQty = 0, timeQty = 0;
+        Object item = null;
         Scanner key = new Scanner(System.in);
 
         String router = Paths.get("").toRealPath().toString()+"/src/storage/";

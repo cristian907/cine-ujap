@@ -19,20 +19,20 @@ public class ConsultData {
     public static String getItemsByIndex(String[] items, String index, String select) {
 
         for (int i = 0; i < select.length(); i++) {
-            if (select.charAt(i) == index.charAt(0)){
+            if (select.charAt(i) == index.charAt(0)) {
                 return items[Integer.parseInt(index) - 1];
             }
         }
         return null;
     }
 
-    public static String getDirectoriesPerMovie(String[] items, Movie movieDefault, Scanner key){
+    public static String getDirectoriesPerMovie(String[] items, Movie movieDefault, Scanner key) {
 
         String txt = "";
         String compare, select = "";
         String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
 
-        if (items == null || items.length < 1){
+        if (items == null || items.length < 1) {
             return null;
         }
         System.out.println(text);
@@ -48,7 +48,7 @@ public class ConsultData {
         String index = key.nextLine();
         txt = getItemsByIndex(items, index, select);
 
-        if (txt == null){
+        if (txt == null) {
             return null;
         }
 
@@ -59,13 +59,13 @@ public class ConsultData {
         return txt;
     }
 
-    public static String getDirectoriesPerTime(String[] items, Time timeDefault, Scanner key){
+    public static String getDirectoriesPerTime(String[] items, Time timeDefault, Scanner key) {
 
         String txt = "";
         String compare, select = "";
         String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
 
-        if (items == null || items.length < 1){
+        if (items == null || items.length < 1) {
             return null;
         }
         System.out.println(text);
@@ -81,7 +81,7 @@ public class ConsultData {
         String index = key.nextLine();
         txt = getItemsByIndex(items, index, select);
 
-        if (txt == null){
+        if (txt == null) {
             return null;
         }
 
@@ -92,13 +92,13 @@ public class ConsultData {
         return txt;
     }
 
-    public static String getDirectoriesPerGenre(String[] items, Genre genreDefault, Scanner key){
+    public static String getDirectoriesPerGenre(String[] items, Genre genreDefault, Scanner key) {
 
         String txt = "";
         String compare, select = "";
         String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
 
-        if (items == null || items.length < 1){
+        if (items == null || items.length < 1) {
             return null;
         }
         System.out.println(text);
@@ -114,7 +114,7 @@ public class ConsultData {
         String index = key.nextLine();
         txt = getItemsByIndex(items, index, select);
 
-        if (txt == null){
+        if (txt == null) {
             return null;
         }
 
@@ -323,7 +323,7 @@ public class ConsultData {
             text = "Introduzca el nombre del genero a buscar: ";
             System.out.println(text);
             String name = Validate.validGenreName(text, key);
-            if (name == null){
+            if (name == null) {
                 return;
             }
             String movies = "";
@@ -359,17 +359,17 @@ public class ConsultData {
     }
 
     public static void showCaseDequeue() {
-        while(!movieQueue.isEmpty()) {
+        while (!movieQueue.isEmpty()) {
             Movie movie = movieQueue.dequeue();
             showCaseMovie(movie);
             stack.push(movie);
         }
-        while(!timeQueue.isEmpty()) {
+        while (!timeQueue.isEmpty()) {
             Time time = timeQueue.dequeue();
             showCaseTime(time);
             stack.push(time);
         }
-        while(!genreQueue.isEmpty()) {
+        while (!genreQueue.isEmpty()) {
             Genre genre = genreQueue.dequeue();
             showCaseGenres(genre);
             stack.push(genre);
