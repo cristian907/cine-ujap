@@ -210,7 +210,7 @@ public class ConsultData {
         String[] line = arch.nextLine().split(" ");
         String value = line[1].toLowerCase();
         if (value.equals(genre)) {
-            movies = movies + line[0] + " ";
+            movies = movies + line[0] + "/";
         }
 
         line = null;
@@ -237,7 +237,8 @@ public class ConsultData {
     }
 
     public static void showCaseGenres(String text) {
-        String[] line = text.split(" ");
+        String[] line = text.split("/");
+        System.out.println(line[0]);
         System.out.println("peliculas pertenecientes a este genero");
         for (int i = 0; i < line.length; i++) {
             System.out.println(line[i]);
