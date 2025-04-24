@@ -8,7 +8,7 @@ public class Movie {
     private String serialArchiveNumber;
 
     //Constructor
-    public Movie(String movieName, String serialArchiveNumber) {
+    public Movie(String movieName, String serialArchiveNumber) throws IllegalArgumentException{
 
         this.utilValMovieName(movieName);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null : serialArchiveNumber;

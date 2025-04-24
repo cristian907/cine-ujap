@@ -7,7 +7,7 @@ public class Genre {
     private String serialArchiveNumber;
 
     //Constructor
-    public Genre(String genre, String serialArchiveNumber){
+    public Genre(String genre, String serialArchiveNumber) throws IllegalArgumentException{
 
 
         this.utilValGenre(genre);
