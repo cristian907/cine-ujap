@@ -177,7 +177,7 @@ public class Validate {
         while (true) {
 
             if (!genre.equals("suspenso") && !genre.equals("terror") && !genre.equals("comedia") && !genre.equals("romance")
-                    && !genre.equals("documental") && !genre.equals("experimental") && !genre.equals("accion")) {
+                    && !genre.equals("documental") && !genre.equals("experimental") && !genre.equals("accion") && !genre.equals("ciencia ficcion")) {
                 System.out.println("Error: el genero introducido no esta disponible");
                 System.out.print(text);
                 genre = key.nextLine();
