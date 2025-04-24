@@ -1,14 +1,17 @@
 package helpers;
 
+import repositories.ArchiveUtil;
 import validateItem.Validate;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class ConsultMain {
 
-    public static void consult(Scanner key) throws IOException {
+    public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
+
         String text = "";
         int option, opt = 0;
         System.out.println("\n\nSeleccione el modo de busqueda:");
@@ -22,6 +25,7 @@ public class ConsultMain {
             option = Validate.valOpt(text, key);
             switch (option) {
                 case 1:
+                    ConsultData.selectSearch(0, key, arch);
                     break;
                 case 2:
                     break;

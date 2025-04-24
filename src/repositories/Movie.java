@@ -4,6 +4,7 @@ public class Movie {
 
     private String movieName;
     private String movieGenre;
+    private String[] movieTimes;
     private String serialArchiveNumber;
 
     //Constructor
@@ -53,6 +54,14 @@ public class Movie {
             this.movieName = name;
         }
 
+    }
+
+    public String[] getMovieTimes() {
+        return movieTimes;
+    }
+
+    public void setMovieTimes(String[] movieTimes) {
+        this.movieTimes = movieTimes;
     }
 //    private void utilValGenre(String genre) throws IllegalArgumentException{
 //

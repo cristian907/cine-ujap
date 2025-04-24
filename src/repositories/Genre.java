@@ -3,7 +3,7 @@ package repositories;
 public class Genre {
 
     private String movieGenre;
-    private String movieName;
+    private String movies;
     private String serialArchiveNumber;
 
     //Constructor
@@ -13,16 +13,16 @@ public class Genre {
         this.utilValGenre(genre);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null: serialArchiveNumber;
 
-        if (this.movieName == null || this.serialArchiveNumber == null || this.movieGenre == null){
+        if (this.serialArchiveNumber == null || this.movieGenre == null){
             throw new IllegalArgumentException("- Error-Instancia: Objeto incompleto. ");
         }
 
     }
     //Getters
-    public String getmovieName() {
-        return movieName;
+    public String getMovies() {
+        return movies;
     }
-    public String getmovieGenre() {
+    public String getMovieGenre() {
         return movieGenre;
     }
 
@@ -31,8 +31,8 @@ public class Genre {
     }
 
     //Setters
-    public void setmovieName(String name) {
-        this.movieName = name;
+    public void setMovies(String name) {
+        this.movies = name;
     }
 
     public void setMovieGenre(String genre) {
@@ -50,7 +50,7 @@ public class Genre {
         if (name.trim().isEmpty()){
             throw new IllegalArgumentException(" [El nombre no puede ser nulo o vacio] ");
         } else {
-            this.movieName = name;
+            this.movies = name;
         }
 
     }

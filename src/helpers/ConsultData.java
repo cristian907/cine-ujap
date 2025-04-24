@@ -23,7 +23,7 @@ public class ConsultData {
         return null;
     }
 
-    public static String getDirectories(String[] items, Movie movieDefault, int opt, Scanner key){
+    public static String getDirectoriesPerMovie(String[] items, Movie movieDefault, Scanner key){
 
         String txt = "";
         String compare, select = "";
@@ -34,25 +34,10 @@ public class ConsultData {
         }
         System.out.println(text);
         for (int i = 0; i < items.length; i++) {
-            switch (opt) {
-                case 0:
-                    if (Objects.equals(items[i].split("_")[0], "movieStore")) {
-                        System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
-                        select = select + (i + 1);
-                    }
-                    break;
-                case 1:
-                    if (Objects.equals(items[i].split("_")[0], "timeStore")) {
-                        System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
-                        select = select + (i + 1);
-                    }
-                    break;
-                case 2:
-                    if (Objects.equals(items[i].split("_")[0], "genreStore")) {
-                        System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
-                        select = select + (i + 1);
-                    }
-                    break;
+
+            if (Objects.equals(items[i].split("_")[0], "MoviesWithHours")) {
+                System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
+                select = select + (i + 1);
             }
         }
 
@@ -67,6 +52,72 @@ public class ConsultData {
         String[] serialItem = txt.split("_");
         compare = serialItem[serialItem.length - 1];
         movieDefault.setSerialArchive(compare);
+
+        return txt;
+    }
+
+    public static String getDirectoriesPerTime(String[] items, Time timeDefault, Scanner key){
+
+        String txt = "";
+        String compare, select = "";
+        String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
+
+        if (items == null || items.length < 1){
+            return null;
+        }
+        System.out.println(text);
+        for (int i = 0; i < items.length; i++) {
+
+            if (Objects.equals(items[i].split("_")[0], "MoviesWithHours")) {
+                System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
+                select = select + (i + 1);
+            }
+        }
+
+
+        String index = key.nextLine();
+        txt = getItemsByIndex(items, index, select);
+
+        if (txt == null){
+            return null;
+        }
+
+        String[] serialItem = txt.split("_");
+        compare = serialItem[serialItem.length - 1];
+        timeDefault.setSerialArchive(compare);
+
+        return txt;
+    }
+
+    public static String getDirectoriesPerGenre(String[] items, Genre genreDefault, Scanner key){
+
+        String txt = "";
+        String compare, select = "";
+        String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
+
+        if (items == null || items.length < 1){
+            return null;
+        }
+        System.out.println(text);
+        for (int i = 0; i < items.length; i++) {
+
+            if (Objects.equals(items[i].split("_")[0], "MovieAndGenreStore")) {
+                System.out.println("-  Posicion [" + (i + 1) + "] [" + items[i] + "]");
+                select = select + (i + 1);
+            }
+        }
+
+
+        String index = key.nextLine();
+        txt = getItemsByIndex(items, index, select);
+
+        if (txt == null){
+            return null;
+        }
+
+        String[] serialItem = txt.split("_");
+        compare = serialItem[serialItem.length - 1];
+        genreDefault.setSerialArchive(compare);
 
         return txt;
     }
@@ -205,8 +256,7 @@ public class ConsultData {
             }
 
             directoryList = archive.getDirectories();
-            String file = "";
-//            String file = getDirectoresPerName(directoryList, movieDefault);
+            String file = getDirectoriesPerMovie(directoryList, movieDefault, key);
 
             if (file == null) {
                 System.out.println("Error al abrir el archivo.");
@@ -217,7 +267,9 @@ public class ConsultData {
 
             String[] res = consultName(movieFile, name);
             if (res != null) {
-//                ConsultData.showCaseMovie(res);
+                ConsultData.showCaseMovie(res);
+                movieDefault.setmovieName(name);
+                movieDefault.setMovieTimes(res);
             } else {
                 System.out.println("El nombre no fue encontrado.");
                 return;
@@ -242,8 +294,7 @@ public class ConsultData {
             }
 
             directoryList = archive.getDirectories();
-            String file = "";
-//            String file = getDirectoresPerName(directoryList, timeDefault);
+            String file = getDirectoriesPerTime(directoryList, timeDefault, key);
 
             if (file == null) {
                 System.out.println("Error al abrir el archivo.");
@@ -254,7 +305,10 @@ public class ConsultData {
 
             String res = consultTime(timeFile, convertTime(hi), convertTime(hf), r);
             if (!res.trim().isEmpty()) {
-//                ConsultData.showCaseTime(res);
+                ConsultData.showCaseTime(res);
+                timeDefault.setIniHour(hi);
+                timeDefault.setFinHour(hf);
+                timeDefault.setMovies(res);
             } else {
                 System.out.println("Disculpe, no hay peliculas en ese rango.");
             }
@@ -264,7 +318,10 @@ public class ConsultData {
             Genre genreDefault = null;
             text = "Introduzca el nombre del genero a buscar: ";
             System.out.println(text);
-            String name = Validate.validMovieName(text, key);
+            String name = Validate.validGenreName(text, key);
+            if (name == null){
+                return;
+            }
             String movies = "";
 
             try {
@@ -274,8 +331,7 @@ public class ConsultData {
             }
 
             directoryList = archive.getDirectories();
-            String file = "";
-//            String file = getDirectoresPerName(directoryList, Default);
+            String file = getDirectoriesPerGenre(directoryList, genreDefault, key);
 
             if (file == null) {
                 System.out.println("Error al abrir el archivo.");
@@ -286,7 +342,9 @@ public class ConsultData {
 
             String res = consultGenre(genreFile, name, movies);
             if (!res.trim().isEmpty()) {
-//                ConsultData.showCaseGenres(movies);
+                ConsultData.showCaseGenres(movies);
+                genreDefault.setMovieGenre(name);
+                genreDefault.setMovies(res);
                 file = null;
             } else {
                 System.out.println("Disculpe, el genero no fue encontrado");

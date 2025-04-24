@@ -4,6 +4,7 @@ public class Time {
 
     private String iniHour;
     private String finHour;
+    private String movies;
     private String serialArchiveNumber;
 
 
@@ -35,6 +36,10 @@ public class Time {
         return this.serialArchiveNumber;
     }
 
+    public String getMovies() {
+        return movies;
+    }
+
     //Setters
     public void setIniHour(String hour) {
         this.iniHour = hour;
@@ -46,6 +51,10 @@ public class Time {
 
     public void setSerialArchive(String serial){
         this.serialArchiveNumber = (serial.isEmpty()) ? null: serial;
+    }
+
+    public void setMovies(String movies) {
+        this.movies = movies;
     }
 
     //Verifica el formato en el que debe ser ingresado la hora
@@ -82,5 +91,6 @@ public class Time {
         dureParts = null;
         this.finHour=String.format(str, finHour, finMinutes);
     }*/
+
 
 }
