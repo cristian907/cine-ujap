@@ -217,11 +217,11 @@ public class ConsultData {
         return consultGenre(arch, genre, movies);
     }
 
-    public static void showCaseMovie(String[] name) {
-        if (name != null) {
-            System.out.print(name[0] + " - ");
-            for (int i = 1; i < name.length; i++) {
-                System.out.print(name[i] + " ");
+    public static void showCaseMovie(Movie movie) {
+        if (movie != null) {
+            System.out.print(movie.getmovieName() + " - ");
+            for (int i = 1; i < movie.getMovieTimes().length; i++) {
+                System.out.print(movie.getMovieTimes()[i] + " ");
             }
             System.out.println();
         }
@@ -273,7 +273,7 @@ public class ConsultData {
 
             String[] res = consultName(movieFile, name);
             if (res != null) {
-                ConsultData.showCaseMovie(res);
+//                ConsultData.showCaseMovie(res);
                 movieDefault.setmovieName(name);
                 movieDefault.setMovieTimes(res);
                 movieQueue.enqueue(movieDefault);
@@ -361,6 +361,12 @@ public class ConsultData {
             file = null;
         }
         ConsultMain.consult(key, archive);
+    }
+
+    public static void showCaseDequeue() {
+        while(!movieQueue.isEmpty()) {
+
+        }
     }
 }
 
