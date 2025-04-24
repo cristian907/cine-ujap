@@ -5,11 +5,13 @@ import repositories.Genre;
 import repositories.Movie;
 import repositories.Time;
 import validateItem.Validate;
-
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
+
+import static helpers.ConsultMain.movieQueue;
+import static helpers.ConsultMain.timeQueue;
+import static helpers.ConsultMain.genreQueue;
 
 public class ConsultData {
 
@@ -270,6 +272,7 @@ public class ConsultData {
                 ConsultData.showCaseMovie(res);
                 movieDefault.setmovieName(name);
                 movieDefault.setMovieTimes(res);
+                movieQueue.enqueue(movieDefault);
             } else {
                 System.out.println("El nombre no fue encontrado.");
                 return;
@@ -309,6 +312,7 @@ public class ConsultData {
                 timeDefault.setIniHour(hi);
                 timeDefault.setFinHour(hf);
                 timeDefault.setMovies(res);
+                timeQueue.enqueue(timeDefault);
             } else {
                 System.out.println("Disculpe, no hay peliculas en ese rango.");
             }
@@ -345,6 +349,7 @@ public class ConsultData {
                 ConsultData.showCaseGenres(movies);
                 genreDefault.setMovieGenre(name);
                 genreDefault.setMovies(res);
+                genreQueue.enqueue(genreDefault);
                 file = null;
             } else {
                 System.out.println("Disculpe, el genero no fue encontrado");

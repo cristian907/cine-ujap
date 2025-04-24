@@ -1,17 +1,22 @@
 package helpers;
 
+import Structure.Queue;
 import repositories.ArchiveUtil;
+import repositories.Genre;
+import repositories.Movie;
+import repositories.Time;
 import validateItem.Validate;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class ConsultMain {
 
-    public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
+    public static Queue<Movie> movieQueue = new Queue<>();
+    public static Queue<Time> timeQueue = new Queue<>();
+    public static Queue<Genre> genreQueue = new Queue<>();
 
+    public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
         String text = "";
         int option, opt = 0;
         System.out.println("\n\nSeleccione el modo de busqueda:");
@@ -32,6 +37,8 @@ public class ConsultMain {
                 case 3:
                     break;
                 case 4:
+                    System.out.println(movieQueue.getPeek());
+                    System.out.println(movieQueue.getSize());
                     System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                     break;
                 default:
