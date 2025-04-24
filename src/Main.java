@@ -59,7 +59,7 @@ public class Main {
 //        }
             //desarrollo
             ProcessMain.process(movieInfo, showtimes, movies, genres, finShowtimes, key);
-            StoreMain.store(movieInfo, showtimes, movies ,genres, archive);
+            StoreMain.store(movieInfo, showtimes, movies ,genres,finShowtimes, archive);
 
             movies = null;
             showtimes = null;

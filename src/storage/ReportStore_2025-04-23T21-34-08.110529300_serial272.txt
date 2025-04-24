@@ -1,0 +1,7 @@
+---------------------Reporte de ventas--------------------
+Película 1:
+Nombre:     asd
+Hora    |   Ventas n   |    Ventas s   |     TOTAL $
+04:00          0$              0$              0$
+                                               0$
+El total de ventas del dia fue de: 0$
