@@ -1,4 +1,6 @@
 import composables.StoreMain;
+import helpers.ConsultData;
+import helpers.ConsultMain;
 import repositories.ArchiveUtil;
 import storage.LoadData;
 import validateItem.Validate;
@@ -18,6 +20,8 @@ public class Main {
         String[][] finShowtimes;
         String[] genres;
         ArchiveUtil archive = null;
+        int movieQty = 0, timeQty = 0;
+        Scanner key = new Scanner(System.in);
 
         String router = Paths.get("").toRealPath().toString()+"/src/storage/";
 
@@ -28,21 +32,33 @@ public class Main {
             return;
         }
 
-        int movieQty = 0, timeQty = 0;
-        Scanner key = new Scanner(System.in);
+        if (archive.directoriesExist()){
+            int option = 0;
+            System.out.println("\n\nBienvenido a Cine-Ujap:");
+            do {
+                System.out.println("\nSeleccione un modulo");
+                System.out.println("1. Modulo de busqueda");
+                System.out.println("2. Modulo de ventas");
+                System.out.println("3. Cerrar Programa");
+                text = "\nSeleccione una opción: ";
+                option = Validate.valOpt(text, key);
+                switch (option) {
+                    case 1:
+                        ConsultMain.consult(key, archive);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        return;
+                    default:
+                        System.out.println("\n¡ERROR! Elija una opción valida");
+                        System.out.print("Presione ENTER para continuar: ");
+                        key.nextLine();
+                }
+            } while (option != 2);
 
-//        boolean databaseExists = Validate.fileExists();
-//
-//        if (databaseExists) {
-//            movies = LoadData.loadNames();
-//            showtimes = LoadData.loadTimes(movies);
-//            if (movies != null && showtimes != null) {
-//                movieInfo = new int[movies.length][showtimes.length][3];
-//            } else {
-//                System.out.println("Error: Fallo al cargar el archivo");
-//               // return;
-//            }
-//        } else {
+        }
+
             // Peticion de longitud de los arreglos
             text = "\nIntroduzca la cantidad de peliculas para el día de hoy: ";
             movieQty = Validate.valSize(text, key);
@@ -56,7 +72,7 @@ public class Main {
             movieInfo = new int[movieQty][timeQty][3];
             genres = new String[movieQty];
             finShowtimes = new String[movieQty][timeQty];
-//        }
+
             //desarrollo
             ProcessMain.process(movieInfo, showtimes, movies, genres, finShowtimes, key);
             StoreMain.store(movieInfo, showtimes, movies ,genres,finShowtimes, archive);

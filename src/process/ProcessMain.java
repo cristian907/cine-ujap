@@ -7,7 +7,7 @@ public class ProcessMain {
     public static void process(int[][][] movieInfo, String[][] showTimes, String[] movies, String[] genres, String[][] finShowTime, Scanner key) throws IOException {
 
         Process.iniSeats(movieInfo);
-       // if (!databaseExists) {
+
             //Inicio de Arreglos
             Process.iniShowtime(showTimes);
             Process.iniMovie(movies);
@@ -16,7 +16,7 @@ public class ProcessMain {
 
             //Process desarrollo
             Process.attachData(showTimes, movies, genres, finShowTime, key);
-       // }
+
 
         Process.showMenu(movies,showTimes,movieInfo, genres, finShowTime, key);
     }
