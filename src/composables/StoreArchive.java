@@ -157,8 +157,6 @@ public class StoreArchive {
         Object data;
         routeName = "StackStore_" + finalTime + "_serial" + randomSerial;
 
-
-
             while (!stack.isEmpty()) {
                  data = stack.pop();
                 if (data != null) {
