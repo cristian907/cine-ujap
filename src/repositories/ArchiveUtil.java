@@ -16,7 +16,7 @@ public class ArchiveUtil {
     }
 
     //getters
-    public String getRouter(){
+    public String getRouter() {
         return this.router;
     }
 
@@ -26,7 +26,7 @@ public class ArchiveUtil {
                 throw new IllegalArgumentException(" EL nombre del archivo es requerido. ");
             }
 
-            File archive = new File(this.router+nameArchive);
+            File archive = new File(this.router + nameArchive);
 
             // Verificar si es un archivo y no un directorio
             if (!archive.isFile()) {
@@ -52,7 +52,7 @@ public class ArchiveUtil {
             throw new FileNotFoundException(" No se encontraron archivos. ");
 
         } catch (FileNotFoundException e) {
-            System.out.println("Directory-Error: "+ e.getMessage());
+            System.out.println("Directory-Error: " + e.getMessage());
             return null;
         }
     }
@@ -64,21 +64,19 @@ public class ArchiveUtil {
 
     public void setCreateArchive(String content, String nameArchive, boolean bool) {
 
-        try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(this.router+nameArchive+".txt", true))) { // 'true' permite agregar al archivo existente
-            if (content.trim().isEmpty() || nameArchive.isEmpty()){
+        try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(this.router + nameArchive + ".txt", true))) { // 'true' permite agregar al archivo existente
+            if (content.trim().isEmpty() || nameArchive.isEmpty()) {
                 throw new NullPointerException(" EL contenido es requerido. ");
             }
 
             addArchive.write(content);  // Escribir en el archivo
-            if (bool){
+            if (bool) {
                 addArchive.newLine(); // Agregar nueva línea opcional
             }
         } catch (IOException | NullPointerException e) {
             System.out.println("- CreateOrWriteArchive-Error: " + e.getMessage());
         }
     }
-
-
 
     public boolean directoriesExist() {
         File directories = new File(this.router);
@@ -96,8 +94,6 @@ public class ArchiveUtil {
         this.router = router;
 
     }
-
-
 
 }
 

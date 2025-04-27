@@ -52,9 +52,5 @@ public class ConsultMain {
                     key.nextLine();
             }
         } while (option != 4);
-
-
     }
-
-
 }

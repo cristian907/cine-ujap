@@ -17,7 +17,6 @@ public class ProcessMain {
         //Process desarrollo
         Process.attachData(showTimes, movies, genres, finShowTime, key);
 
-
-        Process.showMenu(movies,showTimes,movieInfo, genres, finShowTime, key);
+        Process.showMenu(movies, showTimes, movieInfo, genres, finShowTime, key);
     }
 }

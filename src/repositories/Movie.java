@@ -8,7 +8,7 @@ public class Movie {
     private String serialArchiveNumber;
 
     //Constructor
-    public Movie(String movieName, String serialArchiveNumber) throws IllegalArgumentException{
+    public Movie(String movieName, String serialArchiveNumber) throws IllegalArgumentException {
 
         this.utilValMovieName(movieName);
         this.serialArchiveNumber = (serialArchiveNumber.isEmpty()) ? null : serialArchiveNumber;
@@ -16,7 +16,6 @@ public class Movie {
         if (this.movieName == null || this.serialArchiveNumber == null) {
             throw new IllegalArgumentException("- Error-Instancia: Objeto incompleto. ");
         }
-
     }
 
     //Getters
@@ -45,16 +44,13 @@ public class Movie {
         this.serialArchiveNumber = (serial.isEmpty()) ? null : serial;
     }
 
-
     //Verifica que el nombre no este vacio
     private void utilValMovieName(String name) throws IllegalArgumentException {
-
         if (name.trim().isEmpty()) {
             throw new IllegalArgumentException(" [El nombre no puede ser nulo o vacio] ");
         } else {
             this.movieName = name;
         }
-
     }
 
     public String[] getMovieTimes() {

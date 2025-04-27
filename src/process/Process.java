@@ -1,12 +1,8 @@
 package process;
 
-import composables.StoreMain;
 import validateItem.Validate;
-import helpers.ConsultMain;
-
 import java.io.IOException;
 import java.util.Scanner;
-
 
 public class Process {
 
@@ -82,7 +78,7 @@ public class Process {
         }
     }
 
-    public static void showCase(String[] names, String[][] times,String[] genres, String[][] finShowTimes, Scanner key) {
+    public static void showCase(String[] names, String[][] times, String[] genres, String[][] finShowTimes, Scanner key) {
         System.out.println("\n-----------------------------------------CATALOGO-----------------------------------------\n");
         if (names != null && times != null && genres != null && finShowTimes != null) {
             for (int i = 0; i < times.length; i++) {
@@ -136,11 +132,12 @@ public class Process {
             key.nextLine();
         }
     }
+
     private static void printTicket(int[][][] info, int movieID, int timeID, String movieName, String showTime, Scanner key) {
         if (info != null) {
             String text, status = "";
             int seatQty, ticketID, price = 0;
-            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2]+"\n";
+            text = "\nSeleccione la cantidad de entradas a comprar (0 para cancelar).\nCantidad de entradas disponibles: " + info[movieID][timeID][2] + "\n";
 
             seatQty = Validate.validSeatQtypart1(info[movieID][timeID][2], text, key);
             if (seatQty == 0) return;
@@ -204,7 +201,7 @@ public class Process {
                         iniMovie(names);
                         iniShowtime(times);
                         iniSeats(info);
-                        attachData(times, names, genres, finShowTimes,key);
+                        attachData(times, names, genres, finShowTimes, key);
                         break;
                     case 4:
                         System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");

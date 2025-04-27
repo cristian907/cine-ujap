@@ -5,9 +5,7 @@ import repositories.Genre;
 import repositories.Movie;
 import repositories.Time;
 import validateItem.Validate;
-
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;

@@ -1,7 +1,6 @@
 package validateItem;
 
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,9 +11,9 @@ import java.util.Scanner;
 public class Validate {
 
     public static boolean fileExists() throws IOException {
-        String data = Paths.get("").toRealPath().toString()+"/src/storage/MovieSchedule.txt";
-        String movies = Paths.get("").toRealPath().toString()+"/src/storage/Movies.txt";
-        String times = Paths.get("").toRealPath().toString()+"/src/storage/Times.txt";
+        String data = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
+        String movies = Paths.get("").toRealPath().toString() + "/src/storage/Movies.txt";
+        String times = Paths.get("").toRealPath().toString() + "/src/storage/Times.txt";
         File fileA = new File(data);
         File fileB = new File(movies);
         File fileC = new File(times);
@@ -124,7 +123,7 @@ public class Validate {
         }
     }
 
-    public static String calcHour(String dure, String iniHour){
+    public static String calcHour(String dure, String iniHour) {
 
         String[] parts = iniHour.split(":");
         int hour = Integer.parseInt(parts[0]);
@@ -134,12 +133,12 @@ public class Validate {
         int dureMinutes = Integer.parseInt(dureParts[1]);
         int finMinutes = dureMinutes + minutes;
         int finHour = dureHour + hour;
-        if (finMinutes>59){
-            finMinutes-=60;
+        if (finMinutes > 59) {
+            finMinutes -= 60;
             finHour++;
         }
-        if (finHour>23){
-            finHour-=24;
+        if (finHour > 23) {
+            finHour -= 24;
         }
 
         String str = "%02d:%02d";
@@ -153,7 +152,7 @@ public class Validate {
     // Metodo para validar el nombre de la pelicula
     public static String validMovieName(String text, Scanner key) {
         String name = key.nextLine();
-        int i=0;
+        int i = 0;
         while (true) {
 
             if (name.length() > 50) {
@@ -173,7 +172,7 @@ public class Validate {
     public static String validGenreName(String text, Scanner key) {
         String genre = key.nextLine();
         genre.toLowerCase();
-        int i=0;
+        int i = 0;
         while (true) {
 
             if (!genre.equals("suspenso") && !genre.equals("terror") && !genre.equals("comedia") && !genre.equals("romance")
@@ -251,7 +250,7 @@ public class Validate {
 
     // Metodo para validar la escritura del archivo
     public static void valArchive(String content, String route, boolean boo) {
-        if (content == null ) {
+        if (content == null) {
             System.out.println("El contenido esta vacio, por lo tanto no se escribirá nada");
             return;
         }

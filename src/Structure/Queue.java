@@ -5,21 +5,20 @@ public class Queue<T> {
     private Node<T> last;
     private int size;
 
-    public Queue(){
+    public Queue() {
         this.front = null;
         this.last = null;
         this.size = 0;
     }
 
-
-    public void enqueue(T data){//push
-        if (data == null){
+    public void enqueue(T data) {//push
+        if (data == null) {
             throw new IllegalArgumentException("- QueueError: El dato es nulo, no pudo ser agregado a la cola. ");
         }
 
         Node<T> newNode = new Node<>(data);
 
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             this.front = newNode;//inicio de la cola nuevo nodo
         } else {
             this.last.setNext(newNode);//decimos: el siguiente nodo del ultimo ahora es el nuevo nodo
@@ -29,15 +28,15 @@ public class Queue<T> {
         this.size++;
     }
 
-    public T dequeue(){//pop
-        if (this.isEmpty()){
+    public T dequeue() {//pop
+        if (this.isEmpty()) {
             throw new IllegalArgumentException("- QueueError: la cola esta vacia");
         }
 
         T data = this.front.getData();// se toma el dato a retornar
         this.front = this.front.getNext();
 
-        if (this.front == null){
+        if (this.front == null) {
             this.last = null;
         }
 
@@ -45,22 +44,18 @@ public class Queue<T> {
         return data;
     }
 
-    public T getPeek(){
-        if (this.isEmpty()){
+    public T getPeek() {
+        if (this.isEmpty()) {
             throw new IllegalArgumentException("- QueueError: la cola esta vacia");
         }
         return this.front.getData();
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.size;
     }
 
-    public void showLast(){//Jamas deberia estar
-        System.out.println(this.last);
-    }
-
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return this.front == null && this.size == 0;
     }
 }

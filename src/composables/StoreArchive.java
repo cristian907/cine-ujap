@@ -5,14 +5,9 @@ import repositories.ArchiveUtil;
 import repositories.Genre;
 import repositories.Movie;
 import repositories.Time;
-import validateItem.Validate;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDateTime;
-
-import static helpers.ConsultMain.stack;
 
 public class StoreArchive {
     public static int randomSerial = (int) (Math.random() * 1000) + 1;
@@ -157,11 +152,11 @@ public class StoreArchive {
         Object data;
         routeName = "StackStore_" + finalTime + "_serial" + randomSerial;
 
-            while (!stack.isEmpty()) {
-                 data = stack.pop();
-                if (data != null) {
+        while (!stack.isEmpty()) {
+            data = stack.pop();
+            if (data != null) {
 
-                    if (data instanceof Movie) {
+                if (data instanceof Movie) {
                     Movie item = (Movie) data;
                     text = "Pelicula: " + item.getmovieName() + "\n" + "Horario";
                     for (int i = 1; i < item.getMovieTimes().length; i++) {

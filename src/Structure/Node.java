@@ -2,24 +2,24 @@ package Structure;
 
 public class Node<T> {
     private T data;
-    Node<T> next;
+    private Node<T> next;
 
 
-    public Node(){
+    public Node() {
         this.data = null;
         this.next = null;
     }
 
-    public Node(T data){
-        if (data == null){
+    public Node(T data) {
+        if (data == null) {
             throw new IllegalArgumentException("- RefError: Data no puede ser 0. ");
         }
         this.data = data;
         this.next = null;
     }
 
-    public Node(Node<T> copy){
-        if (copy == null){
+    public Node(Node<T> copy) {
+        if (copy == null) {
             throw new IllegalArgumentException("- RefError: Copia fallida por nodo nulo. ");
         }
         this.data = copy.getData();
@@ -28,11 +28,11 @@ public class Node<T> {
 
     //setters
     public void setData(T data) {
-        if (data == this.data){
+        if (data == this.data) {
             throw new IllegalArgumentException("- RefError: Tiene el mismo dato. ");
         }
 
-        if (data == null){
+        if (data == null) {
             throw new IllegalArgumentException("- RefError: El dato es nulo. ");
         }
 
@@ -53,28 +53,27 @@ public class Node<T> {
     }
 
     //operator
-    public boolean IsEquals(Object obj){
+    public boolean IsEquals(Object obj) {
 
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
 
-        if (obj == null || getClass() != obj.getClass()){
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
 
         Node<T> another = (Node<T>) obj;
 
-        if (this.data == null){
+        if (this.data == null) {
             return another.data == null;
-        }else {
+        } else {
             return this.data.equals(another.data);
         }
     }
 
-
     @Override
     public String toString() {
-        return "{Valor = "+this.data+"}";
+        return "{Valor = " + this.data + "}";
     }
 }
