@@ -353,7 +353,7 @@ public class ConsultData {
             }
             file = null;
         }
-        ConsultMain.consult(key, archive);
+
     }
 
     public static void showCaseDequeue() {

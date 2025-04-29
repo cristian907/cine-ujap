@@ -43,6 +43,7 @@ public class Main {
 
                 if (option == 1) {
                     ConsultMain.consult(key, archive);
+                    return;
                 } else if (option == 2) {
 
                 } else if (option == 3) {

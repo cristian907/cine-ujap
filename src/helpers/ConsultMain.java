@@ -42,12 +42,13 @@ public class ConsultMain {
                 ConsultData.showCaseDequeue();
                 StoreArchive.StackStore(stack, arch);
                 System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
+                return;
             } else {
                 System.out.println("\n¡ERROR! Elija una opción valida");
                 System.out.print("Presione ENTER para continuar: ");
                 key.nextLine();
             }
-            System.out.println(option);
         } while (option != 4);
+
     }
 }
