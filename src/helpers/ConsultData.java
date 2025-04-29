@@ -249,7 +249,7 @@ public class ConsultData {
         String text = "";
         String[] directoryList;
 
-        Movie movieDefault = null;
+        Movie movieDefault = new Movie();
         text = "Introduzca el nombre de la pelicula a buscar: ";
         System.out.println(text);
         String name = Validate.validMovieName(text, key);
@@ -288,7 +288,7 @@ public class ConsultData {
         String text = "";
         String[] directoryList;
 
-        Genre genreDefault = null;
+        Genre genreDefault = new Genre();
         text = "Introduzca el nombre del genero a buscar: ";
         System.out.println(text);
         String name = Validate.validGenreName(text, key);
@@ -330,7 +330,7 @@ public class ConsultData {
         String text = "";
         String[] directoryList;
 
-        Time timeDefault = null;
+        Time timeDefault = new Time();
         text = "Introduzca el primer horario del rango a buscar: ";
         System.out.println(text);
         String hi = Validate.validHour(text, key);

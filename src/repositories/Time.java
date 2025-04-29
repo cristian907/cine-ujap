@@ -8,6 +8,12 @@ public class Time {
     private String serialArchiveNumber;
 
     //Constructor
+    public Time(){
+
+
+    }
+
+    //Constructor
     public Time(String iniHour, String finHour, String serialArchiveNumber) throws IllegalArgumentException {
 
 

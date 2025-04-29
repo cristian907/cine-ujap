@@ -8,6 +8,12 @@ public class Movie {
     private String serialArchiveNumber;
 
     //Constructor
+    public Movie(){
+
+
+    }
+
+    //Constructor
     public Movie(String movieName, String serialArchiveNumber) throws IllegalArgumentException {
 
         this.utilValMovieName(movieName);

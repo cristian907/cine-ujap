@@ -7,6 +7,13 @@ public class Genre {
     private String serialArchiveNumber;
 
     //Constructor
+
+    public Genre(){
+
+
+    }
+
+    //Constructor
     public Genre(String genre, String serialArchiveNumber) throws IllegalArgumentException {
 
 
