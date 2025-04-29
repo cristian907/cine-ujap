@@ -15,8 +15,6 @@ import java.util.Scanner;
 
 public class ConsultMain {
 
-
-
     public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
         Queue<Movie> movieQueue = new Queue<>();
         Queue<Time> timeQueue = new Queue<>();
@@ -43,6 +41,7 @@ public class ConsultMain {
             } else if (option == 4) {
                 ConsultData.showCaseDequeue(movieQueue,timeQueue, genreQueue, stack);
                 StoreArchive.StackStore(stack, arch);
+                System.out.println();
                 System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                 return;
             } else {
@@ -51,6 +50,9 @@ public class ConsultMain {
                 key.nextLine();
             }
         } while (option != 4);
-
+        movieQueue = null;
+        timeQueue = null;
+        genreQueue = null;
+        stack = null;
     }
 }

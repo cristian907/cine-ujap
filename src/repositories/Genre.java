@@ -9,8 +9,9 @@ public class Genre {
     //Constructor
 
     public Genre(){
-
-
+        this.movieGenre = null;
+        this.movies = null;
+        this.serialArchiveNumber = null;
     }
 
     //Constructor

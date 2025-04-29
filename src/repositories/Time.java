@@ -9,8 +9,10 @@ public class Time {
 
     //Constructor
     public Time(){
-
-
+        this.iniHour = null;
+        this.finHour = null;
+        this.movies = null;
+        this.serialArchiveNumber = null;
     }
 
     //Constructor

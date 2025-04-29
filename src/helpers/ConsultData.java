@@ -217,6 +217,7 @@ public class ConsultData {
 
     public static void showCaseMovie(Movie movie) {
         if (movie != null) {
+            System.out.println("Pelicula consultada: ");
             System.out.print(movie.getmovieName() + " - ");
             for (int i = 1; i < movie.getMovieTimes().length; i++) {
                 System.out.print(movie.getMovieTimes()[i] + " ");
@@ -369,6 +370,9 @@ public class ConsultData {
     }
 
     public static void showCaseDequeue(Queue<Movie> movieQueue, Queue<Time> timeQueue, Queue<Genre> genreQueue, Stack<Object> stack) {
+        System.out.println();
+        System.out.println("Aquí estan los datos que usted consultó: ");
+        System.out.println();
         while (!movieQueue.isEmpty()) {
             Movie movie = movieQueue.dequeue();
             showCaseMovie(movie);

@@ -9,8 +9,10 @@ public class Movie {
 
     //Constructor
     public Movie(){
-
-
+        this.movieName = null;
+        this.movieGenre = null;
+        this.movieTimes = null;
+        this.serialArchiveNumber = null;
     }
 
     //Constructor
@@ -37,6 +39,10 @@ public class Movie {
         return this.serialArchiveNumber;
     }
 
+    public String[] getMovieTimes() {
+        return movieTimes;
+    }
+
     //Setters
     public void setmovieName(String name) {
         this.movieName = name;
@@ -48,6 +54,10 @@ public class Movie {
 
     public void setSerialArchive(String serial) {
         this.serialArchiveNumber = (serial.isEmpty()) ? null : serial;
+    }
+
+    public void setMovieTimes(String[] movieTimes) {
+        this.movieTimes = movieTimes;
     }
 
     //Verifica que el nombre no este vacio
@@ -64,13 +74,4 @@ public class Movie {
             this.movieName = name;
         }
     }
-
-    public String[] getMovieTimes() {
-        return movieTimes;
-    }
-
-    public void setMovieTimes(String[] movieTimes) {
-        this.movieTimes = movieTimes;
-    }
-
 }
