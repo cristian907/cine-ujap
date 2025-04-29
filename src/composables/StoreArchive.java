@@ -116,30 +116,24 @@ public class StoreArchive {
         if (showTimes != null && movie != null && info != null) {
             for (int i = 0; i < showTimes.length; i++) {
                 text = "Película " + (i + 1) + ":";
-                //Validate.valArchive(text, route, true);
                 archive.setCreateArchive(text, routeName, true);
                 text = String.format("Nombre: %7s", movie[i]);
-                //Validate.valArchive(text, route, true);
                 archive.setCreateArchive(text, routeName, true);
                 text = "Hora    |   Ventas n   |    Ventas s   |     TOTAL $";
-                //Validate.valArchive(text, route, true);
                 archive.setCreateArchive(text, routeName, true);
                 for (int j = 0; j < showTimes[0].length; j++) {
                     aux = (info[i][j][0]) * 3 + (info[i][j][1]) * 6;
                     plus += aux;
                     plusTotal += aux;
                     text = String.format("%5s       %4d$           %4d$           %4d$", showTimes[i][j], info[i][j][0] * 3, info[i][j][1] * 6, aux);
-                    //Validate.valArchive(text, route, true);
                     archive.setCreateArchive(text, routeName, true);
                 }
                 text = String.format("                                            %4d$", plus);
-                //Validate.valArchive(text, route, true);
                 archive.setCreateArchive(text, routeName, true);
                 plus = 0;
             }
             text = "El total de ventas del dia fue de: " + plusTotal + "$";
             archive.setCreateArchive(text, routeName, true);
-            //Validate.valArchive(text, route, false);
         }
         time = null;
     }
@@ -158,7 +152,7 @@ public class StoreArchive {
 
                 if (data instanceof Movie) {
                     Movie item = (Movie) data;
-                    text = "Pelicula: " + item.getmovieName() + "\n" + "Horario";
+                    text = "Pelicula: " + item.getmovieName() + "\n" + "Horario: ";
                     for (int i = 1; i < item.getMovieTimes().length; i++) {
                         text += item.getMovieTimes()[i] + " ";
                     }
@@ -167,17 +161,20 @@ public class StoreArchive {
                     text = "Rango: " + item.getIniHour() + "-" + item.getFinHour() + "\n";
                     String[] line = item.getMovies().split("/");
                     for (int i = 0; i < line.length; i++) {
-                        text += (line[i]);
+                        text += (line[i])+"\n";
                     }
                 } else if (data instanceof Genre) {
                     Genre item = (Genre) data;
                     text = "Genero: " + item.getMovieGenre() + "\n";
                     String[] line = item.getMovies().split("/");
                     for (int i = 0; i < line.length; i++) {
-                        text += (line[i]);
+                        text += (line[i])+" ";
                     }
                 }
                 archive.setCreateArchive(text, routeName, true);
+                text = "*-----------------------------------------------------------------------------------------*";
+                archive.setCreateArchive(text, routeName, true);
+
             }
 
 

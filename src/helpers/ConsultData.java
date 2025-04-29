@@ -237,7 +237,7 @@ public class ConsultData {
     public static void showCaseGenres(Genre genre) {
         String[] line = genre.getMovies().split("/");
         System.out.println(line[0]);
-        System.out.println("peliculas pertenecientes a este genero: " + genre);
+        System.out.println("peliculas pertenecientes a este genero: " + genre.getMovieGenre());
         for (int i = 0; i < line.length; i++) {
             System.out.println(line[i]);
         }

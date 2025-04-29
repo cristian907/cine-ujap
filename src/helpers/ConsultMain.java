@@ -12,11 +12,10 @@ import validateItem.Validate;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static helpers.ConsultData.searchHours;
 
 public class ConsultMain {
 
-;
+
 
     public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
         Queue<Movie> movieQueue = new Queue<>();
@@ -42,7 +41,7 @@ public class ConsultMain {
             } else if (option == 3) {
                 ConsultData.searchGenres(key, arch, genreQueue);
             } else if (option == 4) {
-                ConsultData.showCaseDequeue(movieQueue,timeQueue, genreQueue, stack );
+                ConsultData.showCaseDequeue(movieQueue,timeQueue, genreQueue, stack);
                 StoreArchive.StackStore(stack, arch);
                 System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                 return;
