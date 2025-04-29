@@ -32,7 +32,7 @@ public class StoreArchive {
                     archive.setCreateArchive(text, routeName, false);
                 }
                 cont++;
-                text = String.valueOf(showTime[i][showTime[0].length - 1]) + "-" + String.valueOf(finalHour[i][finalHour[0].length - 1]);
+                text = (showTime[i][showTime[0].length - 1]) + "-" + (finalHour[i][finalHour[0].length - 1]);
                 if (cont < movie.length) {
                     archive.setCreateArchive(text, routeName, true);
                 } else {
@@ -161,14 +161,14 @@ public class StoreArchive {
                     text = "Rango: " + item.getIniHour() + "-" + item.getFinHour() + "\n";
                     String[] line = item.getMovies().split("/");
                     for (int i = 0; i < line.length; i++) {
-                        text += (line[i])+"\n";
+                        text += (line[i]) + "\n";
                     }
                 } else if (data instanceof Genre) {
                     Genre item = (Genre) data;
                     text = "Genero: " + item.getMovieGenre() + "\n";
                     String[] line = item.getMovies().split("/");
                     for (int i = 0; i < line.length; i++) {
-                        text += (line[i])+" ";
+                        text += (line[i]) + " ";
                     }
                 }
                 archive.setCreateArchive(text, routeName, true);

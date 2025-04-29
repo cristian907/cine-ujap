@@ -46,8 +46,14 @@ public class Movie {
 
     //Verifica que el nombre no este vacio
     private void utilValMovieName(String name) throws IllegalArgumentException {
-        if (name.trim().isEmpty()) {
+
+        if (name.trim().isEmpty() || name == null) {
+
             throw new IllegalArgumentException(" [El nombre no puede ser nulo o vacio] ");
+
+        } else if (name.length() > 30) {
+            throw new IllegalArgumentException(" [El nombre no puede tener mas de 30 caracteres] ");
+
         } else {
             this.movieName = name;
         }
@@ -60,4 +66,5 @@ public class Movie {
     public void setMovieTimes(String[] movieTimes) {
         this.movieTimes = movieTimes;
     }
+
 }

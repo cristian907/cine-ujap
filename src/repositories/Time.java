@@ -60,12 +60,16 @@ public class Time {
     //Verifica el formato en el que debe ser ingresado la hora
     private String utilValHour(String hour) throws IllegalArgumentException {
 
-        if (!hour.matches("\\d{1,2}:\\d{2}")) {
-            throw new IllegalArgumentException(" [la hora debe estar escrita en formato hh:mm] ");
+        if (!(hour.trim().isEmpty() || hour == null)) {
 
+            if (!hour.matches("\\d{1,2}:\\d{2}")) {
+                throw new IllegalArgumentException(" [la hora debe estar escrita en formato hh:mm] ");
+
+            } else {
+                return hour;
+            }
         } else {
-            return hour;
+            throw new IllegalArgumentException(" [la hora no debe estar vacia] ");
         }
     }
-
 }
