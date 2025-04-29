@@ -1,7 +1,6 @@
 package process;
 
 import validateItem.Validate;
-
 import java.io.IOException;
 import java.util.Scanner;
 

@@ -1,55 +1,8 @@
 package validateItem;
 
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Validate {
-
-    public static boolean fileExists() throws IOException {
-        String data = Paths.get("").toRealPath().toString() + "/src/storage/MovieSchedule.txt";
-        String movies = Paths.get("").toRealPath().toString() + "/src/storage/Movies.txt";
-        String times = Paths.get("").toRealPath().toString() + "/src/storage/Times.txt";
-        File fileA = new File(data);
-        File fileB = new File(movies);
-        File fileC = new File(times);
-
-        if (!fileA.exists() || !fileB.exists() || !fileC.exists()) {
-            System.out.println("No existen los archivos, se creara el catalogo manualmente");
-            return false;
-        }
-        fileA = null;
-        fileB = null;
-        fileC = null;
-        return true;
-    }
-
-    public static Scanner readFile(String route) {
-
-        if (route == null || route.trim().isEmpty()) {
-            System.out.println("Error: Ruta Invalida");
-            return null;
-        }
-
-        File file = new File(route);
-        if (!file.isFile()) {
-            System.out.println("La ruta especificada no es un archivo: " + route);
-            return null;
-        }
-
-        try {
-            return new Scanner(file);
-
-        } catch (IOException e) {
-            System.out.println("Error al abrir o leer el archivo");
-        }
-        file = null;
-        return null;
-    }
 
     // Metodo para validar el tamaño del vector
     public static int valSize(String text, Scanner key) {

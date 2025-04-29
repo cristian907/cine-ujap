@@ -8,7 +8,6 @@ import repositories.Genre;
 import repositories.Movie;
 import repositories.Time;
 import validateItem.Validate;
-
 import java.io.IOException;
 import java.util.Scanner;
 
