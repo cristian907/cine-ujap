@@ -17,7 +17,6 @@ import static helpers.ConsultMain.*;
 public class ConsultData {
 
     public static String getItemsByIndex(String[] items, String index, String select) {
-
         for (int i = 0; i < select.length(); i++) {
             if (select.charAt(i) == index.charAt(0)) {
                 return items[Integer.parseInt(index) - 1];
@@ -27,7 +26,6 @@ public class ConsultData {
     }
 
     public static String getDirectoriesPerMovie(String[] items, Movie movieDefault, Scanner key) {
-
         String txt = "";
         String compare, select = "";
         String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
@@ -44,14 +42,12 @@ public class ConsultData {
             }
         }
 
-
         String index = key.nextLine();
         txt = getItemsByIndex(items, index, select);
 
         if (txt == null) {
             return null;
         }
-
         String[] serialItem = txt.split("_");
         compare = serialItem[serialItem.length - 1];
         movieDefault.setSerialArchive(compare);
@@ -60,7 +56,6 @@ public class ConsultData {
     }
 
     public static String getDirectoriesPerTime(String[] items, Time timeDefault, Scanner key) {
-
         String txt = "";
         String compare, select = "";
         String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
@@ -77,14 +72,12 @@ public class ConsultData {
             }
         }
 
-
         String index = key.nextLine();
         txt = getItemsByIndex(items, index, select);
 
         if (txt == null) {
             return null;
         }
-
         String[] serialItem = txt.split("_");
         compare = serialItem[serialItem.length - 1];
         timeDefault.setSerialArchive(compare);
@@ -93,7 +86,6 @@ public class ConsultData {
     }
 
     public static String getDirectoriesPerGenre(String[] items, Genre genreDefault, Scanner key) {
-
         String txt = "";
         String compare, select = "";
         String text = "\n - Aqui estan los archivos existentes, en cual desea buscar ? \n eliga numeros ";
@@ -110,14 +102,12 @@ public class ConsultData {
             }
         }
 
-
         String index = key.nextLine();
         txt = getItemsByIndex(items, index, select);
 
         if (txt == null) {
             return null;
         }
-
         String[] serialItem = txt.split("_");
         compare = serialItem[serialItem.length - 1];
         genreDefault.setSerialArchive(compare);
@@ -173,7 +163,6 @@ public class ConsultData {
 
         String[] result = consultName(arch, name);
 
-        // Procesamiento adicional: si result es nulo, imprimimos que no se encontró
         if (result == null) {
             System.out.println("El nombre " + name + " no fue encontrado en esta línea: " + String.join(" ", line));
         }
@@ -189,7 +178,7 @@ public class ConsultData {
             return text.trim();
         }
         String[] line = arch.nextLine().split(" ");
-        ;
+
         if (isMovieInRange(line, min, max)) {
             text = text + line[0] + " -";
             text = getTimes(text, line, min, max);
@@ -246,7 +235,6 @@ public class ConsultData {
     }
 
     public static void searchName(Scanner key, ArchiveUtil archive, Queue<Movie> movieQueue){
-
         String text = "";
         String[] directoryList;
 
@@ -281,11 +269,10 @@ public class ConsultData {
             return;
         }
         res = null;
+        directoryList = null;
     }
 
     public static void searchGenres(Scanner key, ArchiveUtil archive, Queue<Genre> genreQueue){
-
-
         String text = "";
         String[] directoryList;
 
@@ -324,6 +311,7 @@ public class ConsultData {
             System.out.println("Disculpe, el genero no fue encontrado");
         }
         file = null;
+        directoryList = null;
     }
 
     public static void searchHours(Scanner key, ArchiveUtil archive, Queue<Time> timeQueue){
@@ -367,6 +355,7 @@ public class ConsultData {
         }
 
         file = null;
+        directoryList = null;
     }
 
     public static void showCaseDequeue(Queue<Movie> movieQueue, Queue<Time> timeQueue, Queue<Genre> genreQueue, Stack<Object> stack) {

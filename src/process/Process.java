@@ -99,7 +99,6 @@ public class Process {
     public static void buyTicket(String[] movies, String[][] times, int[][][] info, Scanner key) {
         int movieID, timeID = 0;
         String text, movieName, showTime = "";
-
         if (movies != null && times != null && info != null) {
             for (int i = 0; i < movies.length; i++) {
                 System.out.println((i + 1) + ". " + movies[i]);
@@ -172,9 +171,8 @@ public class Process {
 
     public static void showMenu(String[] names, String[][] times, int[][][] info, String[] genres, String[][] finShowTimes, Scanner key) throws IOException {
         String text = "";
-        int option, opt = 0;
+        int option;
         System.out.println("\n\n¡Bienvenido a CineUjap!");
-
         if (names != null && times != null && info != null && genres != null) {
             do {
                 System.out.println("\nMenu de Opciones");

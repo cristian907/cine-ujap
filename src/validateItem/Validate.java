@@ -154,13 +154,16 @@ public class Validate {
         String name = key.nextLine();
         int i = 0;
         while (true) {
-
             if (name.length() > 50) {
                 System.out.println("Error: Nombre mayor a 50 caracteres, por favor abreviar el nombre.");
                 System.out.print(text);
                 name = key.nextLine();
             } else if (name.trim().isEmpty()) {
                 System.out.println("Error: Introduzca un nombre.");
+                System.out.print(text);
+                name = key.nextLine();
+            }else if(name.trim().contains(" ")){
+                System.out.println("Error: El nombre no puede tener espacios, de ser asi coloque un guion ( - ).");
                 System.out.print(text);
                 name = key.nextLine();
             } else {
@@ -248,21 +251,6 @@ public class Validate {
         }
     }
 
-    // Metodo para validar la escritura del archivo
-    public static void valArchive(String content, String route, boolean boo) {
-        if (content == null) {
-            System.out.println("El contenido esta vacio, por lo tanto no se escribirá nada");
-            return;
-        }
-        try (BufferedWriter addArchive = new BufferedWriter(new FileWriter(route, true))) {
-            addArchive.write(content);
-            if (boo) {
-                addArchive.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Error al escribir el archivo: " + e.getMessage());
-        }
-    }
 
     // Metodo para validar si la pelicula esta agotada
     public static boolean isMovieSoldOut(int[][][] info, int id) {
