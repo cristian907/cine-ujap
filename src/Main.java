@@ -40,18 +40,17 @@ public class Main {
                 System.out.println("3. Cerrar Programa");
                 text = "\nSeleccione una opción: ";
                 option = Validate.valOpt(text, key);
-                switch (option) {
-                    case 1:
-                        ConsultMain.consult(key, archive);
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        return;
-                    default:
-                        System.out.println("\n¡ERROR! Elija una opción valida");
-                        System.out.print("Presione ENTER para continuar: ");
-                        key.nextLine();
+
+                if (option == 1) {
+                    ConsultMain.consult(key, archive);
+                } else if (option == 2) {
+
+                } else if (option == 3) {
+                    return;
+                } else {
+                    System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.print("Presione ENTER para continuar: ");
+                    key.nextLine();
                 }
             } while (option != 2);
 

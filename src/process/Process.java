@@ -1,6 +1,7 @@
 package process;
 
 import validateItem.Validate;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -184,32 +185,27 @@ public class Process {
                 System.out.println("4. Cerrar Programa");
                 text = "\nSeleccione una opción: ";
                 option = Validate.valOpt(text, key);
-                switch (option) {
-                    case 1:
-                        showCase(names, times, genres, finShowTimes, key);
-                        break;
-                    case 2:
-                        if (Validate.isCinemaSoldOut(info)) {
-                            System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
-                            System.out.print("\nPresione ENTER para continuar: ");
-                            key.nextLine();
-                        } else {
-                            buyTicket(names, times, info, key);
-                        }
-                        break;
-                    case 3:
-                        iniMovie(names);
-                        iniShowtime(times);
-                        iniSeats(info);
-                        attachData(times, names, genres, finShowTimes, key);
-                        break;
-                    case 4:
-                        System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
-                        break;
-                    default:
-                        System.out.println("\n¡ERROR! Elija una opción valida");
-                        System.out.print("Presione ENTER para continuar: ");
+                if (option == 1) {
+                    showCase(names, times, genres, finShowTimes, key);
+                } else if (option == 2) {
+                    if (Validate.isCinemaSoldOut(info)) {
+                        System.out.println("Disculpe, todas las películas están agotadas. ¡Vuelva otro día!");
+                        System.out.print("\nPresione ENTER para continuar: ");
                         key.nextLine();
+                    } else {
+                        buyTicket(names, times, info, key);
+                    }
+                } else if (option == 3) {
+                    iniMovie(names);
+                    iniShowtime(times);
+                    iniSeats(info);
+                    attachData(times, names, genres, finShowTimes, key);
+                } else if (option == 4) {
+                    System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
+                } else {
+                    System.out.println("\n¡ERROR! Elija una opción valida");
+                    System.out.print("Presione ENTER para continuar: ");
+                    key.nextLine();
                 }
             } while (option != 4);
         }

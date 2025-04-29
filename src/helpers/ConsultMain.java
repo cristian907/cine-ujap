@@ -31,26 +31,23 @@ public class ConsultMain {
             System.out.println("4. Terminar busqueda");
             text = "\nSeleccione una opción: ";
             option = Validate.valOpt(text, key);
-            switch (option) {
-                case 1:
-                    ConsultData.selectSearch(0, key, arch);
-                    break;
-                case 2:
-                    ConsultData.selectSearch(1, key, arch);
-                    break;
-                case 3:
-                    ConsultData.selectSearch(2, key, arch);
-                    break;
-                case 4:
-                    ConsultData.showCaseDequeue();
-                    StoreArchive.StackStore(stack, arch);
-                    System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
-                    break;
-                default:
-                    System.out.println("\n¡ERROR! Elija una opción valida");
-                    System.out.print("Presione ENTER para continuar: ");
-                    key.nextLine();
+
+            if (option == 1) {
+                ConsultData.selectSearch(0, key, arch);
+            } else if (option == 2) {
+                ConsultData.selectSearch(1, key, arch);
+            } else if (option == 3) {
+                ConsultData.selectSearch(2, key, arch);
+            } else if (option == 4) {
+                ConsultData.showCaseDequeue();
+                StoreArchive.StackStore(stack, arch);
+                System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
+            } else {
+                System.out.println("\n¡ERROR! Elija una opción valida");
+                System.out.print("Presione ENTER para continuar: ");
+                key.nextLine();
             }
+            System.out.println(option);
         } while (option != 4);
     }
 }
