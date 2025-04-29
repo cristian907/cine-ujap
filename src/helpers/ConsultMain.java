@@ -12,16 +12,19 @@ import validateItem.Validate;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static helpers.ConsultData.searchHours;
+
 public class ConsultMain {
 
-    public static Queue<Movie> movieQueue = new Queue<>();
-    public static Queue<Time> timeQueue = new Queue<>();
-    public static Queue<Genre> genreQueue = new Queue<>();
-    public static Stack<Object> stack = new Stack<>();
+;
 
     public static void consult(Scanner key, ArchiveUtil arch) throws IOException {
+        Queue<Movie> movieQueue = new Queue<>();
+        Queue<Time> timeQueue = new Queue<>();
+        Queue<Genre> genreQueue = new Queue<>();
+        Stack<Object> stack = new Stack<>();
         String text = "";
-        int option, opt = 0;
+        int option;
         System.out.println("\n\nSeleccione el modo de busqueda:");
         do {
             System.out.println("\nMenu de Opciones");
@@ -33,13 +36,13 @@ public class ConsultMain {
             option = Validate.valOpt(text, key);
 
             if (option == 1) {
-                ConsultData.selectSearch(0, key, arch);
+                ConsultData.searchName(key, arch, movieQueue);
             } else if (option == 2) {
-                ConsultData.selectSearch(1, key, arch);
+                ConsultData.searchHours(key, arch, timeQueue);
             } else if (option == 3) {
-                ConsultData.selectSearch(2, key, arch);
+                ConsultData.searchGenres(key, arch, genreQueue);
             } else if (option == 4) {
-                ConsultData.showCaseDequeue();
+                ConsultData.showCaseDequeue(movieQueue,timeQueue, genreQueue, stack );
                 StoreArchive.StackStore(stack, arch);
                 System.out.println("¡Gracias por elegir CineUjap, vuelva pronto!");
                 return;

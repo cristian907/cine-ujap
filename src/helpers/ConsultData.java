@@ -1,5 +1,7 @@
 package helpers;
 
+import Structure.Queue;
+import Structure.Stack;
 import repositories.ArchiveUtil;
 import repositories.Genre;
 import repositories.Movie;
@@ -242,121 +244,131 @@ public class ConsultData {
         line = null;
     }
 
-    public static void selectSearch(int opt, Scanner key, ArchiveUtil archive) throws IOException {
+    public static void searchName(Scanner key, ArchiveUtil archive, Queue<Movie> movieQueue){
+
         String text = "";
         String[] directoryList;
-        if (opt == 0) {
-            Movie movieDefault = null;
-            text = "Introduzca el nombre de la pelicula a buscar: ";
-            System.out.println(text);
-            String name = Validate.validMovieName(text, key);
 
-            try {
-                movieDefault = new Movie(name, "default");
-            } catch (IllegalArgumentException e) {
-                System.out.println();
-            }
+        Movie movieDefault = null;
+        text = "Introduzca el nombre de la pelicula a buscar: ";
+        System.out.println(text);
+        String name = Validate.validMovieName(text, key);
 
-            directoryList = archive.getDirectories();
-            String file = getDirectoriesPerMovie(directoryList, movieDefault, key);
-
-            if (file == null) {
-                System.out.println("Error al abrir el archivo.");
-                return;
-            }
-
-            Scanner movieFile = archive.getArchive(file);
-
-            String[] res = consultName(movieFile, name);
-            if (res != null) {
-                movieDefault.setmovieName(name);
-                movieDefault.setMovieTimes(res);
-                movieQueue.enqueue(movieDefault);
-            } else {
-                System.out.println("El nombre no fue encontrado.");
-                return;
-            }
-            res = null;
-
-
-        } else if (opt == 1) {
-            Time timeDefault = null;
-            text = "Introduzca el primer horario del rango a buscar: ";
-            System.out.println(text);
-            String hi = Validate.validHour(text, key);
-            text = "Introduzca el segundo horario del rango a buscar: ";
-            System.out.println(text);
-            String hf = Validate.validHour(text, key);
-            String r = "";
-
-            try {
-                timeDefault = new Time(hi, hf, "Default");
-            } catch (IllegalArgumentException e) {
-                System.out.println();
-            }
-
-            directoryList = archive.getDirectories();
-            String file = getDirectoriesPerTime(directoryList, timeDefault, key);
-
-            if (file == null) {
-                System.out.println("Error al abrir el archivo.");
-                return;
-            }
-
-            Scanner timeFile = archive.getArchive(file);
-
-            String res = consultTime(timeFile, convertTime(hi), convertTime(hf), r);
-            if (!res.trim().isEmpty()) {
-                timeDefault.setIniHour(hi);
-                timeDefault.setFinHour(hf);
-                timeDefault.setMovies(res);
-                timeQueue.enqueue(timeDefault);
-            } else {
-                System.out.println("Disculpe, no hay peliculas en ese rango.");
-            }
-
-            file = null;
-        } else {
-            Genre genreDefault = null;
-            text = "Introduzca el nombre del genero a buscar: ";
-            System.out.println(text);
-            String name = Validate.validGenreName(text, key);
-            if (name == null) {
-                return;
-            }
-            String movies = "";
-
-            try {
-                genreDefault = new Genre(name, "Default");
-            } catch (IllegalArgumentException e) {
-                System.out.println();
-            }
-
-            directoryList = archive.getDirectories();
-            String file = getDirectoriesPerGenre(directoryList, genreDefault, key);
-
-            if (file == null) {
-                System.out.println("Error al abrir el archivo.");
-                return;
-            }
-
-            Scanner genreFile = archive.getArchive(file);
-
-            String res = consultGenre(genreFile, name, movies);
-            if (!res.trim().isEmpty()) {
-                genreDefault.setMovieGenre(name);
-                genreDefault.setMovies(res);
-                genreQueue.enqueue(genreDefault);
-                file = null;
-            } else {
-                System.out.println("Disculpe, el genero no fue encontrado");
-            }
-            file = null;
+        try {
+            movieDefault = new Movie(name, "default");
+        } catch (IllegalArgumentException e) {
+            System.out.println();
         }
 
+        directoryList = archive.getDirectories();
+        String file = getDirectoriesPerMovie(directoryList, movieDefault, key);
+
+        if (file == null) {
+            System.out.println("Error al abrir el archivo.");
+            return;
+        }
+
+        Scanner movieFile = archive.getArchive(file);
+
+        String[] res = consultName(movieFile, name);
+        if (res != null) {
+            movieDefault.setmovieName(name);
+            movieDefault.setMovieTimes(res);
+            movieQueue.enqueue(movieDefault);
+        } else {
+            System.out.println("El nombre no fue encontrado.");
+            return;
+        }
+        res = null;
     }
 
-    public static void showCaseDequeue() {
+    public static void searchGenres(Scanner key, ArchiveUtil archive, Queue<Genre> genreQueue){
+
+
+        String text = "";
+        String[] directoryList;
+
+        Genre genreDefault = null;
+        text = "Introduzca el nombre del genero a buscar: ";
+        System.out.println(text);
+        String name = Validate.validGenreName(text, key);
+        if (name == null) {
+            return;
+        }
+        String movies = "";
+
+        try {
+            genreDefault = new Genre(name, "Default");
+        } catch (IllegalArgumentException e) {
+            System.out.println();
+        }
+
+        directoryList = archive.getDirectories();
+        String file = getDirectoriesPerGenre(directoryList, genreDefault, key);
+
+        if (file == null) {
+            System.out.println("Error al abrir el archivo.");
+            return;
+        }
+
+        Scanner genreFile = archive.getArchive(file);
+
+        String res = consultGenre(genreFile, name, movies);
+        if (!res.trim().isEmpty()) {
+            genreDefault.setMovieGenre(name);
+            genreDefault.setMovies(res);
+            genreQueue.enqueue(genreDefault);
+            file = null;
+        } else {
+            System.out.println("Disculpe, el genero no fue encontrado");
+        }
+        file = null;
+    }
+
+    public static void searchHours(Scanner key, ArchiveUtil archive, Queue<Time> timeQueue){
+
+        String text = "";
+        String[] directoryList;
+
+        Time timeDefault = null;
+        text = "Introduzca el primer horario del rango a buscar: ";
+        System.out.println(text);
+        String hi = Validate.validHour(text, key);
+        text = "Introduzca el segundo horario del rango a buscar: ";
+        System.out.println(text);
+        String hf = Validate.validHour(text, key);
+        String r = "";
+
+        try {
+            timeDefault = new Time(hi, hf, "Default");
+        } catch (IllegalArgumentException e) {
+            System.out.println();
+        }
+
+        directoryList = archive.getDirectories();
+        String file = getDirectoriesPerTime(directoryList, timeDefault, key);
+
+        if (file == null) {
+            System.out.println("Error al abrir el archivo.");
+            return;
+        }
+
+        Scanner timeFile = archive.getArchive(file);
+
+        String res = consultTime(timeFile, convertTime(hi), convertTime(hf), r);
+        if (!res.trim().isEmpty()) {
+            timeDefault.setIniHour(hi);
+            timeDefault.setFinHour(hf);
+            timeDefault.setMovies(res);
+            timeQueue.enqueue(timeDefault);
+        } else {
+            System.out.println("Disculpe, no hay peliculas en ese rango.");
+        }
+
+        file = null;
+    }
+
+    public static void showCaseDequeue(Queue<Movie> movieQueue, Queue<Time> timeQueue, Queue<Genre> genreQueue, Stack<Object> stack) {
         while (!movieQueue.isEmpty()) {
             Movie movie = movieQueue.dequeue();
             showCaseMovie(movie);
